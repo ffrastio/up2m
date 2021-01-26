@@ -15,6 +15,11 @@
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="no_induk" value="{{ __('NIM / NIP') }}" />
+                <x-jet-input id="no_induk" class="block mt-1 w-full" type="text" name="no_induk" :value="old('no_induk')" required />
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
