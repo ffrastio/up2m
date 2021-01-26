@@ -1,11 +1,11 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
-        <div class="sidebar-brand">
-            <a href="{{ route('dashboard') }}" class="font-bold text-xl">siir</a>
+        <div class="sidebar-brand py-4 px-4 mb-4">
+            <img src="{{ asset('assets/images/logo-siklab.png') }}" alt="Logo Siklab">
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="{{ route('dashboard') }}">
-                <img class="d-inline-block" width="32px" height="30.61px" src="" alt="">
+                <img class="d-inline-block" width="32px" height="30.61px" src="{{ asset('assets/images/favicon.png') }}" alt="">
             </a>
         </div>
         <ul class="sidebar-menu">
