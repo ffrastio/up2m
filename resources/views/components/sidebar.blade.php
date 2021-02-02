@@ -1,7 +1,7 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand py-4 px-4 mb-4">
-            <img src="{{ asset('assets/images/logo-siklab.png') }}" alt="Logo Siklab">
+            <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/images/logo-siklab.png') }}" alt="Logo Siklab"></a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="{{ route('dashboard') }}">
@@ -20,8 +20,8 @@
             <li>
                 <a class="nav-link has-dropdown" href="#"><i class="fas fa-boxes"></i><span>Manajemen Barang</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('user') }}">Barang Ruangan</a></li>
-                    <li><a class="nav-link" href="{{ route('barangjurusan.index') }}">Barang Jurusan</a></li>
+                    <li><a class="nav-link" href="#">Barang Ruangan</a></li>
+                    <li><a class="nav-link" href="#">Barang Jurusan</a></li>
                 </ul>
             </li>
             <li>
@@ -32,11 +32,7 @@
             </li>
             <li class="menu-header">User</li>
             <li>
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-chart-bar"></i> <span>User</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('user') }}">Data User</a></li>
-                    <li><a class="nav-link" href="{{ route('user.new') }}">Buat User</a></li>
-                </ul>
+                <a href="{{ route('user.index') }}" class="nav-link" ><i class="fas fa-chart-bar"></i> <span>User</span></a>
             </li>
         </ul>
     </aside>
