@@ -32,29 +32,42 @@
         <div class="text-left title mt-4 container">
             <p>Data Statistik</p>
         </div>
-        <b-row class="d-flex align-items-center container">
-            <b-col class="col-6 ">
-                <p class="align-items-center">
-                    Data Pengabdian Internal Per Jurusan
-                </p>
+        <b-row class=" bg-light">
+            <b-col class="col-6 mt-3">
+                <LineChart1 class="img-header bg-white py-2 rounded"/>
             </b-col>
-            <b-col class="col-6">
-                <p class="align-items-center">
-                    Data Penelitian Internal Per Jurusan
-                </p>
+            <b-col class="col-6 mt-3">
+                    <LineChart2 class="img-header bg-white rounded py-2"/>
+            </b-col>
+            <b-col class="col-6 mt-3 mb-3">
+                <BarChart1 class="image-header bg-white py-2 rounded"/>
+            </b-col>
+            <b-col class="col-6 mt-3 mb-3">
+                    <BarChart2 class="image-header bg-white rounded py-2"/>
             </b-col>
         </b-row>
+        <Footer />
     </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Navbar from "@/components/layouts/Navbar.vue";
+import Footer from "@/components/layouts/Footer.vue";
+import LineChart1 from "@/components/chart/pengabdianLineChart.vue";
+import LineChart2 from "@/components/chart/penelitianLineChart.vue";
+import BarChart1 from "@/components/chart/pengabdianBarChart.vue";
+import BarChart2 from "@/components/chart/penelitianBarChart.vue";
 
 export default {
     name: "Home",
     components: {
-        Navbar
+        Navbar,
+        Footer,
+        LineChart1,
+        LineChart2,
+        BarChart1,
+        BarChart2
     }
 };
 </script>
@@ -73,5 +86,8 @@ export default {
 .title {
     font-weight: 500;
     font-size: 32px;
+}
+.img-chart {
+    max-width: 50px;
 }
 </style>
