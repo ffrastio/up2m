@@ -29,7 +29,7 @@
 
     <!-- Nav Item - Peminjaman -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('jurusan') }}">
             <i class="fas fa-fw fa-door-open"></i>
             <span>Manajemen Jurusan</span></a>
     </li>
@@ -67,9 +67,15 @@
 
         <!-- Nav Item - Pengguna -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePengguna" aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-user-friends"></i>
             <span>Pengguna</span></a>
+            <div id="collapsePengguna" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="#">Pimpinan</a>
+                    <a class="collapse-item" href="#">Author</a>
+                </div>
+            </div>
     </li>
 
 

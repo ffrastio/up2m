@@ -20,7 +20,7 @@
                 <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Jurusan</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$jumlah_jurusan}}</div>
                 </div>
                 <div class="col-auto">
                     <i class="fas fa-door-open fa-2x text-gray-300"></i>
@@ -40,7 +40,7 @@
                     <div class="h5 mb-0 font-weight-bold text-gray-800">11</div>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-box-open fa-2x text-gray-300"></i>
+                    <i class="fas fa-database fa-2x text-gray-300"></i>
                 </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    <i class="fas fa-database fa-2x text-gray-300"></i>
                 </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                     <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    <i class="fas fa-user fa-2x text-gray-300"></i>
                 </div>
                 </div>
             </div>
