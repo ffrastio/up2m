@@ -74,7 +74,7 @@
                             </svg>
                         </button>
                         <ul
-                            class="dropdown-menu absolute hidden border w-40 mr-auto rounded bg-white"
+                            class="dropdown-menu absolute hidden border w-40 text-left rounded bg-white"
                         >
                             <li class="">
                                 <a

@@ -4,46 +4,35 @@
         <Navbar class="border-b" />
         <!-- Ends: Navbar -->
         <!-- Start Section Hero -->
-        <section class="container flex mx-auto items-center">
+        <section class="container flex mx-auto items-center text-left">
             <div
-                class="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24"
+                class="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-14"
             >
                 <!--Left Col-->
                 <div
                     class="flex flex-col w-full lg:w-1/2 justify-items-start items-start pt-12 pb-24 px-6"
                 >
-                    <p class="uppercase tracking-loose">Witty Tagline</p>
-                    <h1 class="font-bold text-3xl my-4">My Super App</h1>
+                    
+                    <h1 class="font-bold text-3xl my-4">Temukan Data  yang Diinginkan</h1>
                     <p class="leading-normal mb-4">
-                        Enter your super app's description here... The key is to
-                        find the right length. Don't want it to be too long, but
-                        then don't want it to be too short so that it looks
-                        weird between the title and button below.
+                        UP2M Menyediakan berbagai data dan <br> keperluan untuk mendukung penelitian kamu
                     </p>
                     <button
-                        class="bg-transparent hover:bg-gray-900 text-gray-900 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-gray-900 hover:border-transparent"
+                        class="bg-primary hover:bg-primary-200 text-white hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border"
                     >
-                        Super Button
+                        Temukan !
                     </button>
                 </div>
                 <!--Right Col-->
                 <div class="w-full lg:w-1/2 lg:py-6 text-center">
                     <!--Add your product image here-->
-                    <svg
-                        class="fill-current text-gray-900 w-3/5 mx-auto"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                    >
-                        <path
-                            d="M17 6V5h-2V2H3v14h5v4h3.25H11a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6zm-5.75 14H3a2 2 0 0 1-2-2V2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-5.75zM11 8v8h6V8h-6zm3 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
-                        />
-                    </svg>
+                    <img src="@/assets/content/header.png" alt="Header" class="img-header">
                 </div>
             </div>
         </section>
         <!-- Ends Section Hero -->
         <!-- Start Data Statistik -->
-        <div class="text-xl text-left font-bold mt-4 ml-4">Data Statistik</div>
+        <div class="text-xl text-left font-bold py-4 px-4">Data Statistik</div>
         <div
             class="bg-gray-200 px-4 py-4 grid grid-cols-1 gap-2 md:grid-cols-2 mb-4"
         >
@@ -80,6 +69,6 @@ export default {
 </script>
 <style>
 .img-header {
-    max-height: 300px;
+    max-height: 400px;
 }
 </style>
