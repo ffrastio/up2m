@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -18,8 +19,8 @@ class UsersTableSeeder extends Seeder
         $user->nidn = "1234567890";
         $user->nama = "Admin";
         $user->email = "admin@mail.com";
-        $user->password = bcrypt('12345678');
-        $user->role = "admin";
+        $user->password = Hash::make('12345678');
+        $user->isAdmin = 1;
         $user->save();
     }
 }

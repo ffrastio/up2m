@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/dashboard') }}">
         <div class="sidebar-brand-text mx-3">
             Sistem Repositori
         </div>
@@ -72,8 +72,8 @@
             <span>Pengguna</span></a>
             <div id="collapsePengguna" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#">Pimpinan</a>
-                    <a class="collapse-item" href="#">Author</a>
+                    <a class="collapse-item" href="{{ route('user') }}">Pimpinan</a>
+                    <a class="collapse-item" href="{{ route('author') }}">Author</a>
                 </div>
             </div>
     </li>

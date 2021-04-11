@@ -19,4 +19,14 @@ class Jurusan extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function author()
+    {
+        return $this->hasMany('App\Models\Author', 'id_jurusan');
+    }
+
+    public function prodi()
+    {
+        return $this->hasMany('App\Models\Prodi', 'id_jurusan');
+    }
 }

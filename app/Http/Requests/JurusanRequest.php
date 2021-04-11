@@ -34,8 +34,8 @@ class JurusanRequest extends FormRequest
     public function messages()
     {
         return [
-            'nama_jurusan.required'      => 'Judul wajib diisi.',
-            'nama_jurusan.max'           => 'Judul maksimal diisi dengan 50 karakter.',
+            'nama_jurusan.required'      => 'Jurusan wajib diisi.',
+            'nama_jurusan.max'           => 'Jurusan maksimal diisi dengan 50 karakter.',
             'logo.mimes'         => 'Hanya file dengan tipe .png .jpg dan .jpeg',
             'logo.max'           => 'Ukuran file maksimal 500kb'
         ];

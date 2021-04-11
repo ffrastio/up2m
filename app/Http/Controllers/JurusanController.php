@@ -37,7 +37,7 @@ class JurusanController extends Controller
             $input['logo'] = $this->updateFoto($jurusan, $request);
         }
 
-        //update data siswa
+        //update data jurusan
         $jurusan->update($input);
         return redirect('/jurusan');
     }
@@ -52,7 +52,7 @@ class JurusanController extends Controller
         }
 
         //Simpan data jurusan
-        $jurusan = Jurusan::create($input);
+        Jurusan::create($input);
 
         return redirect('/jurusan');
     }
