@@ -1,51 +1,47 @@
 <template>
     <div class="home">
-        <div class="container">
-            <!-- Start Navbar -->
-            <Navbar />
-            <!-- End Navbar -->
-            <!-- Start Jumbotron -->
-            <div class="mt-4 text-left d-flex align-items-center justify-content-between">
-                <div class="block">
-                    <p class="title">
-                        Temukan Data yang <br />
-                        Diinginkan
+        <!-- Start: Navbar -->
+        <Navbar/>
+        <!-- Ends: Navbar -->
+        <!-- Start Section Hero -->
+        <section class="container flex mx-auto items-center text-left">
+            <div
+                class="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-14"
+            >
+                <!--Left Col-->
+                <div
+                    class="flex flex-col w-full lg:w-1/2 justify-items-start items-start pt-12 pb-24 px-6"
+                >
+                    
+                    <h1 class="font-bold text-3xl my-4">Temukan Data  yang Diinginkan</h1>
+                    <p class="leading-normal mb-4">
+                        UP2M Menyediakan berbagai data dan <br> keperluan untuk mendukung penelitian kamu
                     </p>
-                    <p>
-                        UP2M Menyediakan berbagai data dan <br />
-                        keperluan untuk mendukung penelitian kamu
-                    </p>
-                    <b-button class="btn btn-cta" href="#">Temukan!</b-button>
+                    <button
+                        class="bg-primary hover:bg-primary-200 text-white hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border"
+                    >
+                        Temukan !
+                    </button>
                 </div>
-
-                <div class="img-header">
-                    <b-img
-                        src="@/assets/img/content/content-1.png"
-                        alt="Konten"
-                        class="img-header image-cover"
-                        fluid
-                    />
+                <!--Right Col-->
+                <div class="w-full lg:w-1/2 lg:py-6 text-center">
+                    <!--Add your product image here-->
+                    <img src="@/assets/content/header.png" alt="Header" class="img-header">
                 </div>
             </div>
-            <!-- End Jumbotron -->
+        </section>
+        <!-- Ends Section Hero -->
+        <!-- Start Data Statistik -->
+        <div class="text-xl text-left font-bold py-4 px-4">Data Statistik</div>
+        <div
+            class="bg-gray-200 px-4 py-4 grid grid-cols-1 gap-2 md:grid-cols-2 mb-4"
+        >
+            <LineChart1 class="bg-white rounded" />
+            <LineChart2 class="bg-white rounded" />
+            <BarChart1 class="bg-white rounded" />
+            <BarChart2 class="bg-white rounded" />
         </div>
-        <div class="text-left title mt-4 container">
-            <p>Data Statistik</p>
-        </div>
-        <b-row class=" bg-light">
-            <b-col class="col-6 mt-3">
-                <LineChart1 class="img-header bg-white py-2 rounded"/>
-            </b-col>
-            <b-col class="col-6 mt-3">
-                    <LineChart2 class="img-header bg-white rounded py-2"/>
-            </b-col>
-            <b-col class="col-6 mt-3 mb-3">
-                <BarChart1 class="image-header bg-white py-2 rounded"/>
-            </b-col>
-            <b-col class="col-6 mt-3 mb-3">
-                    <BarChart2 class="image-header bg-white rounded py-2"/>
-            </b-col>
-        </b-row>
+        <!-- Ends Data Statistik -->
         <Footer />
     </div>
 </template>
@@ -54,10 +50,10 @@
 // @ is an alias to /src
 import Navbar from "@/components/layouts/Navbar.vue";
 import Footer from "@/components/layouts/Footer.vue";
-import LineChart1 from "@/components/chart/pengabdianLineChart.vue";
-import LineChart2 from "@/components/chart/penelitianLineChart.vue";
-import BarChart1 from "@/components/chart/pengabdianBarChart.vue";
-import BarChart2 from "@/components/chart/penelitianBarChart.vue";
+import LineChart1 from "@/components/chart/penelitianLineChart.vue";
+import LineChart2 from "@/components/chart/pengabdianLineChart.vue";
+import BarChart1 from "@/components/chart/penelitianBarChart.vue";
+import BarChart2 from "@/components/chart/pengabdianBarChart.vue";
 
 export default {
     name: "Home",
@@ -71,23 +67,8 @@ export default {
     }
 };
 </script>
-<style lang="scss" scoped>
+<style>
 .img-header {
-    max-height: 350px;
-}
-.btn-cta {
-    background-color: #008797;
-    color: white;
-    border: none;
-}
-.btn-cta:hover {
-    background-color: #086670;
-}
-.title {
-    font-weight: 500;
-    font-size: 32px;
-}
-.img-chart {
-    max-width: 50px;
+    max-height: 400px;
 }
 </style>

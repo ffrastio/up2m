@@ -86,13 +86,21 @@ export default {
                 title: {
                     display: true,
                     text: "Data Pengabdian Internal Per Jurusan",
-                    fontSize: 14,
+                    fontSize: 14
                 },
                 legend: {
-                    position: "right",
+                    position: "bottom",
                     labels: {
-                        fontFamily : 'Poppins',
-                        
+                        // fontFamily : 'Poppins',
+                    }
+                },
+                elements: {
+                    point: {
+                        pointStyle: "rectRot",
+                        radius: "5"
+                    },
+                    line: {
+                        borderWidth: "2"
                     }
                 }
             }

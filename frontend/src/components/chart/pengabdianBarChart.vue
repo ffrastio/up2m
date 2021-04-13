@@ -9,55 +9,50 @@ export default {
                 labels: ["2017", "2018", "2019", "2020", "2021"],
                 datasets: [
                     {
-                        label: "Teknik Informatika dan Komputer",
-                        backgroundColor: "rgb(27,64,145)",
+                        label: "Penelitian Mandiri",
+                        backgroundColor: "rgb(174,104,104)",
                         data: [2, 6, 6, 5]
                     },
                     {
-                        label: "Teknik Mesin",
-                        backgroundColor: "rgb(52,157,204)",
+                        label: "Penelitian Riset Grant",
+                        backgroundColor: "rgb(197,174,116)",
                         data: [4, 5, 6, 11]
                     },
                     {
-                        label: "Teknik Sipil",
-                        backgroundColor: "rgb(151,98,44)",
+                        label: "Penelitian Bidang Ilmu dan Pengembangan Institusi",
+                        backgroundColor: "rgb(151,174,102)",
                         data: [5, 5, 6, 7]
                     },
                     {
-                        label: "Teknik Elektro",
-                        backgroundColor: "rgb(242,113,9)",
+                        label: "Penelitian Dosen Pemula",
+                        backgroundColor: "rgb(106,191,186)",
                         data: [7, 6, 8, 9]
                     },
                     {
-                        label: "Teknik Grafika dan Penerbitan",
-                        backgroundColor: "rgb(206,203,48)",
+                        label: "Penelitian Unggulan Program Studi",
+                        backgroundColor: "rgb(60,126,186)",
                         data: [8, 5, 5, 5]
                     },
                     {
-                        label: "Administrasi dan Niaga",
-                        backgroundColor: "rgb(0,135,151)",
+                        label: "Penelitian Kerjasama Antar Perguruan Tinggi",
+                        backgroundColor: "rgb(128,110,168)",
                         data: [8, 4, 4, 6]
                     },
                     {
-                        label: "Akutansi",
-                        backgroundColor: "rgb(204,57,55)",
+                        label: "Penelitian Unggulan Antar Perguruan Tinggi",
+                        backgroundColor: "rgb(202,52,205)",
                         data: [4, 7, 5, 13]
                     },
                     {
-                        label: "MTTE",
-                        backgroundColor: "rgb(97,177,90)",
+                        label: "Penelitian Program Terapan",
+                        backgroundColor: "rgb(122,152,94)",
                         data: [2, 1, 7, 1]
                     },
                     {
-                        label: "P3M",
-                        backgroundColor: "rgb(132,94,194)",
+                        label: "Penelitian Berbasis Penugasan",
+                        backgroundColor: "rgb(19,57,115)",
                         data: [2, 4, 2, 5]
                     },
-                    {
-                        label: "MP-WMBK",
-                        backgroundColor: "rgb(255,206,137)",
-                        data: [5, 3, 6, 1]
-                    }
                 ]
             },
             {
@@ -68,7 +63,7 @@ export default {
                     text: "Data Pelaksanaan Pengabdian Internal Per Skim"
                 },
                 legend: {
-                    position: "right"
+                    position: "bottom"
                 }
             }
         );
