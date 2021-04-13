@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <!-- Start: Navbar -->
-        <Navbar class="border-b" />
+        <Navbar/>
         <!-- Ends: Navbar -->
         <!-- Start Section Hero -->
         <section class="container flex mx-auto items-center text-left">
