@@ -1,6 +1,6 @@
 <template>
     <nav
-        class="relative flex flex-wrap items-center justify-between px-2 py-3 mb-3 border-b"
+        class="relative flex flex-wrap items-center justify-between px-2 py-3  border-b"
     >
         <div
             class="container px-4 mx-auto flex flex-wrap items-center justify-between"
@@ -45,10 +45,10 @@
                         >
                     </li>
                     <li class="nav-item">
-                        <a
-                            href="#"
+                        <router-link
+                            :to="{name: 'Author'}"
                             class="text-primary hover:bg-primary hover:text-white px-4 py-2 flex items-center rounded "
-                            >Authors</a
+                            >Authors</router-link
                         >
                     </li>
                     <!-- <li class="nav-item">
