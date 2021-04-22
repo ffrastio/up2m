@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\PenelitianController;
+use App\Http\Controllers\PengabdianController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin', function () {
+Route::get('/', function () {
     return view('auth.login');
 });
 
@@ -49,4 +52,10 @@ Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
     Route::patch('/author/{author}', [AuthorController::class, 'update']);
     Route::delete('/author/{author}', [AuthorController::class, 'destroy']);
     Route::post('/author', [AuthorController::class, 'store']);
+
+    Route::get('/penelitian', [PenelitianController::class, 'index'])->name('penelitian');
+    Route::post('/penelitian/import', [PenelitianController::class, 'import']);
+
+    Route::get('/pengabdian', [PengabdianController::class, 'index'])->name('pengabdian');
+    Route::post('/pengabdian/import', [PengabdianController::class, 'import']);
 });

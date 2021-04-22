@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             ProdiTableSeeder::class,
             JenisTableSeeder::class,
             KategoriTableSeeder::class,
+            PenelitianTableSeeder::class,
+            PengabdianTableSeeder::class,
         ]);
     }
 }

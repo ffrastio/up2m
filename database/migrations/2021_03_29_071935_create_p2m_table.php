@@ -13,12 +13,12 @@ class CreateP2mTable extends Migration
      */
     public function up()
     {
-        Schema::create('p2m', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('judul', 191);
-            $table->text('abstrak');
-            $table->string('besar_dana', 30);
-            $table->char('tahun', 4);
+        Schema::table('p2m', function (Blueprint $table) {
+            //$table->increments('id');
+            //$table->string('judul', 191);
+            //$table->text('abstrak');
+            $table->string('besar_dana', 50);
+            //$table->char('tahun', 4);
             $table->integer('id_author')->unsigned();
             $table->integer('id_kategori')->unsigned();
             $table->integer('id_jenis')->unsigned();

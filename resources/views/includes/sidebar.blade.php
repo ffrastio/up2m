@@ -42,8 +42,8 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Data Penelitian</a>
-                <a class="collapse-item" href="#">Data Pengabdian</a>
+                <a class="collapse-item" href="{{ route('penelitian') }}">Data Penelitian</a>
+                <a class="collapse-item" href="{{ route('pengabdian') }}">Data Pengabdian</a>
             </div>
         </div>
     </li>
