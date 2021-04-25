@@ -102,6 +102,25 @@
 							<div class="form-group">
 								<input type="file" name="file" required="required">
 							</div>
+
+              <label>Tahun:</label>
+              <div class="form-group">
+                <input class="form-control" type="text" name="tahun" id="tahun" required="required">
+              </div>
+
+              {{-- @if ($errors->any())
+                <div class="form-group {{ $errors->has('kategori') ?
+                    'invalid-feedback' : 'valid-feedback' }}"></div>
+              @else
+                <div class="form-group">
+              @endif
+                  {!! Form::label('kategori', 'Kategori:', ['class' => 'control-label']) !!}
+                  {!! Form::select('kategori', array('DIKTI' => 'DIKTI','Internal' => 'Internal'), null, ['class' => 'form-control',
+                    'placeholder' => 'Pilih Kategori']) !!}
+                  @if ($errors->has('kategori'))
+                      <span class="alert-danger">{{ $errors->first('kategori') }}</span>
+                  @endif
+                </div> --}}
  
 						</div>
 						<div class="modal-footer">

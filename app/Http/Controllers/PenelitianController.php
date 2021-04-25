@@ -12,7 +12,7 @@ class PenelitianController extends Controller
 {
     public function index()
     {
-        $items = Penelitian::all();
+        $items = Penelitian::all()->sortBy('tahun')->whereNotNull('judul');
         return view('pages.penelitian.index', [
             'items' => $items,
         ]);
@@ -37,8 +37,9 @@ class PenelitianController extends Controller
         $file->move('file_penelitian', $nama_file);
 
         // import data
-        Excel::import(new PenelitianImport($tahun), public_path('/file_penelitian/' . $nama_file));
-
+        $import = new PenelitianImport($tahun);
+        $import->onlySheets(0, 2);
+        Excel::import($import, public_path('/file_penelitian/' . $nama_file));
         // notifikasi dengan session
         Session::flash('sukses', 'Data Penelitian Berhasil Diimport!');
 
