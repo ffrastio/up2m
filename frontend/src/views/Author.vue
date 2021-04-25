@@ -13,7 +13,13 @@
             </div>
         </div>
         <div class="container mx-auto px-4 py-4 text-left">
-            <input type="text" v-model="search" placeholder="Search Author . . ." class="border-2 px-2 py-3 rounded font-semibold">
+            <input
+                type="text"
+                v-model="search"
+                placeholder="Search Author . . ."
+                class="border-2 px-2 py-3 rounded font-semibold"
+                @keyup="searchAuthor"
+            />
         </div>
         <div class=" flex items-center ">
             <div class="overflow-x-auto w-full">
@@ -46,7 +52,7 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        <tr>
+                        <tr v-for="author in authors" :key="author.id">
                             <td class="px-20 py-4">
                                 <div class="flex items-center space-x-3">
                                     <div class="inline-flex w-20 h-20">
@@ -58,7 +64,7 @@
                                     </div>
                                     <div>
                                         <p class="">
-                                            Jane Doe
+                                            {{ author.judul }}
                                         </p>
                                         <p>
                                             Teknik Informatika
@@ -75,190 +81,18 @@
                                 <p
                                     class="text-gray-500 text-sm font-semibold tracking-wide"
                                 >
-                                    10
+                                    {{ author.skimPenelitian }}
                                 </p>
                             </td>
                             <td class="px-6 py-4 text-center">
                                 <p
                                     class="text-gray-500 text-sm font-semibold tracking-wide"
                                 >
-                                    10
+                                    {{ author.ketuaPengusul }}
                                 </p>
                             </td>
                             <td class="px-6 py-4 text-center">
-                                20
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-20 py-4 justify-center items-center">
-                                <div class="flex items-center space-x-3">
-                                    <div class="inline-flex w-20 h-20">
-                                        <img
-                                            class="w-20 h-20 object-cover rounded-full"
-                                            alt="User avatar"
-                                            src="https://source.unsplash.com/1600x900/?man"
-                                        />
-                                    </div>
-                                    <div>
-                                        <p class="">
-                                            Jane Doe
-                                        </p>
-                                        <p>
-                                            Teknik Mesin
-                                        </p>
-                                        <p
-                                            class="text-gray-500 text-sm font-semibold tracking-wide"
-                                        >
-                                            123456789
-                                        </p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <p
-                                    class="text-gray-500 text-sm font-semibold tracking-wide"
-                                >
-                                    15
-                                </p>
-                            </td>
-                            <td class="px-6 py-4 text-center">
-                                <p
-                                    class="text-gray-500 text-sm font-semibold tracking-wide"
-                                >
-                                    5
-                                </p>
-                            </td>
-                            <td class="px-6 py-4 text-center">
-                                20
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-20 py-4 justify-center items-center">
-                                <div class="flex items-center space-x-3">
-                                    <div class="inline-flex w-20 h-20">
-                                        <img
-                                            class="w-20 h-20 object-cover rounded-full"
-                                            alt="User avatar"
-                                            src="https://source.unsplash.com/1600x900/?woman"
-                                        />
-                                    </div>
-                                    <div>
-                                        <p class="">
-                                            Jane Doe
-                                        </p>
-                                        <p>
-                                            Teknik Mesin
-                                        </p>
-                                        <p
-                                            class="text-gray-500 text-sm font-semibold tracking-wide"
-                                        >
-                                            123456789
-                                        </p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <p
-                                    class="text-gray-500 text-sm font-semibold tracking-wide"
-                                >
-                                    15
-                                </p>
-                            </td>
-                            <td class="px-6 py-4 text-center">
-                                <p
-                                    class="text-gray-500 text-sm font-semibold tracking-wide"
-                                >
-                                    5
-                                </p>
-                            </td>
-                            <td class="px-6 py-4 text-center">
-                                20
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-20 py-4 justify-center items-center">
-                                <div class="flex items-center space-x-3">
-                                    <div class="inline-flex w-20 h-20">
-                                        <img
-                                            class="w-20 h-20 object-cover rounded-full"
-                                            alt="User avatar"
-                                            src="https://source.unsplash.com/1600x900/?man"
-                                        />
-                                    </div>
-                                    <div>
-                                        <p class="">
-                                            Jane Doe
-                                        </p>
-                                        <p>
-                                            Teknik Mesin
-                                        </p>
-                                        <p
-                                            class="text-gray-500 text-sm font-semibold tracking-wide"
-                                        >
-                                            123456789
-                                        </p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <p
-                                    class="text-gray-500 text-sm font-semibold tracking-wide"
-                                >
-                                    15
-                                </p>
-                            </td>
-                            <td class="px-6 py-4 text-center">
-                                <p
-                                    class="text-gray-500 text-sm font-semibold tracking-wide"
-                                >
-                                    5
-                                </p>
-                            </td>
-                            <td class="px-6 py-4 text-center">
-                                20
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-20 py-4 justify-center items-center">
-                                <div class="flex items-center space-x-3">
-                                    <div class="inline-flex w-20 h-20">
-                                        <img
-                                            class="w-20 h-20 object-cover rounded-full"
-                                            alt="User avatar"
-                                            src="https://source.unsplash.com/1600x900/?woman"
-                                        />
-                                    </div>
-                                    <div>
-                                        <p class="">
-                                            Jane Doe
-                                        </p>
-                                        <p>
-                                            Teknik Mesin
-                                        </p>
-                                        <p
-                                            class="text-gray-500 text-sm font-semibold tracking-wide"
-                                        >
-                                            123456789
-                                        </p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <p
-                                    class="text-gray-500 text-sm font-semibold tracking-wide"
-                                >
-                                    15
-                                </p>
-                            </td>
-                            <td class="px-6 py-4 text-center">
-                                <p
-                                    class="text-gray-500 text-sm font-semibold tracking-wide"
-                                >
-                                    5
-                                </p>
-                            </td>
-                            <td class="px-6 py-4 text-center">
-                                20
+                                {{ author.anggota }}
                             </td>
                         </tr>
                     </tbody>
@@ -273,6 +107,7 @@
 <script>
 import Navbar from "@/components/layouts/Navbar.vue";
 import Footer from "@/components/layouts/Footer.vue";
+import axios from "axios";
 export default {
     name: "author",
     components: {
@@ -281,8 +116,23 @@ export default {
     },
     data() {
         return {
-            search: ''
+            search: "",
+            authors: []
+        };
+    },
+    methods: {
+        searchAuthor(){
+            axios
+            .get("http://localhost:3000/penelitian?q="+this.search)
+            .then(res => (this.authors = res.data))
+            .catch(err => console.log(err));
         }
+    },
+    mounted() {
+        axios
+            .get("http://localhost:3000/penelitian")
+            .then(res => (this.authors = res.data))
+            .catch(err => console.log(err));
     }
 };
 </script>
