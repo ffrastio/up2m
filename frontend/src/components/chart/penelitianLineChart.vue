@@ -86,18 +86,21 @@ export default {
                 title: {
                     display: true,
                     text: "Data Penelitian Internal Per Jurusan",
-                    fontSize: "14"
+                    fontSize: "14",
+                    
                 },
                 legend: {
+                    
                     position: "bottom",
                     labels: {
                         // fontFamily: 'Poppins'
-                    }
+                        usePointStyle: true,
+                    },
                 },
                 elements: {
                     point: {
                         pointStyle: "rectRot",
-                        radius: "5"
+                        radius: "7"
                     },
                     line: {
                         borderWidth: "2"

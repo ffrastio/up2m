@@ -77,10 +77,10 @@
                             class="dropdown-menu absolute hidden border w-40 text-left rounded bg-white"
                         >
                             <li class="">
-                                <a
+                                <router-link
                                     class="rounded-t text-primary hover:bg-primary hover:text-white border-b  py-2 px-4 block whitespace-no-wrap"
-                                    href="#"
-                                    >Penelitian</a
+                                    :to="{name: 'Penelitian'}"
+                                    >Penelitian</router-link
                                 >
                             </li>
                             <li class="">

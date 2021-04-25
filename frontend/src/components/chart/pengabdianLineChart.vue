@@ -92,12 +92,13 @@ export default {
                     position: "bottom",
                     labels: {
                         // fontFamily : 'Poppins',
+                        usePointStyle: true,
                     }
                 },
                 elements: {
                     point: {
                         pointStyle: "rectRot",
-                        radius: "5"
+                        radius: "7"
                     },
                     line: {
                         borderWidth: "2"
