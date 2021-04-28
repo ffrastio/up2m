@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JurusanController;
@@ -24,7 +23,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     //Route::view('/dashboard', "dashboard")->name('dashboard');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
