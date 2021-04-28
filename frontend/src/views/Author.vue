@@ -6,9 +6,41 @@
                 <div class="hidden md:flex items-center mr-10 ">
                     <div class="block items center mr-4">
                         <h1 class="font-semibold block text-2xl">Authors</h1>
-                        <p>Total : 10</p>
+                        <p>Total : {{ authors.length }}</p>
                     </div>
                     <font-awesome-icon icon="users" size="2x" />
+                </div>
+                <div class="bg-white overflow-hidden mr-3">
+                    <img src="@/assets/content/content.png" alt="logo PNJ" class="w-20 h-20 ml-5">
+                    <p>Teknik Informatika</p>
+                </div>
+                <div class="bg-white overflow-hidden mr-3 ">
+                    <img src="@/assets/content/content.png" alt="logo PNJ" class="w-20 h-20 ml-5 mt-6">
+                    <p>Teknik Grafika <br> & Penerbitan</p>
+                </div>
+                <div class="bg-white overflow-hidden mr-3">
+                    <img src="@/assets/content/content.png" alt="logo PNJ" class="w-20 h-20 ml-5">
+                    <p>Teknik Elektro</p>
+                </div>
+                <div class="bg-white overflow-hidden mr-3">
+                    <img src="@/assets/content/content.png" alt="logo PNJ" class="w-20 h-20 ml-5">
+                    <p>Teknik Mesin</p>
+                </div>
+                <div class="bg-white overflow-hidden mr-3">
+                    <img src="@/assets/content/content.png" alt="logo PNJ" class="w-20 h-20 ml-5">
+                    <p>Teknik Sipil</p>
+                </div>
+                <div class="bg-white overflow-hidden mr-3">
+                    <img src="@/assets/content/content.png" alt="logo PNJ" class="w-20 h-20 ml-5">
+                    <p>Administrasi Niaga</p>
+                </div>
+                <div class="bg-white overflow-hidden mr-3">
+                    <img src="@/assets/content/content.png" alt="logo PNJ" class="w-20 h-20 ml-5">
+                    <p>Akutansi</p>
+                </div>
+                <div class="bg-white overflow-hidden">
+                    <img src="@/assets/content/content.png" alt="logo PNJ" class="w-20 h-20 ml-5">
+                    <p>Pascasarjana</p>
                 </div>
             </div>
         </div>
@@ -17,7 +49,7 @@
                 type="text"
                 v-model="search"
                 placeholder="Search Author . . ."
-                class="border-2 px-2 py-3 rounded font-semibold"
+                class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
                 @keyup="searchAuthor"
             />
         </div>
@@ -42,12 +74,12 @@
                             <th
                                 class="font-semibold text-sm uppercase px-6 py-4 text-center"
                             >
-                                pengabdian
+                                ketua
                             </th>
                             <th
                                 class="font-semibold text-sm uppercase px-6 py-4 text-center"
                             >
-                                total
+                                anggota
                             </th>
                         </tr>
                     </thead>
@@ -121,11 +153,11 @@ export default {
         };
     },
     methods: {
-        searchAuthor(){
+        searchAuthor() {
             axios
-            .get("http://localhost:3000/penelitian?q="+this.search)
-            .then(res => (this.authors = res.data))
-            .catch(err => console.log(err));
+                .get("http://localhost:3000/penelitian?q=" + this.search)
+                .then(res => (this.authors = res.data))
+                .catch(err => console.log(err));
         }
     },
     mounted() {
