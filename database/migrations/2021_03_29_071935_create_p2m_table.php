@@ -13,7 +13,7 @@ class CreateP2mTable extends Migration
      */
     public function up()
     {
-        Schema::table('p2m', function (Blueprint $table) {
+        Schema::create('p2m', function (Blueprint $table) {
             $table->increments('id');
             $table->string('judul', 191);
             $table->text('abstrak');
