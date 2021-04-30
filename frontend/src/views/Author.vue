@@ -11,10 +11,14 @@
                     <font-awesome-icon icon="users" size="2x" />
                 </div>
                 <div class="bg-white overflow-hidden mr-3">
-                    <img src="@/assets/content/content.png" alt="logo PNJ" class="w-20 h-20 ml-5">
+                    <img
+                        src="@/assets/content/content.png"
+                        alt="logo PNJ"
+                        class="w-20 h-20 ml-5"
+                    />
                     <p>Teknik Informatika</p>
                 </div>
-                <div class="bg-white overflow-hidden mr-3 ">
+                <!-- <div class="bg-white overflow-hidden mr-3 ">
                     <img src="@/assets/content/content.png" alt="logo PNJ" class="w-20 h-20 ml-5 mt-6">
                     <p>Teknik Grafika <br> & Penerbitan</p>
                 </div>
@@ -41,17 +45,24 @@
                 <div class="bg-white overflow-hidden">
                     <img src="@/assets/content/content.png" alt="logo PNJ" class="w-20 h-20 ml-5">
                     <p>Pascasarjana</p>
-                </div>
+                </div> -->
             </div>
         </div>
-        <div class="container mx-auto px-4 py-4 text-left">
+        <div class="container mx-auto px-4 py-4 text-left flex">
             <input
                 type="text"
                 v-model="search"
                 placeholder="Search Author . . ."
-                class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+                class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-full text-sm focus:outline-none"
                 @keyup="searchAuthor"
             />
+            <div class="p-4">
+                <button
+                    class="bg-blue-500 text-white rounded-full p-2 hover:bg-blue-400 focus:outline-none w-12 h-12 flex items-center justify-center"
+                >
+                    icon
+                </button>
+            </div>
         </div>
         <div class=" flex items-center ">
             <div class="overflow-x-auto w-full">
