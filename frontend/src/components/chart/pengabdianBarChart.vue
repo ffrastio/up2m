@@ -60,7 +60,8 @@ export default {
                 maintainAspectRatio: false,
                 title: {
                     display: true,
-                    text: "Data Pelaksanaan Pengabdian Internal Per Skim"
+                    text: "Data Pelaksanaan Pengabdian Internal Per Skim",
+                    fontSize: "14",
                 },
                 legend: {
                     position: "bottom"

@@ -1,6 +1,6 @@
 <template>
     <nav
-        class="relative flex flex-wrap items-center justify-between px-2 py-3 mb-3 border-b"
+        class="relative flex flex-wrap items-center justify-between px-2 py-3  border-b"
     >
         <div
             class="container px-4 mx-auto flex flex-wrap items-center justify-between"
@@ -45,10 +45,10 @@
                         >
                     </li>
                     <li class="nav-item">
-                        <a
-                            href="#"
+                        <router-link
+                            :to="{name: 'Author'}"
                             class="text-primary hover:bg-primary hover:text-white px-4 py-2 flex items-center rounded "
-                            >Authors</a
+                            >Authors</router-link
                         >
                     </li>
                     <!-- <li class="nav-item">
@@ -77,10 +77,10 @@
                             class="dropdown-menu absolute hidden border w-40 text-left rounded bg-white"
                         >
                             <li class="">
-                                <a
+                                <router-link
                                     class="rounded-t text-primary hover:bg-primary hover:text-white border-b  py-2 px-4 block whitespace-no-wrap"
-                                    href="#"
-                                    >Penelitian</a
+                                    :to="{name: 'Penelitian'}"
+                                    >Penelitian</router-link
                                 >
                             </li>
                             <li class="">
