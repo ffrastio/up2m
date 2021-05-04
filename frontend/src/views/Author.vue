@@ -8,7 +8,7 @@
                         <h1 class="font-semibold block text-2xl">Authors</h1>
                         <p>Total : {{ authors.length }}</p>
                     </div>
-                    <font-awesome-icon icon="users" size="2x" />
+                    <!-- <font-awesome-icon icon="users" size="2x" /> -->
                 </div>
                 <div class="bg-white overflow-hidden mr-3">
                     <img
@@ -61,7 +61,7 @@
             <div class="overflow-x-auto w-full">
                 <!-- Table -->
                 <table
-                    class="mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden"
+                    class="mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-x-auto"
                 >
                     <thead class="bg-gray-50">
                         <tr class="text-gray-600 text-left">
@@ -159,15 +159,15 @@ export default {
     methods: {
         searchAuthor() {
             axios
-                .get("http://localhost:3000/penelitian?q=" + this.search)
-                .then(res => (this.authors = res.data))
+                .get("http://localhost:8001/api/list-penelitian?q=" + this.search)
+                .then(res => (this.authors = res.data.data))
                 .catch(err => console.log(err));
         }
     },
     mounted() {
         axios
-            .get("http://localhost:3000/penelitian")
-            .then(res => (this.authors = res.data))
+            .get("http://localhost:8001/api/list-penelitian")
+            .then(res => (this.authors = res.data.data))
             .catch(err => console.log(err));
     }
 };
