@@ -15,10 +15,10 @@ class CreatePengabdianTable extends Migration
     {
         Schema::create('pengabdian', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('skim_pengabdian', 191);
-            $table->string('nama_ketua_pengabdian', 50);
-            $table->string('jurusan', 50);
-            $table->string('judul')->unique();
+            $table->string('skim_pengabdian', 191)->nullable();
+            $table->string('nama_ketua_pengabdian', 50)->nullable();
+            $table->string('jurusan', 50)->nullable();
+            $table->string('judul', 255)->nullable();
             $table->text('abstrak')->nullable();
             $table->double('besar_dana', 8, 2)->nullable();
             $table->char('tahun', 4)->nullable();

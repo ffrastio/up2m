@@ -84,7 +84,7 @@ class UserController extends Controller
         $foto = $request->file('profile_photo_path');
         $ext = $foto->getClientOriginalExtension();
         if ($request->file('profile_photo_path')->isValid()) {
-            $foto_name = date('YmdHis') . ".$ext";
+            $foto_name = "user-" . date('YmdHis') . ".$ext";
             $request->file('profile_photo_path')->move('fotoupload', $foto_name);
             return $foto_name;
         }
@@ -104,7 +104,7 @@ class UserController extends Controller
             $foto = $request->file('profile_photo_path');
             $ext = $foto->getClientOriginalExtension();
             if ($request->file('profile_photo_path')->isValid()) {
-                $foto_name = date('YmdHis') . ".$ext";
+                $foto_name = "user-" . date('YmdHis') . ".$ext";
                 $upload_path = 'fotoupload';
                 $request->file('profile_photo_path')->move($upload_path, $foto_name);
                 return $foto_name;

@@ -17,7 +17,7 @@ class APIController extends Controller
 
     public function getAllPenelitian()
     {
-        $penelitian = Penelitian::all()->sortBy('tahun')->whereNotNull('judul');
+        $penelitian = Penelitian::all()->sortBy('tahun');
 
         return $this->sendResponse($penelitian, 'Penelitian retrieved succesfully.');
     }
@@ -34,7 +34,7 @@ class APIController extends Controller
 
     public function getAllPengabdian()
     {
-        $pengabdian = Pengabdian::all()->sortBy('tahun')->whereNotNull('judul');
+        $pengabdian = Pengabdian::all()->sortBy('tahun');
 
         return $this->sendResponse($pengabdian, 'Pengabdian retrieved successfully.');
     }

@@ -17,8 +17,6 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             JurusanTableSeeder::class,
             ProdiTableSeeder::class,
-            JenisTableSeeder::class,
-            KategoriTableSeeder::class,
             PenelitianTableSeeder::class,
             PengabdianTableSeeder::class,
         ]);
