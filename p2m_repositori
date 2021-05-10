@@ -1,0 +1,1726 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.0
+-- Dumped by pg_dump version 13.0
+
+-- Started on 2021-05-10 14:03:46
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 212 (class 1259 OID 33801)
+-- Name: author; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.author (
+    id integer NOT NULL,
+    nidn character(10) NOT NULL,
+    nama character varying(50) NOT NULL,
+    avatar character varying(191),
+    id_jurusan integer NOT NULL,
+    id_prodi integer NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.author OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 33799)
+-- Name: author_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.author_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.author_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3168 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: author_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.author_id_seq OWNED BY public.author.id;
+
+
+--
+-- TOC entry 206 (class 1259 OID 33762)
+-- Name: failed_jobs; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.failed_jobs (
+    id bigint NOT NULL,
+    uuid character varying(191) NOT NULL,
+    connection text NOT NULL,
+    queue text NOT NULL,
+    payload text NOT NULL,
+    exception text NOT NULL,
+    failed_at timestamp(0) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+ALTER TABLE public.failed_jobs OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 33760)
+-- Name: failed_jobs_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.failed_jobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.failed_jobs_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3169 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: failed_jobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.failed_jobs_id_seq OWNED BY public.failed_jobs.id;
+
+
+--
+-- TOC entry 222 (class 1259 OID 33878)
+-- Name: jenis_p2m; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.jenis_p2m (
+    id integer NOT NULL,
+    jenis character varying(30) NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.jenis_p2m OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1259 OID 33876)
+-- Name: jenis_p2m_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.jenis_p2m_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.jenis_p2m_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3170 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: jenis_p2m_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.jenis_p2m_id_seq OWNED BY public.jenis_p2m.id;
+
+
+--
+-- TOC entry 216 (class 1259 OID 33829)
+-- Name: jurusan; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.jurusan (
+    id integer NOT NULL,
+    nama_jurusan character varying(50) NOT NULL,
+    logo character varying(191),
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.jurusan OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 33827)
+-- Name: jurusan_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.jurusan_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.jurusan_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3171 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: jurusan_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.jurusan_id_seq OWNED BY public.jurusan.id;
+
+
+--
+-- TOC entry 220 (class 1259 OID 33865)
+-- Name: kategori; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.kategori (
+    id integer NOT NULL,
+    kategori character varying(15) NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.kategori OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 33863)
+-- Name: kategori_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.kategori_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.kategori_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3172 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: kategori_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.kategori_id_seq OWNED BY public.kategori.id;
+
+
+--
+-- TOC entry 201 (class 1259 OID 33734)
+-- Name: migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.migrations (
+    id integer NOT NULL,
+    migration character varying(191) NOT NULL,
+    batch integer NOT NULL
+);
+
+
+ALTER TABLE public.migrations OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 33732)
+-- Name: migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.migrations_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.migrations_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3173 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
+
+
+--
+-- TOC entry 210 (class 1259 OID 33790)
+-- Name: p2m; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.p2m (
+    id integer NOT NULL,
+    judul character varying(191) NOT NULL,
+    abstrak text NOT NULL,
+    besar_dana character varying(30) NOT NULL,
+    tahun character(4) NOT NULL,
+    id_author integer NOT NULL,
+    id_kategori integer NOT NULL,
+    id_jenis integer NOT NULL,
+    id_skim integer NOT NULL,
+    id_jurusan integer NOT NULL
+);
+
+
+ALTER TABLE public.p2m OWNER TO postgres;
+
+--
+-- TOC entry 209 (class 1259 OID 33788)
+-- Name: p2m_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.p2m_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.p2m_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3174 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: p2m_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.p2m_id_seq OWNED BY public.p2m.id;
+
+
+--
+-- TOC entry 204 (class 1259 OID 33756)
+-- Name: password_resets; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.password_resets (
+    email character varying(191) NOT NULL,
+    token character varying(191) NOT NULL,
+    created_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.password_resets OWNER TO postgres;
+
+--
+-- TOC entry 227 (class 1259 OID 33990)
+-- Name: penelitian; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.penelitian (
+    id integer NOT NULL,
+    skim_penelitian character varying(191),
+    nama_ketua_penelitian character varying(50),
+    jurusan character varying(50),
+    judul character varying(255),
+    abstrak text,
+    besar_dana double precision,
+    tahun character(4),
+    kategori character varying(255),
+    jumlah_anggota integer,
+    nama_anggota character varying(191),
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    CONSTRAINT penelitian_kategori_check CHECK (((kategori)::text = ANY ((ARRAY['Internal'::character varying, 'DIKTI'::character varying])::text[])))
+);
+
+
+ALTER TABLE public.penelitian OWNER TO postgres;
+
+--
+-- TOC entry 226 (class 1259 OID 33988)
+-- Name: penelitian_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.penelitian_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.penelitian_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3175 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: penelitian_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.penelitian_id_seq OWNED BY public.penelitian.id;
+
+
+--
+-- TOC entry 225 (class 1259 OID 33965)
+-- Name: pengabdian; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pengabdian (
+    id integer NOT NULL,
+    skim_pengabdian character varying(191),
+    nama_ketua_pengabdian character varying(50),
+    jurusan character varying(50),
+    judul character varying(255),
+    abstrak text,
+    besar_dana double precision,
+    tahun character(4),
+    kategori character varying(255),
+    jumlah_anggota integer,
+    nama_anggota character varying(191),
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    CONSTRAINT pengabdian_kategori_check CHECK (((kategori)::text = ANY ((ARRAY['Internal'::character varying, 'DIKTI'::character varying])::text[])))
+);
+
+
+ALTER TABLE public.pengabdian OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1259 OID 33963)
+-- Name: pengabdian_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.pengabdian_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.pengabdian_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3176 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: pengabdian_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.pengabdian_id_seq OWNED BY public.pengabdian.id;
+
+
+--
+-- TOC entry 208 (class 1259 OID 33776)
+-- Name: personal_access_tokens; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.personal_access_tokens (
+    id bigint NOT NULL,
+    tokenable_type character varying(191) NOT NULL,
+    tokenable_id bigint NOT NULL,
+    name character varying(191) NOT NULL,
+    token character varying(64) NOT NULL,
+    abilities text,
+    last_used_at timestamp(0) without time zone,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.personal_access_tokens OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 33774)
+-- Name: personal_access_tokens_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.personal_access_tokens_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.personal_access_tokens_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3177 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: personal_access_tokens_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.personal_access_tokens_id_seq OWNED BY public.personal_access_tokens.id;
+
+
+--
+-- TOC entry 214 (class 1259 OID 33816)
+-- Name: prodi; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.prodi (
+    id integer NOT NULL,
+    nama_prodi character varying(50) NOT NULL,
+    id_jurusan integer NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.prodi OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 33814)
+-- Name: prodi_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.prodi_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.prodi_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3178 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: prodi_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.prodi_id_seq OWNED BY public.prodi.id;
+
+
+--
+-- TOC entry 223 (class 1259 OID 33894)
+-- Name: sessions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.sessions (
+    id character varying(191) NOT NULL,
+    user_id bigint,
+    ip_address character varying(45),
+    user_agent text,
+    payload text NOT NULL,
+    last_activity integer NOT NULL
+);
+
+
+ALTER TABLE public.sessions OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 33852)
+-- Name: skim; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.skim (
+    id integer NOT NULL,
+    nama_skim character varying(50) NOT NULL,
+    id_jenis integer NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
+
+
+ALTER TABLE public.skim OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1259 OID 33850)
+-- Name: skim_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.skim_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.skim_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3179 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: skim_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.skim_id_seq OWNED BY public.skim.id;
+
+
+--
+-- TOC entry 203 (class 1259 OID 33742)
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id bigint NOT NULL,
+    nidn character(10) NOT NULL,
+    nama character varying(50) NOT NULL,
+    email character varying(191) NOT NULL,
+    email_verified_at timestamp(0) without time zone,
+    password character varying(191) NOT NULL,
+    "isAdmin" smallint DEFAULT '0'::smallint NOT NULL,
+    remember_token character varying(100),
+    current_team_id bigint,
+    profile_photo_path text,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    two_factor_secret text,
+    two_factor_recovery_codes text
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 33740)
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3180 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- TOC entry 2944 (class 2604 OID 33804)
+-- Name: author id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.author ALTER COLUMN id SET DEFAULT nextval('public.author_id_seq'::regclass);
+
+
+--
+-- TOC entry 2940 (class 2604 OID 33765)
+-- Name: failed_jobs id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.failed_jobs ALTER COLUMN id SET DEFAULT nextval('public.failed_jobs_id_seq'::regclass);
+
+
+--
+-- TOC entry 2949 (class 2604 OID 33881)
+-- Name: jenis_p2m id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.jenis_p2m ALTER COLUMN id SET DEFAULT nextval('public.jenis_p2m_id_seq'::regclass);
+
+
+--
+-- TOC entry 2946 (class 2604 OID 33832)
+-- Name: jurusan id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.jurusan ALTER COLUMN id SET DEFAULT nextval('public.jurusan_id_seq'::regclass);
+
+
+--
+-- TOC entry 2948 (class 2604 OID 33868)
+-- Name: kategori id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.kategori ALTER COLUMN id SET DEFAULT nextval('public.kategori_id_seq'::regclass);
+
+
+--
+-- TOC entry 2937 (class 2604 OID 33737)
+-- Name: migrations id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.migrations_id_seq'::regclass);
+
+
+--
+-- TOC entry 2943 (class 2604 OID 33793)
+-- Name: p2m id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.p2m ALTER COLUMN id SET DEFAULT nextval('public.p2m_id_seq'::regclass);
+
+
+--
+-- TOC entry 2952 (class 2604 OID 33993)
+-- Name: penelitian id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.penelitian ALTER COLUMN id SET DEFAULT nextval('public.penelitian_id_seq'::regclass);
+
+
+--
+-- TOC entry 2950 (class 2604 OID 33968)
+-- Name: pengabdian id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pengabdian ALTER COLUMN id SET DEFAULT nextval('public.pengabdian_id_seq'::regclass);
+
+
+--
+-- TOC entry 2942 (class 2604 OID 33779)
+-- Name: personal_access_tokens id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.personal_access_tokens ALTER COLUMN id SET DEFAULT nextval('public.personal_access_tokens_id_seq'::regclass);
+
+
+--
+-- TOC entry 2945 (class 2604 OID 33819)
+-- Name: prodi id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.prodi ALTER COLUMN id SET DEFAULT nextval('public.prodi_id_seq'::regclass);
+
+
+--
+-- TOC entry 2947 (class 2604 OID 33855)
+-- Name: skim id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.skim ALTER COLUMN id SET DEFAULT nextval('public.skim_id_seq'::regclass);
+
+
+--
+-- TOC entry 2938 (class 2604 OID 33745)
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- TOC entry 3147 (class 0 OID 33801)
+-- Dependencies: 212
+-- Data for Name: author; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.author (id, nidn, nama, avatar, id_jurusan, id_prodi, created_at, updated_at) FROM stdin;
+2	1234565432	John Noe	20210411033041.png	2	5	2021-04-11 03:30:41	2021-04-11 03:30:41
+3	1234567655	John Doe	20210411033406.png	1	2	2021-04-11 03:32:12	2021-04-11 03:34:06
+\.
+
+
+--
+-- TOC entry 3141 (class 0 OID 33762)
+-- Dependencies: 206
+-- Data for Name: failed_jobs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.failed_jobs (id, uuid, connection, queue, payload, exception, failed_at) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3157 (class 0 OID 33878)
+-- Dependencies: 222
+-- Data for Name: jenis_p2m; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.jenis_p2m (id, jenis, created_at, updated_at) FROM stdin;
+1	Penelitian	2021-04-06 03:21:02	\N
+2	Pengabdian Masyarakat	2021-04-06 03:21:02	\N
+\.
+
+
+--
+-- TOC entry 3151 (class 0 OID 33829)
+-- Dependencies: 216
+-- Data for Name: jurusan; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.jurusan (id, nama_jurusan, logo, created_at, updated_at) FROM stdin;
+1	Administrasi Niaga	\N	2021-04-06 03:21:02	\N
+2	Akuntansi	\N	2021-04-06 03:21:02	\N
+3	Teknik Elektro	\N	2021-04-06 03:21:02	\N
+4	Teknik Grafika dan Penerbitan	\N	2021-04-06 03:21:02	\N
+6	Teknik Mesin	\N	2021-04-06 03:21:02	\N
+7	Teknik Sipil	\N	2021-04-06 03:21:02	\N
+8	MTTE	\N	2021-04-06 03:21:02	\N
+9	P3M	\N	2021-04-06 03:21:02	\N
+10	Manajemen Pemasaran (WNBK)	\N	2021-04-06 03:21:02	\N
+5	Teknik Informatika dan Komputer	20210406045418.png	2021-04-06 03:21:02	2021-04-06 04:54:18
+\.
+
+
+--
+-- TOC entry 3155 (class 0 OID 33865)
+-- Dependencies: 220
+-- Data for Name: kategori; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.kategori (id, kategori, created_at, updated_at) FROM stdin;
+1	Internal	2021-04-06 03:21:02	\N
+2	DIKTI	2021-04-06 03:21:02	\N
+\.
+
+
+--
+-- TOC entry 3136 (class 0 OID 33734)
+-- Dependencies: 201
+-- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.migrations (id, migration, batch) FROM stdin;
+1	2014_10_12_000000_create_users_table	1
+2	2014_10_12_100000_create_password_resets_table	1
+3	2014_10_12_200000_add_two_factor_columns_to_users_table	1
+4	2019_08_19_000000_create_failed_jobs_table	1
+5	2019_12_14_000001_create_personal_access_tokens_table	1
+6	2021_03_29_071935_create_p2m_table	1
+7	2021_03_29_075520_create_author_table	1
+8	2021_03_29_075618_create_prodi_table	1
+9	2021_03_29_075619_create_jurusan_table	1
+10	2021_03_29_075743_create_skim_table	1
+11	2021_03_29_075821_create_kategori_table	1
+12	2021_03_29_075908_create_jenis_p2m_table	1
+13	2021_04_06_015708_create_sessions_table	1
+19	2021_04_19_073901_create_pengabdian_table	7
+21	2021_04_19_073835_create_penelitian_table	8
+\.
+
+
+--
+-- TOC entry 3145 (class 0 OID 33790)
+-- Dependencies: 210
+-- Data for Name: p2m; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.p2m (id, judul, abstrak, besar_dana, tahun, id_author, id_kategori, id_jenis, id_skim, id_jurusan) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3139 (class 0 OID 33756)
+-- Dependencies: 204
+-- Data for Name: password_resets; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.password_resets (email, token, created_at) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3162 (class 0 OID 33990)
+-- Dependencies: 227
+-- Data for Name: penelitian; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.penelitian (id, skim_penelitian, nama_ketua_penelitian, jurusan, judul, abstrak, besar_dana, tahun, kategori, jumlah_anggota, nama_anggota, created_at, updated_at) FROM stdin;
+2048	Penelitian Terapan Unggulan Perguruan Tinggi	AGUS WAGYANA S.T, M.T	Teknik Elektro	Prototipe Sistem Pengendali Smart Building Berbasis Internet of Things (IoT)	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2049	Penelitian Terapan Unggulan Perguruan Tinggi	Dr ISDAWIMAH S.T, S.T	Teknik Elektro	Peningkatan Kualitas Daya Listrik Melalui Optimasi Galat pada Monitoring Data Secara Online	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+93	Penelitian Hibah Kompetensi	Agus Edy Pramono	Teknik Mesin	REKAYASA MATERIAL KOMPOSIT KARBON BERSIFAT KONDUKTIF ELEKTRIK BERBASIS LIMBAH SABUT KELAPA DALAM MATRIKS TANAH LIAT	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+94	Penelitian Produk Terapan	Toto Supriyanto	Teknik Elektro	Pengembangan Wideband RF Receiver untuk Aplikasi RF Spektrum Analyzer dan RF Signal Surveyor (Solusi Untuk Penataan Alokasi Spektrum Frekuensi Radio)	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+95	Penelitian Produk Terapan	Nuhung Sulaeman	Teknik Elektro	Pengembangan Sea Fish Finder berbasis Sea Surface Temperature pada NOAA Frekuensi 137,9 MHz untuk meningkatkan Explorasi Potensi Maritim	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+96	Penelitian Produk Terapan	Rimsky Kartika Judisseno	Administrasi Niaga	MODEL PENGEMBANGAN DESTINASI PARIWISATA BERBASIS KULINER DI PERKEBUNAN: STUDI KASUS DI MALANG DAN JEMBER 	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+97	Penelitian Produk Terapan	Bambang Waluyo	Akuntansi	Pembuatan Model Edukasi Berbasis Sosok dan Segmentasi Konsumen Untuk Membangun Minat Mayarakat Pada Perbankan Syariah	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+99	Penelitian Produk Terapan	Yenniwarti Rafsyam	Teknik Elektro	Pengembangan Identifikasi Awan Comulonimbus (Cb) menggunakan Data Sensor Satelit NOAA Frekuensi 137 MHz untuk Mendukung Keselamatan Transportasi	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+100	Penelitian Produk Terapan	Murie Wiyaniti	Teknik Elektro	Prototype Remote Terminal Unit (RTU) Berbasis ARM Cortex 32 Bit Pada Sistem SCADA Proses Kontrol Distribusi Air	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+101	Penelitian Unggulan Perguruan Tinggi	Sutanto	Teknik Elektro	MODEL ALAT STERILISASI TERPADU ELEKTROKOAGULASI DAN ADSORPSI PADA PENGOLAHAN AIR LIMBAH MENJADI AIR MINUM 	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+102	Penelitian Dosen Pemula	Hibertus Rudi Kusumantoro	Teknik Grafika dan Penerbitan	Pembuatan Mesin Cetak Digital untuk Bahan Karton Terkalibrasi	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+103	Penelitian Dosen Pemula	Husnil Barry	Akuntansi	Analisis Volatilitas Indeks Pada Bursa Efek Indonesia	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+104	Penelitian Dosen Pemula	Ahmad Maksum	Teknik Mesin	Efektifitas Iradiasi Gelombang Mikro Pada Proses Ekstraksi Silika Amorf dari Sekam Padi terhadap Tingkat Kemurnian Produk yang Dihasilkan	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+105	Penelitian Dosen Pemula	Mohammad Zaenal Abidin Eko	Teknik Grafika dan Penerbitan	Potret Saluran (Channel) Komunikasi Pada Kelompok Tarekat	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+106	Penelitian Dosen Pemula	ACH. Bakhrul Muchtasib	Akuntansi	REPRESENTASI MODEL ORGANISASI PENGELOLA ZAKAT DI INDONESIA: Analisis Pasca Penerapan UU No. 23 Tahun 2011 Tentang Pengelolaan Zakat	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+107	Penelitian Dosen Pemula	Wisnu Hendri Mulyadi	Teknik Elektro	OPTIMALIASI PENYERAPAN ENERGI MATAHARI SISTEM HYBRID PANEL SOLAR CELL DAN SOLAR THERMAL MENGIKUTI PERGERAKAN MATAHARI DENGAN TEKNOLOGI PENGENDALIAN BERBASIS PLC-SCADA	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+108	Penelitian Dosen Pemula	Abdul Aziz Abdillah	Teknik Informatika dan Komputer	Deteksi Penyakit Diabetes Menggunakan Principal Component Analysis dan Support Vector Machine	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+109	Penelitian Desertasi Doktor	Tatun Hayatun Nufus	Teknik Mesin	KAJIAN ELEKTROMAGNETISASI BIODIESEL TERHADAP PENGHEMATAN BAHAN BAKAR PADA MESIN DIESEL	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+110	Penelitian Desertasi Doktor	Etty Kongrat	Akuntansi	PENINGKATAN KINERJA DESTINASI WISATA MICE DENGAN CITRA DESTINASI, VALUE DAN KEBIJAKAN PUBLIK (studi pada destinasi MICE Jakarta)	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+111	Penelitian Desertasi Doktor	Aminuddin Debataraja	Teknik Elektro	SINTESIS NANOKOMPOSIT SnO2-GRAPHENE-Pd UNTUK APLIKASI SENSOR GAS KARBON MONOKSIDA SENSITIVITAS TINGGI	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+2050	Penelitian Terapan Unggulan Perguruan Tinggi	RIANDINI S.T	Teknik Elektro	\nRANCANG BANGUN WIRELESS STETOSKOP ELEKTRONIK \nBERBASIS ANDROID\n	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2051	Penelitian Terapan Unggulan Perguruan Tinggi	Ir SUTANTO M.T	Teknik Elektro	MODEL ALAT STERILISASI TERPADU ELEKTROKOAGULASI DAN ADSORPSI  PADA PENGOLAHAN AIR LIMBAH MENJADI AIR MINUM	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2052	Penelitian Dasar Unggulan Perguruan Tinggi	MURYETI S.Si	Teknik Grafika dan Penerbitan	Pemanfaatan Limbah Kulit Udang Pada Pembuatan Kertas Anti Rayap 	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2053	Penelitian Dasar Unggulan Perguruan Tinggi	Dr NANANG ROHADI S.T, M.T	Teknik Elektro	SINTESIS KOMPOSIT  DARI  BERBAGAI JENIS ZEOLIT ALAM INDONESIA DAN LIMBAH BATANG PISANG UNTUK  PEREDAM  SUARA  YANG RAMAH LINGKUNGAN\n\n	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2054	Penelitian Disertasi Doktor	AHMAD MAKSUM S.T, M.T	Teknik Mesin	Benefisiasi Limonite Melalui Metode Reduksi Langsung Menggunakan Gas yang terbuang pada Proses Ekstraksi Silika Sekam Padi	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2055	Penelitian Disertasi Doktor	Ir PAULUS SUKUSNO A.Md, M.T	Teknik Mesin	Analisis Eksergi dan Energi pada Proses Pembekuan Air-Es dan Daging Sapi Segar Dengan Variasi Tripel Katup Ekspansi	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2056	Penelitian Strategis Nasional Institusi	BAMBANG WALUYO S.E.	Administrasi Niaga	Pembuatan Model Edukasi Berbasis Sosok dan Segmentasi Konsumen Untuk Membangun Minat Masyarakat Pada Perbankan Syariah 	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2057	Penelitian Strategis Nasional Institusi	FACHRUDDIN S.T, M.T	Teknik Mesin	Simulasi Analisa dan Perancangan Transmisi Synchromesh pada Unjuk Kerja kendaraan listrik	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2058	Penelitian Strategis Nasional Institusi	Dr NINING LATIANINGSIH M.Hum	Administrasi Niaga	MODEL PENERAPAN KEBIJAKAN  PADA PENGELOLAAN PEMBANGUNAN DESA WISATA  HIJAU  BERBASIS MASYARAKAT KREINOVA	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2059	Penelitian Strategis Nasional Institusi	Dr. Drs NUR HASYIM M.Hum, M.Si	Akuntansi	Pengembangan Model Penulisan Tesis (Magister Terapan) Berbasis Genre	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2060	Penelitian Strategis Nasional Institusi	RIMSKY KARTIKA JUDISSENO S.E., M.M.	Administrasi Niaga	MODEL PENGEMBANGAN DESTINASI PARIWISATA BERBASIS KULINER DI PERKEBUNAN: STUDI KASUS DI MALANG DAN JEMBER	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2061	Penelitian Strategis Nasional Institusi	YENNIWARTI RAFSYAM	Teknik Elektro	Pengembangan Identifikasi Awan Cumulonimbus (Cb) menggunakan Data Sensor Satelit NOAA Frekuensi 137 MHz untuk mendukung Keselamatan Transportasi	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+128	Penelitian Produk Terapan	Muryeti M.Si	Teknik Grafikan dan Penerbitan	Modifikasi Kitosan Sebagai Adsorben dalam Proses Pengawatintaan	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+129	Penelitian Produk Terapan	Dra. Yogi Widiawati, M.Hum	Teknik Elektro	Pengembangan Alat Bantu Pengajaran Bahasa Inggris Teknik Dengan Menggunakan CALL (Computer Assigned Language Learning) untuk Politeknik	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+130	Penelitian Produk Terapan	Eva Azhra Latifa, ST, MT	Teknik Sipil	Pengembangan  Analisis Meningkatnya Beban Lalulintas Terhadap Estimasi Pemeliharaan Jalan Arteri	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+131	Penelitian Produk Terapan	Gun Gun Ramdlan Gunadi, MT	Teknik Mesin	Pengembangan Pembangkit Listrik Tenaga Mikro Hidro Type Turbin Aksial Head Rendah	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+132	Penelitian Produk Terapan	Dr. Hidjan, MT	Teknik Sipil	SINTESIS KOMPOSIT  DARI  ZEOLIT DAN LIMBAH KERTAS UNTUK  PEREDAM  SUARA  YANG RAMAH LINGKUNGAN\n\n	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+133	Penelitian Produk Terapan	YELVI., ST., MT.	Teknik Sipil	Pemanfaatan Ijuk sebagai Perkuatan pada Tanah Pasir untuk Mengurangi Dampak Likuifaksi Akibat Gempa	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+134	Penelitian Produk Terapan	Hata Maulana, S.Si, M.T.I	Teknik Informatika dan Komputer	Rancang Bangun Virtual Map Politeknik Negeri Jakarta dengan Teknologi Augmented Reality berbasis Markerless 	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+135	Penelitian Produk Terapan	Drs.R. Agus Murdiyoto, ST, MSi	Teknik Sipil	Pemanfaatan Cangkang Kerang Darah sebagai Agregat Halus Pembuatan Bata Beton Ringan	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+136	Penelitian Produk Terapan	Paulus Sukusno, ST, MT	Teknik Mesin	Pengembangan Sistem PLTMH Head Rendah Berbagai Tipe Turbin dan Memanfaatkan Air yang Terbuang 	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+137	Penelitian Unggulan Perguruan Tinggi	Dr. Dra. Iis Mariam, M.Si                      	Administrasi Niaga	Kajian Collaborative Knowledge Creation melalui konsep Quadruple Helix dalam membangun kemitraan dan kelembagaan organisasi politeknik yang berdaya saing tinggi	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+138	Penelitian Unggulan Perguruan Tinggi	Dr. Nining Latianingsih SH MH	Administrasi Niaga	MODEL PENERAPAN KEBIJAKAN  PENGELOLAAN SAMPAH DAERAH DALAM  MENINGKATKAN KUALITAS LINGKUNGAN DAN PARTISIPASI MASYARAKAT KREINOVA \n	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+139	Penelitian Unggulan Perguruan Tinggi	Dr Belyamin MSc.Eng., B.Eng(Hons)	Teknik Mesin	PENGERINGAN BEKU ATMOSFERIK LIDAH BUAYA	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+140	Penelitian Unggulan Perguruan Tinggi	Dr. Ahmad Tossin Alamsyah,ST,MT	Teknik Elektro	Rekayasa Silicon Sand menjadi paduan Silicon Oxida (SiO2) sebagai material bahan dasar dari Sensor Gas.	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+141	Penelitian Unggulan Perguruan Tinggi	Dr. Drs. Nur Hasyim, M.Si., M.Hum.	Akuntansi	Pengembangan Model Penyusunan Skripsi Sarjana Terapan Berbasis Genre	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+142	Penelitian Kerjasama Antar Perguruan Tinggi	Ina Sukaesih,M.M.,M.HUM.	Akuntansi	PENELUSURAN IDENTITAS BUDAYA NUSANTARA DALAM TEKS BERBAHASA INGGRIS: Analisis Terjemahan Karya Sastra Indonesia	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+143	Penelitian Unggulan Program Studi	Dr., Drs. Supriatnoko, M.Hum.	Akuntansi	Peningkatan Kemahiran Berbicara Bahasa Inggris Mahasiswa Politeknik Negeri Jakarta Melalui Magic Five Fingers Method'	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+144	Penelitian Unggulan Program Studi	Ismujianto,ST.,MT	Teknik Elektro	Optimasi Galat Pada Akuisisi Data Kualitas Daya Listrik	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+145	Penelitian Unggulan Program Studi	Sudarno	Administrasi Niaga	Model Menakar Pemanfaatan Perpustakaan Pnj Atas Peningkatan Indeks Prestasi Mahasiswa Jurusan Administrasi Niaga Pnj	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+146	Penelitian Unggulan Program Studi	A.Damar Aji.ST.,M.Kom	Teknik Elektro	Model Alat Pengendali Beban Listrik  Otomatis Pada Bengkel Listrik Pnj Secara Real Time Untuk Penghematan Energi	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+147	Penelitian Unggulan Program Studi	Anni Susilowati, S.T., M.Eng.	Teknik Sipil	Variasi Suhu Pemadatan Pada Campuran Beton Aspal  Menggunakan Bahan Tambah Anti Stipping	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+148	Penelitian Unggulan Program Studi	Minto Rahayu, S.S.,M.Si.\t	Teknik Mesin	Mutu Staf Pengajar Dalam Mencapai Kompetensi Program Studi Teknik Alat Berat.	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+149	Penelitian Unggulan Program Studi	Atyanto Mahatmyo, SE., MM., Akt	Akuntansi	Model Penerapan Siklus Akuntansi Pada  Perusahaan Kecil Dan Menengah  Di Kabupaten Purwakarta	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+150	Penelitian Unggulan Program Studi	Yoyok Sabar Waluyo	Teknik Informatika dan Komputer	Perancangan Sistem Informasi Pembelajaran Berbasis Web Pada Jurusan Teknik Informatika Dan Komputer	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+151	Penelitian Unggulan Program Studi	Titik Purwinarti,S.Sos., M.Pd.	Administrasi Niaga	Fungsi Dan Model Peran Wirausaha Dalam Konteks Global	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+152	Penelitian Unggulan Program Studi	Sila Wardono, S.T.,M.Si.	Teknik Elektro	Rekayasa Penggerak Otomatis Sistem Hybrid Panel Solar Cell Dan Solar Thermal Mengikuti Pola Pergerakan Matahari Berbasis Plc-Scada .	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+153	Penelitian Unggulan Program Studi	Cathryna Rumondang Bulan Simangunsong	Akuntansi	Pemodelan Olimpiade Akuntansi Nasional Di Jurusan Akuntansi - Politeknik Negeri Jakarta (Tahap Ke Dua)	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+154	Penelitian Unggulan Program Studi	Prihatin Oktivasari, M.Si	Teknik Informatika dan Komputer	Membangun Sistem Informasi Penerimaan Proposal Penelitian Internal Pnj	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+155	Penelitian Unggulan Program Studi	Dr. Ida Nurhayati, SH, MH	Akuntansi	Perlindungan Hukum Nasabah Bank Dalam Perspektif Undang-Undang Perlindungan Konsumen	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+156	Penelitian Unggulan Program Studi	Anis Rosyidah, ST, MT	Teknik sipil	Pemodelan Lekatan Tulangan Dengan Beton Ditinjau Dari Bentuk Sirip Ulir	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+157	Penelitian Dosen Pemula	Fauzi Mubarak S.S.T, M.T	Administrasi Niaga	Analisis Kondisi Standar Existing Venue Mice Di Kota Jakarta Selatan	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+158	Penelitian Dosen Pemula	Rina Ningtyas, M.Si	Teknik Grafika dan Penerbitan	Optimasi Konsentasi Bahan Pembuat Edible Film Pure Jambu Biji dan Aplikasinya Pada Buah Potong	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+159	Penelitian Dosen Pemula	Nuralam, S.T.,M.T.	Teknik Elektro	Rancangbangun Intellegent Sensor Ph Dan Temperatur Untuk Monitoring Kualitas Air Berbasis Labview	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+160	Penelitian Dosen Pemula	Novi Purnama Sari STP MSi	Teknik Grafika dan Penerbitan	Pengembangan Desain Kemasan Pada Produk UKM dengan Menggunakan Pendekatan Kansei Engineering	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+161	Penelitian Dosen Pemula	Djony Herfan	Teknik Grafika dan Penerbitan	Peliputan Investigasi Di Tv One Dalam Perspektif Standar Kompetensi Wartawan	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+162	Penelitian Dosen Pemula	Wahyudi Utomo	Administrasi Niaga	Model Pembelajaran Praktik Berbasis Kompetensi (Studi Kasus Kegiatan An Expo)	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+163	Penelitian Dosen Pemula	Anita Hidayati	Teknik Informatika dan Komputer	Analisa Perilaku Dosen Dalam Memanfaatkan E-Learning di Lingkungan PNJ Menggunakan Tam (Technology Acceptance Model)	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+164	Penelitian Dosen Pemula	Rosidi, ST.MT	Teknik Mesin	Analisa Pengaruh Kuat Arus Antara Elektroda Merek X dan Merek Y Terhadap Karakteristik Sambungan Las Pelat Lembaran Baja Untuk Tabung Gas 3 Kg	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+165	Penelitian Dosen Pemula	Fajar Susilowati, ST. MT.	Teknik Sipil	Loyalitas Kerja yang ditimbulkan oleh Kepuasan Kerja Pada Karyawan Perusahaan Konstruksi	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+166	Penelitian Dosen Pemula	Emmidia Djonaedi, MT, MBA	Teknik Grafika dan Penerbitan	Pembuatan Bioplastik Dari Kulit Jagung Dengan Variasi Penggunaan Chitosan	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+167	Penelitian Dosen Pemula	Iwan Sonjaya, ST.,MT.	Teknik Informatika dan Komputer	Pengembangan Game Untuk Menstimulasi Kecerdasan  Musik / Irama Dan Kinestik  Dalam  Kecerdasan Jamak (Multiple Intelligence) Pada Anak Usia Dini  	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+169	Penelitian Dosen Pemula	Seto Tjahyono,ST, MT.	Teknik Mesin	Pembuatan Simulator Rotating Equipment Untuk Balancing Satu Bidang	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+170	Penelitian Dosen Pemula	Mauldy Laya, S.Kom, M.Kom	Teknik Informatika dan Komputer	Peningkatan Performa Aplikasi Pendeteksi Mengantuk Saat Berkendara Menggunakan Teknologi Computer Vision	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+171	Penelitian Dosen Pemula	Dra. Darul Nurjanah., M.Si	Teknik Sipil	Uji Coba Model Pembelajaran Pendidikan Agama Islam Berbasis Sentuhan Psikologis Sebagai Upaya Menciptakan  Mahasiswa Yang Berakhlakul Karimah	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+172	Penelitian Dosen Pemula	Andikanoza Pradiptiya	Teknik Sipil	Uji Tahanan Tarik Model Fondasi Tiang Dalam Tanah Pasir 	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+173	Penelitian Dosen Pemula	Dr. Nining Latianingsih, SH, MH	Administrasi Niaga	Model Penerapan Bentuk Usaha pada UMKM di Depok	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+174	Penelitian Bidang Ilmu dan Pengembangan Institusi	MRR. Tiyas Maheni DK, S.H., M.H.	Teknik Grafika dan Penerbitan	Plagiarisme dalam Pembuatan Tugas Gestalt oleh Mahasiswa Program Studi Desain Grafis Jurusan Teknik Grafika dan Penerbitan Politeknik Negeri Jakarta	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+175	Penelitian Bidang Ilmu dan Pengembangan Institusi	Cecep Gunawan, Drs., M.Si	Teknik Grafika dan Penerbitan	Penyajian Foto pada Desain Halaman Muka Suratkabar harian Ibukota\n(Studi Kasus Halaman Muka Suratkabar harian Sindo)	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+176	Penelitian Bidang Ilmu dan Pengembangan Institusi	SYAMSU RIZAL, S.E., M.M	Administrasi Niaga	Simulasi Model Portofolio Saham	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+177	Penelitian Bidang Ilmu dan Pengembangan Institusi	Anwar Said, SST,M.Kom.	Administrasi Niaga	OPTIMALISASI KINERJA SISTEM PLTS MODEL DIRECT DAN INDIRECT LOAD	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+178	Penelitian Bidang Ilmu dan Pengembangan Institusi	Dewi Akbar, S.E., M.M	WNBK	Pemasaran Yang Dilakukan Oleh Penyandang Disabilitas Lulusan Program Studi Manajemen Pemasaran Untuk Warga Negara Berkebutuhan Khusus di Politeknik Negeri Jakarta	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+179	Penelitian Bidang Ilmu dan Pengembangan Institusi	Suyitno Gatot	Teknik Mesin	Sistem Informasi Tugas Akhir Mahasiswa Berbasis WEB Jurusan Teknik Mesin Politeknik Negeri Jakarta	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+180	Penelitian Bidang Ilmu dan Pengembangan Institusi	ERIYA, S.KOM, MT	Teknik Informatika dan Komputer	PERANCANGAN KNOWLEDGE BASE PROGRAM STUDI BERBASIS ONTOLOGI UNTUK SISTEM PENDUKUNG KEPUTUSAN PENENTUAN DOSEN PEMBIMBING SKRIPSI	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+181	Penelitian Bidang Ilmu dan Pengembangan Institusi	Drs. Sri Wahyono, M.Si	Teknik Informatika dan Komputer	Analisis Tema Pada Teks Terjemahan Surat Al Qoriah dan Surat Al Qodr	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+182	Penelitian Bidang Ilmu dan Pengembangan Institusi	Drs. Tri Widjatmaka	Teknik Mesin	Analisis terhadap Keberadaan Standar Operating Procedure (SOP) dan Pengaruhnya terhadap Kepuasan Pelanggan: Studi kasus pada Unit Kerja di Lingkungan Kantor Direktorat Politeknik Negeri Jakarta	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+183	Riset Grant	Dr. Vika Rizkia, ST, MT	Teknik Mesin	Penumbuhan Lapisan Alumina Berpori Guna Meningkatkan Daya Serap Zat Warna Pada Aluminium Murni Untuk Aplikasi Konstruksi.	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+184	Riset Grant	Riandini, S.T., M.Sc.	Teknik Elektro	Rancang Bangun Sistem Pengisian Baterai Otomatis Pada Automated Guided Vehicle Berbasis Arduino Mega 2560	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+185	Riset Grant	Sidiq Ruswanto, ST, Msi	Teknik Mesin	Rancang Bangun Mesin Ampelas Dan Poles Spesimen Uji Metalografi Laboratorium Mesin	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+186	Riset Grant	Dra. Bernadeta Siti Rahayu Purwanti, M.Si	Teknik Elektro	Model Uji Kecepatan Putar Motor Dideteksi Oleh Rotary Encoder Dipengaruhi Beban Listrik	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+187	Riset Grant	Imam Halimi, ST., M.Si	Teknik Elektro	Simulator Pengatur Level Zat Cair Otomatis Pada Industri Berbasis PLC Dan Menggunakan SCADA Sebagai Kontrol Jarak Jauh	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+188	Riset Grant	Darwin ST.,M.Kom	Teknik Elektro	Kontrol Dan Monitoring Infus Menggunakan Sistem Embedded Berbasis Labview	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+189	Riset Grant	Drs. Agus Setiawan, M.Kom	Teknik informatika dan Komputer	Rancang Bangun Sistem Pakar Diagnosa Penyakit Tropis Berbasis Web Dan Android	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+190	Riset Grant	Indri Neforawati, ST, MT	Teknik informatika dan Komputer	Rancang Bangun Trash Quiz Dengan Atmega2560 Dan Notifikasi Berbasis Android	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+191	Riset Grant	Ali Masjono SE. MBIT	Akuntansi	Menabung Saham Sebuah Alternatip Investasi	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+192	Riset Grant	Prihatin Oktivasari, S.Si., M.Si.	Teknik informatika dan Komputer	Rancang Bangun Smart Bottle Berbasis Raspberry Pi Dan Android	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+193	Riset Grant	Asep Apriana ST.M.Kom	Teknik Mesin	Meningkatkan Contamination Control Pada Workshop Teknik Alat Berat Politeknik Negeri Jakarta Sesuai Dengan Standar Caterpillar	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+194	Riset Grant	Drs. Indra Z, SST. M.Kom.	Teknik Elektro	“Smartklung” Angklung Otomatis Berbasis Komputer Yang Terkoneksi Pada Smartphone	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+168	Penelitian Dosen Pemula	Agus Kusumaramdhani, M.Si	Akuntansi	Model Strategi Pemasaran UMKM dalam menghadapi daya saing	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+195	Riset Grant	Achmad Nadjam, ST, MT	Teknik Sipil	Efektifitas Dan Kepuasan Pengguna Terhadap Jembatan Penyeberangan Orang (JPO) Di Pasar Induk Kramat Jati	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+196	Riset Grant	Drs. Mochammad Sholeh, ST, MT	Teknik Mesin	Rancang Bangun Meja Kalibrasi 3 DOF Dengan Pengaturan Sudut Sebagai Penunjang Perangkat 3D Scanner Di Lab Mesin Politeknik Negeri Jakarta	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+197	Riset Grant	Frianto, S.E., M.M	Akuntansi	Pengaruh Perencanaan Strategi Dan Penggunaan Sistem E-Commerce Terhadap Peningkatan Jumlah Konsumen Pada PT. Adira Dinamika Multifinance, Tbk	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+201	Riset Grant	Ir. Anik Tjandra Setiati, M.M	Teknik Elektro	Rancang Bangun Antena Microstrip Yagi Biquad Dan Antena Quadlifiliar Sebagai Sistem Diversity Ruang Pada Penerima Komunikasi Data UAV	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+202	Riset Grant	Kendi Moro Nitisasmita, SST,Mkom	Teknik Elektro	Analisa Dan Pengembangan PLC Sebagai Pengendali Proses Sekuensial Berbantuan HMI	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+203	Riset Grant	Drs. Eko Wiyono, S.T., M.Eng.	Teknik Sipil	Analisis Hubungan Geometrik Jalan Tol Dengan Tingkat Kecelakaan (Studi Kasus: Jalan Tol Purbaleunyi)	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+204	Riset Grant	Suripto, S.T., M.Eng.	Teknik Sipil	Perbandingan Biaya Pemakaian Lampu Led Dan Hps Di Jl. H.R. Rasuna Said Dan Jl. Mayjen Sutoyo Jakarta	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+205	Riset Grant	Fatahula, ST., M.Kom	Teknik Elektro	Pengaplikasian Sistem Plts Menggunakan Information Board Sebagai Beban	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+206	Riset Grant	Drs. Syafrizal Syarief,  ST, MT	Teknik Elektro	Penelitian Dan Pengaplikasian Serta Monitoring Sensor LDR Dan Sensor Hujan Pada Miniatur Rumah 	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+207	Riset Grant	Ir. Agus Sukandi, MT	Teknik Elektro	Rancang Bangun Simulator Desalination Plant Jenis Single Stage Untuk Media Pembelajaran Di Laboratorium Konversi Energi Politeknik Negeri Jakarta	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+209	Riset Grant	ADE HARYANI S.E.,M.M	Teknik Grafika dan Penerbitan 	Penyuntingan Naskah Ilmiah  Studi Kasus Mempopulerkan Istilah Ilmiah Melalui Proses Penyuntingan Artikel  Di Rubrik Kesehatan Ummi Online	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+210	Riset Grant	Fitri Wijayanti	Teknik Mesin	Optimalisasi Sistem Pendingin Pada Engine Caterpillar 3406e Milik Politeknik Negeri Jakarta 	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+211	Riset Grant	Drs. Ir. Jauhari Ali	Teknik Mesin	Rancang Bangun Mesin Pengering Papan Partikel Kayu	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+212	Riset Grant	Dra. Tuti Hartati	Administrasi Bisnis	Tanggapan Industri Terhadap Kompetensi Mahasiswa Job Training Jurusan Administrasi Niaga Politeknik Negeri Jakarta	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+213	Riset Grant	Putera Agung Maha Agung, ST, MT, Ph.D	Teknik Sipil	Perancangan Struktur Dinding Penahan Tanah Pada Proyek Pembangunan Pesona Square Depok	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+214	Riset Grant	Dra. Wartiyati. M.Si	Teknik Elektro	Prototype Pengatur Sudut Pointing Antena Parabola Menggunakan Radio Frequency	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+215	Riset Grant	Drs. Asrizal Tatang, ST.	Teknik Mesin	Pengembangan Dan Implementasi Plc Hot Standby, Hmi Dan Scada Pada Miniatur Alat Pemindah Barang (Crane)	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+216	Riset Grant	Fachruddin	Teknik Mesin	Rancang Bangun Simulator Sistem Pendingin Engine Untuk Mata Kuliah Sistem Engine 	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+217	Riset Grant	Ir. Muhammad Thamrin, M.Si	Teknik Elektro	Miniatur Simulasi Pengendalian Level Ketinggian Air Berbasis PLC Dengan Monitoring SCADA	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+218	Riset Grant	Drs. Latif Mawardi, ST., M. Kom	Teknik Elektro	Monitoring Laju Aliran Akibat Perubahan Level Zat Cair Dalam Tangki Tertutup	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+219	Riset Grant	Drs.Muhtarom Riyadi, S.S.T., M.Eng	Teknik Sipil	Pemanfaatan Limbah Plastik Sebagai Bahan Pengganti Sebagian Agregat Halus Pada Beton Normal	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+220	Riset Grant	Suripto, ST. MSi.	Teknik Sipil	Pengembangan Metode Pengolahan Limbah Air Lindi  Di Tempat Pembuangan Akhir Sampah (TPAS) Cipayung Kota Depok	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+221	Riset Grant	Mohamad Fathurahman, ST., MT.	Teknik Elektro	Lorawan Network Untuk Jaringan Internet Of Things	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+222	Riset Grant	Ir. Ikhsan Kamil, M.Kom	Teknik Elektro	Power Monitoring Pada Panel Daya Bengkel Listrik Dengan Power Meter  PM5350 Berbasis SCADA Dan Perbandingan Data Dengan Power Analyzer	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+223	Riset Grant	Rahmat, SST., MT.	Teknik Elektro	Prototipe Sistem Radio Penunjuk Arah Sinyal Pemancar Uhf	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+224	Riset Grant	Drs. Rudi Edial, MT.	Teknik Mesin	Rancang Bangun Mesin Press Serbuk Kayu Untuk Pembuatan Papan Partikel	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+225	Riset Grant	Dra. Ardina Askum HR, M. Hum	Teknik Elektro	Modul Latih Transceiver 11 Meter	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:32
+226	Riset Grant	Tardi, S.T.,M.Kom	Teknik Elektro	Alat Pengendali Ketinggian Level Air Otomatis Dengan Monitoring Supervisory Control And Data Acquisition (SCADA)	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:32
+227	Riset Grant	Drs. Kusnadi, ST, M.Si	Teknik Elektro	Pemanas Air (Water Heater) Berbasis Pengendalian PID (Proportional Integral Derivatif)	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:32
+228	Riset Grant	A. Tossin Alamsyah	Teknik Elektro	Peningkatan Kualitas Reviewer Dengan Sertifikasi Reviewer	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:32
+229	Penelitian Mandiri	Anwar Mustofa	Administrasi Niaga	Pengelolaan Arsip Kepegawaian di 3 Perusahaan BUMN	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:32
+230	Penelitian Mandiri	Ir. Anik Tjandra Setiati, MM	Teknik Elektro	Pemanfaatan Program Corporate Social Responsibility (CSR)  di Perusahaan Alumni Politeknik Negeri Jakarta)	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:32
+231	Penelitian Mandiri	Seto Tjahyono, ST, MT	Teknik Mesin	Analisis Pengaruh Gas Campuran Argon - 5% Hidrogen terhadap Morfologi dan Kekuatan Tarik pada Pengelasan Baja Tahan Karat SUS 304 Tebal 6 MM	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:32
+2062	Penelitian Berbasis Kompetensi	Dr. Drs AGUS EDY PRAMONO S.T, M.Si	Teknik Mesin	REKAYASA MATERIAL KOMPOSIT KARBON BERSIFAT KONDUKTIF ELEKTRIK BERBASIS LIMBAH SABUT KELAPA DALAM MATRIKS TANAH LIAT	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2063	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2064	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2065	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2066	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2067	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2068	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2069	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2070	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2071	\N	 	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2072	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2073	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2074	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:14:56	2021-04-25 13:14:56
+2075	Penelitian berbasis Penugasan	Nedsal Sixpria, SE, MM, Ak, CA	Akuntansi	Pengembangan Instrumen Audit Mutu Unit Kerja pada Satuan Kerja Politeknik Negeri Jakarta	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2076	Penelitian berbasis Penugasan	Efriyanto	Akuntansi	ANALISIS  IMPLEMENTASI  KURIKULUM BERBASIS  KKNI DI  POLITEKNIK  NEGERI JAKARTA	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2077	Penelitian berbasis Penugasan	Kadunci, S.E, M.Si	Administrasi Niaga	Strategi Pengembangan Produk Batik Ciwaringin Kabupaten Cirebon	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2078	Penelitian berbasis Penugasan	Narulita Syarweni, S.E, M.E	Administrasi Niaga	PEMBUKUAN  UNTUK  USAHA  KECIL	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+112	Penelitian Produk Terapan	HERI SETYAWAN, SE, MSi.	Administrasi Niaga	PENGEMBANGAN PAMERAN SEBAGAI UNGGULAN DESTINASI MICE	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+2079	Penelitian berbasis Penugasan	Sulistyowati, SE,. M.Si	Administrasi Niaga	Analisis Faktor-Faktor Motivasi Pelaku UMKM untuk menjadi Halalpreneurs Studi Kasus Jabodetabek	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2080	Penelitian berbasis Penugasan	Zulhelman ST., MT.	Teknik Elektro	EVALUASI PERFORMANSI STREAMING VIDEO MELALUI  JARINGAN  IP/MPLS	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2081	Penelitian berbasis Penugasan	Drs. Andi Indianto, ST. MT.	Teknik Sipil	PROTOTYPE JEMBATAN TYPE PLATE GIRDER U (PGU) DENGAN LANTAI  ORTOTROPIK KOMPOSIT	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2082	Penelitian berbasis Penugasan	Drs. Setiyadi, S.T, M.T	Teknik Sipil	PENGEMBANGAN ALAT BANTU PEMASANGAN   UBIN KERAMIK DINDING  BANGUNAN GEDUNG	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2083	Penelitian berbasis Penugasan	Achmad Nadjam, S.T, M.T	Teknik Sipil	Monitoring dan Evaluasi Jalan Raya Rawan Longsor di Kelurahan Tanah Baru Kecamatan Beji Depok dan Upaya Penanganannya	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2084	Penelitian berbasis Penugasan	Benny, M.T	Teknik Elektro	DATA LOGGER TERMODIFIKASI MEMPERCEPAT INFORMASI DETEKSI SUHU-PH AIR MEMANFAATKAN INTERNET OF THINGS	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2085	Penelitian Bidang Ilmu dan Pengembangan Institusi	Murtiningsih, SE., M.M.	Akuntansi	EVALUASI TINGKAT KUALITAS PELAYANAN  BIDANG KEMAHASISWAAN MENGGUNAKAN SERVEQUAL  DI POLITEKNIK NEGERI JAKARTA	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2086	Penelitian Bidang Ilmu dan Pengembangan Institusi	TAUFIKUL ICHSAN, SE, AK, MM	Akuntansi	Pengembangan Model Pencatatan Persediaan Dalam Bentuk Kartu Persediaan  (Kasus: Pendidikan Vokasi/Politeknik)	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+98	Penelitian Produk Terapan	Fuad Zaenuri	Teknik Mesin	Simulasi Analisa dan Perancangan Transmisi Synchromesh Pada Unjuk Kerja Kendaraan Listrik	\N	\N	2017	DIKTI	\N	\N	2021-04-22 04:57:27	2021-04-22 17:10:37
+113	Penelitian Produk Terapan	Dr. Ida Nurhayati, S.H., M.H.	Akuntansi	Eksistensi Kode Etik Bankir Sebagai Wujud Penerapan Prinsip Good Coorporate Governance Bagi Bank Umum di Indonesia	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+114	Penelitian Produk Terapan	Titi Suhartati, SE, MM, MAk, Ak.,CA	Akuntansi	Implementasi Model Pembelajaran Soft Skill yang Terintegrasi dengan Mata Kuliah Akuntansi pada Pendidikan Vokasi	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+115	Penelitian Produk Terapan	Christina L Rudatin, S.E., M.Si	Administrasi Niaga	MODEL STRATEGI PEMASARAN TARGET PASAR MICE DI BALI	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+116	Penelitian Produk Terapan	FATIMAH, SE., M.M.	Akuntansi	STRATEGY USAHA MIKRO DAN KECIL UNTUK BERTAHAN DAN BERKEMBANG DALAM ERA PERSAINGAN YANG SEMAKIN TAJAM	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+117	Penelitian Produk Terapan	Ida Syafrida, S.E., M.Si.	Akuntansi	Model Strategi Peningkatan Sumber Pendanaan Bank Umum Syariah dengan Pertimbangan Manfaat, Peluang, Biaya dan Risiko	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+118	Penelitian Produk Terapan	Drs. Amirudin, MM	Administrasi Niaga	MODEL KOMITMEN PENGUATAN PEMASARAN DESTINASI MEETING INCENTIVE CONFERENCE EXHIBITION (MICE) DALANG RANGKA MENINGKATAN DAYA SAING DI PULAU SUMBAWA DAN PULAU MOYO PROVINSI NUSA TENGGARA BARAT	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+119	Penelitian Produk Terapan	Sri Lestari K . ST.,MT	Teknik Elektro	ALAT PENGKONDISI BAHAN BAKAR MINYAK BERBASIS ELEKTROMAGNET TERHADAP UNJUK KERJA MESIN BERBAHAN BAKAR NON FOSIL (BIOFUEL)	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+120	Penelitian Produk Terapan	Anis Rosyidah, SPd., SST., MT.	Teknik Sipil	PENGEMBANGAN MODEL LEKATAN TULANGAN DENGAN BETON DITINJAU DARI BENTUK PERMUKAAN TULANGAN ULIR	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+121	Penelitian Produk Terapan	Zulmaita, SE, MM	Akuntansi	Penerapan Pengelolaan Data Keuangan dan Filing dalam Meningkatkan Kualitas Laporan Keuangan Koperasi Karyawan Sejahtera Politeknik Negeri Jakarta	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+122	Penelitian Produk Terapan	A.Rudi Hermawan,ST,MT	Teknik Sipil	SAMBUNGAN BALOK PRECAST TIPE PIN WELDED PLAT PADA MOMEN MAKSIMUM	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+123	Penelitian Produk Terapan	DEWIN PURNAMA, S.T., M.T.	Teknik Mesin	PENINGKATAN SIFAT MEKANIK DISSIMILAR METAL WELD ANTARA STAINLESS STEEL 304L DAN BAJA KARBON A36 MELALUI KOMBINASI KAWAT LAS DAN GAS PELINDUNG 	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+124	Penelitian Produk Terapan	Dr. Ade Sukma Mulya, S.S., M.Pd.	Akuntansi	Desain Pengukuran Kualitas Terjemahan Kelompok Nomina	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+125	Penelitian Produk Terapan	Ir. Sri Danaryani MT	Teknik Elektro	Model Blended Learning untuk Uji Skema Teknisi Instalasi Fiber optik	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+126	Penelitian Produk Terapan	Amalia, S.Pd.,SST.	Teknik Sipil	BETON SELF COMPACTING CONCRETE (SCC) TAILING UNTUK STRUKTUR DI LAUT	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+127	Penelitian Produk Terapan	Dr. Isdawimah, ST, MT	Teknik Elektro	PENINGKATAN KUALITAS DAYA LISTRIK MELALUI MONITORING DATA SECARA ONLINE 	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+2087	Penelitian Bidang Ilmu dan Pengembangan Institusi	Drs. Anwar Mustofa, M.Hum	Administrasi Niaga	ANALISIS KESALAHAN PADA TEKS EKSPOSITORI BAHASA INGGRIS HASIL UJIAN MATA KULIAH ENGLISH 1 MAHASISWA JURUSAN ADMINISTRASI NIAGA	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2088	Penelitian Bidang Ilmu dan Pengembangan Institusi	Azwar, S.E, M.M	Administrasi Niaga	KANTIN POLITEKNIK DILIHAT DARI PERILAKU MAHASISWA ADMINISTRASI NIAGA SEBAGAI KOMSUMEN (Studi Kasus Pada Mahasiswa Administrasi Niaga Politeknik Negeri Jakarta)	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2089	Penelitian Bidang Ilmu dan Pengembangan Institusi	Ernita Siambaton	Administrasi Niaga	Analisis pemanfaatan aplikasi  layanan pesan antar online oleh pelaku UMKM bidang kuliner di Depok	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2090	Penelitian Bidang Ilmu dan Pengembangan Institusi	Entis Sutisna, S.T, M.T.	Teknik Elektro	PROTOTIPE SIMULATOR POWER GENERATOR SEBAGAI MEDIA INTERAKTIF UNTUK MEINGKATKAN PEMBELAJARAN DI PNJ	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2091	Penelitian Bidang Ilmu dan Pengembangan Institusi	Anik Tjandra, ST, MM	Teknik Elektro	PERANAN PEREMPUAN BIDANG REKAYASA di DUNIA INDUSTRI	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2092	Penelitian Bidang Ilmu dan Pengembangan Institusi	Drs. Mohammad Fauzy, M.Psi.	Teknik Grafika dan Penerbitan	Hubungan Pilihan Bidang Studi dengan Kecerdasan Mahasiswa Jurusan Teknik Grafika dan Penerbitan, Politeknik Negeri Jakarta.	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2093	Penelitian Bidang Ilmu dan Pengembangan Institusi	Drs. Agus Setiawan.M.Kom.	Teknik Informatika dan Komputer	PERANAN KEGIATAN KEMAHASISWAAN MEMBERI KONTRIBUSI TERHADAP PRESTASI AKADEMIK MAHASISWA DI POLITEKNIK NEGERI JAKARTA	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2094	Penelitian Dosen Pemula	Ach. Bakhrul Muchtasib, S.E.I, M.Si.	Akuntansi	Optimalisasi Pengelolaan Zakat di Indonesia (Analisis Perbandingan Efisiensi Pengelolaan Zakat antara BAZ dan LAZ dengan Metode Data Envelopment Analysis)	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2095	Penelitian Dosen Pemula	Agus Kusumaramdhani, S.Si, M.Si	Akuntansi	IMPLEMENTASI KEBIJAKAN PEMERINTAH DALAM PEMBINAAN USAHA MIKRO, KECIL, DAN MENENGAH DI KABUPATEN PURWAKARTA	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2096	Penelitian Dosen Pemula	Rahmanita Vidyasari, S.T, M.T	Akuntansi	PERANCANGAN SISTEM INFORMASI AKUNTANSI PADA USAHA KECIL DAN MENENGAH  APOTEK ALAM SEHAT	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2097	Penelitian Dosen Pemula	Yosi Erfinda, S.ST, M.Par	Akuntansi	PROPOSAL PENELITIAN DOSEN PEMULA SKEMA PEREKRUTAN MAHASISWA SEBAGAI TENAGA KERJA OUTSOURCING DALAM SEBUAH EVENT MICE (Studi Kasus Mahasiswa Program Studi MICE Politeknik Negeri Jakarta)	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2098	Penelitian Dosen Pemula	Anita Rahmawati, S.Kom., M.M.	Akuntansi	Faktor-faktor Yang Mempengaruhi Engagement Tenaga Pendidik Dalam Proses Belajar Peserta Didik Berkebutuhan Khusus di Kota Depok	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2099	Penelitian Dosen Pemula	Maria Nino Istia, S.S., M.Si.	MP-WNBK	Representasi Sosial Mahasiswa Manajemen Pemasaran untuk Warga Negara Berkebutuhan Khusus di Lingkungan Politeknik Negeri Jakarta	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2100	Penelitian Dosen Pemula	Fauzi Mubarak, S.ST, M.T	Administrasi Niaga	USULAN PENELITIAN DOSEN PEMULA PETA DAYA SAING KOTA DEPOK DAN KOTA BOGOR MELALUI KONDISI STANDAR EXISTING VENUE MICE	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2101	Penelitian Dosen Pemula	Husnil Barry, S.E.,M.S.M	Administrasi Niaga	Prediksi Model Financial Distress Pada Perusahaan Ritel Bursa Efek Indonesia Periode 2012-2016	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2102	Penelitian Dosen Pemula	Imam Syafganti, S.Sos, M.Si	Administrasi Niaga	Perbandingan Evaluasi Website Resmi Pariwisata (Official Tourism Website) Negara-Negara di Kawasan Asia Tenggara	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2103	Penelitian Dosen Pemula	Wahyudi Utomo S.Sos.,M.Si	Administrasi Niaga	ANALISIS EFEKTIFITAS CBET (COMPETENCY BASE EDUCATION AND TRAINING) SEBAGAI UPAYA PENINGKATAN SOFT SKILLS, TANGGUNG JAWAB DAN DISIPLIN TERINTEGRASI  (STUDI PROGRAM MAGANG MAHASISWA JURUSAN ADMINISTRSI NIAGA POLITEKNIK NEGERI JAKARTA)	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2104	Penelitian Dosen Pemula	Rika Novita Wardhani, ST.,MT	Teknik Elektro	Antenna Tracking LabVIEW Control System	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2105	Penelitian Dosen Pemula	Asri Wulandari ST., MT	Teknik Elektro	PERANCANGAN DAN ANALISA IMPLEMENTASI    LTE   HOME  PADA JARINGAN 4G LTE DI FREKUENSI 2300 MHz	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2106	Penelitian Dosen Pemula	Nuralam, S.T, M.T	Teknik Elektro	PROTOTYPE SMART SENSOR SEBAGAI PENDETEKSI KUALITAS TELUR BEBEK BERDASARKAN NORMAL DAN ABNORMAL BERBASIS LABVIEW VISION	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2107	Penelitian Dosen Pemula	Mohamad Fathurahman, ST.,MT.	Teknik Elektro	Rancang Bangun Sistem Akuisisi dan Pengolahan Citra Satelit Menggunakan SDR-GNU Radio	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2108	Penelitian Dosen Pemula	Sari Puspita Dewi, M.Pd.	Teknik Grafika dan Penerbitan	Persepsi Dosen terhadap Penggunaan ICT  dalam Pembelajaran Bahasa Inggris	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2109	Penelitian Dosen Pemula	Anggi Anggarini, M.Ds	Teknik Grafika dan Penerbitan	 Efektivitas Penggunaan Moodboard Sebagai Media Berpikir Kreatif Pada Pembuatan Desain Media Publikasi	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2110	Penelitian Dosen Pemula	Emmidia Djonaedi, ST,MT, MBA	Teknik Grafika dan Penerbitan	PENGARUH PENAMBAHAN POLIVINIL ALKOHOL TERHADAP KEKUATAN FISIK BIOPLASTIK DARI KULIT JAGUNG	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2111	Penelitian Dosen Pemula	Dini Handayani, MA. TESOL&ICT	Teknik Grafika dan Penerbitan	Maintaining Language Using Online Language Platform: A Case of Darmasiswa International Students Politeknik Negeri Jakarta	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2112	Penelitian Dosen Pemula	Rina Ningtyas, S.Si, M.Si	Teknik Grafika dan Penerbitan	Kemampuan Antibakteri Edible film Pure Jambu Biji Menggunakan Casein	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2113	Penelitian Dosen Pemula	Novi Purnama Sari	Teknik Grafika dan Penerbitan	ANALISIS KELAYAKAN EKONOMI DAN FUNGSIONAL DALAM APLIKASI DESAIN KEMASAN MAKANAN RINGAN	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2114	Penelitian Dosen Pemula	Djony Herfan, M.I.Kom	Teknik Grafika dan Penerbitan	KONVERGENSI MEDIA MEMPENGARUHI KONTEN HARIAN KOMPAS DAN KORAN TEMPO DALAM PEMBERITAAN (PERSPEKTIF STANDAR KOMPETENSI WARTAWAN)	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2115	Penelitian Dosen Pemula	Iwan Sonjaya, S.T , M.T	Teknik Informatika dan Komputer	PENGEMBANGAN  GAME UNTUK MENSTIMULASI  KECERDASAN INTERPERSONAL-INTRAPERSONAL  DAN NATURALIS DALAM KECERDASAN JAMAK  (MULTIPLE INTELLIGENCE) PADA ANAK USIA DINI	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2116	Penelitian Dosen Pemula	Ir. Budi Santoso, M.T	Teknik Mesin	pembuatan saybolt tube viscometer untuk mengamati pengaruh temperatur terhadap perubahan viscositas pelumas otomotif	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2117	Penelitian Dosen Pemula	Candra Damis Widiawaty, S.T.P, M.T	Teknik Mesin	REKAYASA PROTO TIPE SHELL AND TUBE HEAT EXCHANGER BERBASIS CFD DAN SISTEM KONTROL	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2118	Penelitian Dosen Pemula	Imam Wahyudi	Teknik Mesin	KAJIAN EKSPERIMENTAL MAGNETISASI BAHAN BAKAR TERHADAP KINERJA EKSCAVATOR	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2119	Penelitian Dosen Pemula	Cecep Slamet Abadi, ST, MT	Teknik Mesin	Analisa Kekuatan Hasil Pengelasan Dari Reparasi Cetakan Produk Plastik Pada Baja AISI 420 Dengan Metoda GMAW	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2120	Penelitian Dosen Pemula	Iwan Supriyadi, B.sc, M.T	Teknik Sipil	Prioritas Penanganan Kendala Pelaksanaan Proyek Konstruksi	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2121	Penelitian Unggulan berbasis Program Studi	Herbirowo Nugroho, S.E, M.Si	Akuntansi	Keputusan Penerbitan Sukuk Korporasi Bank Umum Syariah: Pengalaman Emiten	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2122	Penelitian Unggulan berbasis Program Studi	Lia Ekowati, S.Sos., MPA	Akuntansi	Model Pembelajaran Problem Based Learning Mata Kuliah Perpajakan Untuk Mahasiswa Program Studi Manajemen Keuangan Politeknik Negeri Jakarta	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2123	Penelitian Unggulan berbasis Program Studi	Hayati Fatimah, SE. MAk. Ak. CA	Akuntansi	OPTIMALISASI AUDIT DALAM PENGENDALIAN INTERNAL PERGURUAN TINGGI NEGERI Studi Kasus Politeknik Negeri Jakarta	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2124	Penelitian Unggulan berbasis Program Studi	Heri Abrianto, S.E, M.M	Akuntansi	ANALISIS FAKTOR INTERNAL DAN EKSTERNAL TERHADAP EFISIENSI PERBANKAN DI INDONESIA PERIODE 2013-2017 (Dalam Rangka Implementasi Asean Banking Integration)	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2125	Penelitian Unggulan berbasis Program Studi	Dra. Ni Made Widhi Sugianingsih, M.M	Administrasi Niaga	ANALISIS PERMASALAHAN PELAKSANAAN PRAKTIK     KERJA LAPANGAN MAHASISWA PROGRAM STUDI D3 ADMINISTRASI BISNIS JURUSAN ADMINISTRASI NIAGA POLITEKNIK NEGERI JAKARTA.	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2126	Penelitian Unggulan berbasis Program Studi	Sila Wardono, S.T., M.Si	Teknik Elektro	RANCANG BANGUN DAN OPTIMASI SISTEM HYBRID PANEL SOLAR CELL DAN SOLAR THERMAL BERBASIS PLC UNTUK EFISIENSI TENAGA LISTRIK	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2127	Penelitian Unggulan berbasis Program Studi	Kendi Moro Nitisasmita, Amd.,S.ST.,M.kom	Teknik Elektro	PENGENDALI SUHU PADA TAMBAK BUDIDAYA UDANG VANNAMEI  BERBASIS TEKNOLOGI INTERNET OF THINGS (IoT)	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2128	Penelitian Unggulan berbasis Program Studi	MRR.Tiyas Maheni DK, S.H., M.H.	Teknik Grafika dan Penerbitan	PENERAPAN STRATEGI PENCEGAHAN PLAGIARISME  MENGGUNAKAN METODE BERPIKIR LATERAL DALAM PEMBUATAN GAMBAR GESTALT PADA MAHASISWA DESAIN GRAFIS TGP-PNJ	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2129	Penelitian Unggulan berbasis Program Studi	Drs. Azhmy Fawzi My, M.I.Kom.	Teknik Grafika dan Penerbitan	Menyiapkan Mahasiswa Jurnalistik sebagai Jurnalis Radio dan Televisi dalam Menghadapi Perubahan Jurnalisme melalui Konvergensi Media	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2130	Penelitian Unggulan berbasis Program Studi	Minto Rahayu, S.S. M.Si.	Teknik Mesin	KESADARAN BELA NEGARA PADA MAHASISWA	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2131	Penelitian Unggulan berbasis Program Studi	R Sugeng Mulyono, M.Kom	Teknik Mesin	Pengembangan Kontrol Mesin Vacuum Forming Otomatis untuk Aneka Bentuk Kemasan Makanan pada Industri Makanan Kecil Menengah	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2132	Penelitian Unggulan berbasis Program Studi	Suripto, S.T, M.Eng	Teknik Sipil	Kebutuhan Air Irigasi Untuk Tanaman Padi Berumur Panjang	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2133	Penelitian Unggulan berbasis Program Studi	Drs. Eko Wiyono, ST. M.Eng.	Teknik Sipil	Variasi Kadar Filler Pada Campuran Beton Aspal  Menggunakan Bahan Tambah Anti Stipping	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2134	Penelitian Unggulan berbasis Program Studi	Dra. Siti Aisiyah, M. Hum	Teknik Sipil	ANALISIS KEAKURATAN MAKNA TERJEMAHAN  ISTILAH INGGRIS DI BIDANG MANAJEMEN KONSTRUKSI  DALAM BAHASA INDONESIA	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2135	Penelitian Berbasis Penugasan	Sri Wahyono, M.Si	Administrasi Niaga	Uji Coba Prototipe Model Penulisan Skripsi Sarjana Terapan Berbasis Genre	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2136	Penelitian Berbasis Penugasan	Dr. Christina Lipuring Rudatin, S.E, M.Si	Administrasi Niaga	Pengaruh Atribut Venue Terhadap Intense Event Organizer dalam Memilih Tempat  Pelaksanaan Event	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2137	Penelitian Produk Terapan	DR. TITI SUHARTATI, SE, MM, MAK, AK, CA	Akuntansi	Model Implementasi dan Evaluasi Pembelajaran Soft Skill yang Terintegrasi dengan Mata Kuliah Akuntansi pada Pendidikan Vokasi	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2138	Penelitian Produk Terapan	Fatimah, S.E, M.M	Akuntansi	STRATEGI  POSITIONING PRODUK UKM  DENGAN MENGGUNAKAN PETA PERSEPSI UNTUK MEMENANGKAN PERSAINGAN	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2139	Penelitian Produk Terapan	Dr. Sylvia Rozza	Akuntansi	PENYUSUNAN SKEMA RESTRUKTURISASI UMKM	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2140	Penelitian Produk Terapan	Petrus Hari Kuncoro Seno, S.E, M.B.A	Akuntansi	Analisa Faktor Faktor yang Mempengaruhi Penerimaan Pelanggan atas  Layanan  Tansportasi Umum Berbasis aplikasi On lLne  dengan Menggunakan TECHNOLOGY ACCEPTANCE MODEL (TAM)	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2141	Penelitian Produk Terapan	Utami Puji Lestari, SE Ak MAk PhD CA	Akuntansi	Model Ukuran Kinerja yang Terintegrasi dengan Kejelasan Peran, Kepercayaan terhadap Atasan dan Rasa Keadilan Prosedural  untuk Meningkatkan Komitmen Terhadap Organisasi di Sektor Jasa	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2142	Penelitian Produk Terapan	Ida Syafrida, S.E, M.Si	Akuntansi	Model Strategi Peningkatan Sumber Pendanaan Bank Umum Syariah Melalui Penerbitan Efek  Saham  Publik	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2143	Penelitian Produk Terapan	Amirudin, S.E., M.M.	Administrasi Niaga	MODEL KOMUNIKASI E_PEMASARAN   DESTINASI MICE ATAS PEMBUKAAN BANDARA KERTAJATI	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2144	Penelitian Produk Terapan	Etty Khongrat, S.E, M.Si	Administrasi Niaga	PENGEMBANGAN PASAR INSENTIF TRAVEL SEBAGAI UNGGULAN DESTINASI MICE LOMBOK	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2145	Penelitian Produk Terapan	Dra. tuty Herawati	Administrasi Niaga	Model Bisnis UMKM Fashion dalam Meningkatkan Daya Saing Global	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2146	Penelitian Produk Terapan	DR EVA ZULFA NAILUFAR	Administrasi Niaga	KAJIAN KONSEP UPAH MINIMUM BERDASARKAN SYARIAT ISLAM  DI PROPINSI DKI JAKARTA SELATAN SELATAN	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2147	Penelitian Produk Terapan	Murie Dwiyaniti, S.T,.M.T	Teknik Elektro	PROTOTIPE  INDUSTRIAL INTERNET OF THINGS (IIoT)  PADA SCADA MANAJEMEN  PENERANGAN  JALAN UMUM CERDAS	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2148	Penelitian Produk Terapan	Ismujianto, S.T, M.T	Teknik Elektro	PENGENDALIAN KUALITAS GROUNDING SYSTEM MENGGUNAKAN INFRARED TOPOGRAPHY	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2149	Penelitian Produk Terapan	Toto Supriyanto, S.T., M.T.	Teknik Elektro	Pengembangan Sistem Real_Time Monitoring Kandang Anak Ayam Broiler (Ayam Ras Pedaging) Berbasis Wireless Sensor Network untuk Mendukung Ketahanan Pangan	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2150	Penelitian Produk Terapan	Yoyok Sabar Waluyo, S.S., M.Hum.	Teknik Informatika dan Komputer	KUALITAS TERJEMAHAN ISTILAH JARINGAN NIRKABEL DALAM BUKU  WIRELESS NETWORKS FIRST_STEP:  Analisis Studi Kasus pada Buku Rujukan Mata Kuliah di Program Studi Teknik Komputer dan Jaringan	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2151	Penelitian Produk Terapan	Ir. Emir Ridwan, MT	Teknik Mesin	Pengembangan Sistem Synchromesh untuk Peningkatan Efisiensi pada Kendaraan Listrik	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2152	Penelitian Produk Terapan	Adi Syuriadi, MT.	Teknik Mesin	OPTIMASI PEMBANGKIT LISTRIK TENAGA MIKRO HIDRO  TYPE KINCIR BREASTSHOT DENGAN HEAD RENDAH  DI KAWASAN DANAU UI	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2153	Penelitian Produk Terapan	Eva Azhra Latifa, ST, MT	Teknik Sipil	Pengembangan Formula Manajemen Pemeliharaan Jalan Melalui Sistem Manajemen Perkerasan	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2154	Penelitian Produk Terapan	Amalia, S.Pd., S.S.T., M.T	Teknik Sipil	PEMANFAATAN ABU SEKAM PADI SEBAGAI SUBSTITUSI SEMEN DAN LIMBAH SCRAP BAJA PADA BETON SELF COMPACTING CONCRETE (SCC)	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2155	Penelitian Produk Terapan	Anis Rosyidah	Teknik Sipil	PENGEMBANGAN MODEL LEKATAN TULANGAN PADA SAMBUNGAN LEWATAN (LAP SPLICES)	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2156	Penelitian Produk Terapan	Andrias Rudi Hermawan, S.T, M.T	Teknik Sipil	SAMBUNGAN BALOK PRECAST TIPE WET AND DRY JOINT PADA MOMEN MAKSIMUM	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2157	Penelitian Produk Terapan	Drs. R. Agus Murdiyoto, S.T, M.Si	Teknik Sipil	Rancang Bangun Alat Penumbuk  Cangkang Kerang Darah (Anadara Granosa) dengan motor penggerak listrik	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2158	Penelitian Produk Terapan	Yelvi	Teknik Sipil	Studi Eksperimen Evaluasi Tingkat Kerapatan Relatif dan Percepatan Maksimum Gempa pada Tanah Potensi Likuifaksi yang Diperkuat Ijuk	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2159	Penelitian Unggulan Perguruan Tinggi	Tatun Hayatun Nufus, S.Si, M.Si	Teknik Mesin	KARAKTERISTIK  KINERJA DAN EMISI GAS BUANG  PADA MESIN DIESEL BERBAHAN BAKAR CAMPURAN SOLAR DAN BIODIESEL (MINYAK JELANTAH) YANG DIMAGNETISASI	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2160	Penelitian Unggulan Perguruan Tinggi	Iwan Susanto, Ph.D	Teknik Mesin	STUDI LAPISAN FILM TIPIS KELOMPOK III_NITRIDA MENGGUNAKAN TEKNIK PLASMA ASSISTED MOLECULAR BEAM EPITAXY	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2161	Penelitian Unggulan Perguruan Tinggi	Dr. Drs. Ahmad Tossin Alamsyah, S.T, M.T	Teknik Elektro	REKAYASA CAMPURAN PASIR SILICA DAN MATERIAL LAINNYA  SEBAGAI   MATERIAL SUBSTRAT   PADA    SENSOR  GAS	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2162	Penelitian Unggulan Perguruan Tinggi	Dr. Ida Nurhayati, S.H, M.H	Akuntansi	Budaya Dan Kepedulian Anti Fraud Pada Perbankan Indonesia	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2163	Penelitian Unggulan Perguruan Tinggi	Dr. Dra. Iis Mariam, M.Si	Administrasi Niaga	KONSEP COLLABORATIVE KNOWLEDGE CREATION  DAN QUADRUPLE HELIX DALAM MENINGKATKAN DAYA SAING ORGANISASI POLITEKNIK MELALUI MODEL PEMBELAJARAN BERBASIS TERAPAN YANG KREATIF DAN INOVATIF	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2164	Penelitian Unggulan Perguruan Tinggi	Ali Masjono, SE. MBIT	Akuntansi	Pengaruh Customer Value, Kualitas Pelayanan, dan Kepuasan Nasabah terhadap Kepercayaan serta Implikasinya terhadap Loyalitas Nasabah	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2165	Penelitian Unggulan Perguruan Tinggi	Sabar Warsini	Akuntansi	Pengaruh Promosi melalui Electronic Word of Mouse (e_WOM) Terhadap Minat Mahasiswa Dalam Membeli Saham : Studi Berkelanjutan Pada Kampus yang Mendirikan Galeri Investasi	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+2166	Penelitian Unggulan Perguruan Tinggi	Dr. Dra. Eri Ester Khairas, M. Hum	Teknik Sipil	Konstruksi Korpus dengan Aplikasi Software AntConc 3.4 untuk Merancang Model Pembelajaran Bahasa Inggris Vokasi Bidang Rekayasa	\N	\N	2018	Internal	\N	\N	2021-04-25 13:14:57	2021-04-25 13:14:57
+198	Riset Grant	Benny Nixon, ST., MT.	Teknik Elektro	Rancang Bangun Antena Hexaquad Omnidirectional 5.8ghz, Antena Helix 10 Lilitan 5.8ghz Dan Antena Yagi Biquad 342.5-600mhz Untuk Sistem Pemantauan Kegiatan PNJ Di Luar Ruangan Secara Live Dengan Menggunakan Drone	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+199	Riset Grant	Drs. Abdul Aziz, M.MSI	Teknik informatika dan Komputer	Rancang Bangun Robot Pembantu Pekerjaan Sekretaris Dengan Perintah Suara Menggunakan Raspberry Pi	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+200	Riset Grant	Asri Wulandari ST., MT	Teknik Elektro	Rancang Bangun Antena Mikrostrip MIMO Untuk WIFI Frekuensi 2,4 Ghz Di Laboratorium Telekomunikasi PNJ	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+208	Riset Grant	Rika Novita, ST, MT	Teknik Elektro	Rancang Bangun Portable Smart Green Building	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:31
+232	Penelitian Mandiri	Syaprudin, ST, M.Kom	Teknik Elektro	Sensor Thermokopel Sebagai Pendeteksi Panas Tungku Pembakaran Keramik Berbasis PLC	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:32
+233	Penelitian Mandiri	Drs. Jauhari Ali, ST, MT	Teknik Mesin	Rancang Bangun Mesin Peningkat Kualitas Asap Cair untuk Mengawetkan Ikan	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:32
+234	Penelitian Mandiri	Drs. Tri Widjatmaka, SE, MM	Teknik Mesin	Perbandingan waktu standar penggunaan setrika uap dengan setrika listrik pada proses produksi usaha jasa laundry	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:32
+235	Penelitian Mandiri	Iwan Sonjaya, ST, MT	Teknik Informatika dan Komputer	Rancang Bangun Game untuk Menstimulasi Kecerdasan Jamak (Multiple Intelligence) pada Anak Usia Dini (Kasus Kecerdasan Spasial-Visual dan Kecerdasan Logis Matematis)	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:32
+236	Penelitian Mandiri	Iwan Supriyadi, Bsc, MT	Teknik Sipil	Pengaruh Beban Lebih dan Tingkat Kerusakan terhadap Umur Sisa Jembatan	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:32
+237	Penelitian Mandiri	Drs. Azwardi	Teknik Mesin	Rancang Bangun Sistem Informasi  Database Jurusan Teknik Mesin PNJ	\N	\N	2017	Internal	\N	\N	2021-04-22 04:57:27	2021-04-22 17:15:32
+\.
+
+
+--
+-- TOC entry 3160 (class 0 OID 33965)
+-- Dependencies: 225
+-- Data for Name: pengabdian; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.pengabdian (id, skim_pengabdian, nama_ketua_pengabdian, jurusan, judul, abstrak, besar_dana, tahun, kategori, jumlah_anggota, nama_anggota, created_at, updated_at) FROM stdin;
+39	IbM	Prihatin Oktivasari	Teknik Informatika dan Komputer	lbM Teknologi Monitoring Sampah Menggunakan Tempat Sampah Pintar Berbasis Android	\N	\N	2017	DIKTI	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+40	IbKIK	Ade Sumpena	Teknik Mesin	lbKIK Jasa Produksi Mesin/Pusat Produksi Permesinan	\N	\N	2017	DIKTI	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+41	Program Diseminasi	Ahmad Tossin Alamsyah	Teknik Elektro	Penerapan Teknologi Pengolahan Sampah Organik Dalam Upaya Pemberdayaan Ekonomi Produktif Bagi Masyarakat Desa Cileungsi Kidul Kabupaten Bogor	\N	\N	2017	DIKTI	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+42	Program Diseminasi	Sri Danaryani	Teknik Elektro	Diseminasi Teknologi Pengolahan Sampah terpadu dalam upaya menuju kampung sehat dan hijau didesa citamiang kecamatan kadudampit kabupaten Sukabumi	\N	\N	2017	DIKTI	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+43	\N	\N	\N	\N	\N	\N	2017	DIKTI	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+44	\N	\N	\N	\N	\N	\N	2017	DIKTI	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+45	\N	\N	\N	\N	\N	\N	2017	DIKTI	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+46	\N	\N	\N	\N	\N	\N	2017	DIKTI	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+47	Pengabdian Kepada Masyarakat Berbasis Jurusan	Drs. Ir. Azwardi, ST, M.Kom	Teknik Mesin	Perbaikan Sistem Pengelolaan Sampah Rumah Tangga menjadi pupuk kompos organik di Rt 04 dan 05/Rw 05 Kelurahan Beji Timur Kecamatan Beji Kota Depok	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+48	Pengabdian Kepada Masyarakat Berbasis Jurusan	Riza Hadikusuma, M.Ag	Administrasi Niaga	Penerapan Manajemen dan Teknologi Berkelanjutan Sebagai Wujud Pemberdayaan Ekonomi Produktif bagi Masyarakat Desa Adat Kampung Urug Kabupaten Bogor	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+49	Pengabdian Kepada Masyarakat Berbasis Jurusan	Ir. Sri Danaryani, MT	Teknik Elektro	Perbaikan Ruang Kelas Pesantren Hidayatul Falah, Desa Urug Kecamatan Sukajaya	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+50	Pengabdian Kepada Masyarakat Berbasis Jurusan	Ali Masjono, SE, MBIT	Akuntansi	IPTEKS Bagi Masyarakat Peningkatan Pemahaman masyarakat Untuk Berinvestasi yang baik dan benar sesuai Syariah	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+51	Pengabdian Kepada Masyarakat Berbasis Jurusan	Drs. Immanuel Pratomojati	Teknik Sipil	Pembangunan Tempat Produksi Batik Desa Urug, Kevcamatan Sukajaya Kab Bogor	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+52	Pengabdian Kepada Masyarakat Berbasis Jurusan	Risna Sari, S.Kom, M.T.I	Teknik Informatika dan Komputer	Pembuatan Sistem Kota Pintar dan Pelatihan Penggunaannya pada Pemerintah Kota Depok	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+53	Pengabdian Kepada Masyarakat Berbasis Jurusan	MRR. Tyas Maheni DK, SH, MH	Teknik Grafika dan Penerbitan	Pembuatan Hiasan Dinding dengan teknik Hand Lettering  Menggunakan Teknik Produksi Screen Printing di LPKA Kelas 2 (dua) Bandung	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+54	Pengabdian Kepada Masyarakat Berbasis Jurusan	Dr. Nining Latianingsih, SH, MH	P3M	Pelatihan dan Sosialisasi Pembuatan Batik Bagi Perempuan Warga Desa Adat Kampung Urug, Kabupaten Bogor	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+55	Pengabdian Kepada Masyarakat Berbasis Jurusan	I. Ketut Sucita, ST, MT	P3M	Pengembangan Studio di Desa Urug dengan melengkapi Peralatan Batik	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+56	Pengabdian Kepada Masyarakat Berbasis Prodi	Dr. Masnadi	Teknik Informatika dan Komputer	IbM Pengembangan Aplikasi e-profile Sekolah Berbasis Web Untuk Mendukung Program Cyber School pada SMAN 6 dan  MSPN 5  DEPOK	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+57	Pengabdian Kepada Masyarakat Berbasis Prodi	Hata Maulana, S.Si., M.T.I	Teknik Informatika dan Komputer	IbM Pelatihan Pembuatan Modul Ajar Multimedia Interaktif untuk Guru SMK N I TAPOs	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+58	Pengabdian Kepada Masyarakat Berbasis Prodi	Yoyok Sabar Waluyo	Teknik Informatika dan Komputer	IbM Pelatihan Pembelajaran Bahasa Inggris Mudah dan Menyenangkan  untuk GURU SMP 5 KOTA DEPOK	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+59	Pengabdian Kepada Masyarakat Berbasis Prodi	Indri Nevorawati, ST., M.T.	Teknik Informatika dan Komputer	Pelatihan dan Pembuatan buku Pedoman Internet sehat pada  SMP Negeri 5 dan SMA Negeri 6  DEPOK	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+60	Pengabdian Kepada Masyarakat Berbasis Prodi	Prihatin Oktivasari, S.Si., M.Si	Teknik Informatika dan Komputer	IbM Pelatihan Pengembangan Internet of Things ( LOT ) enggunakan Arduino untuk GURU SMKN 1 dan SMAN 7  DEPOK	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+61	Pengabdian Kepada Masyarakat Berbasis Prodi	Drs. Mochammad Sholeh, ST., MT.	Teknik Mesin	Peningkatan Kompetensi Pengelasan dan Menggambar Menggunakan Bantuan  Sofware Bagi Siswa SMK di DEPOK	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+62	Pengabdian Kepada Masyarakat Berbasis Prodi	Indriyani Rebet	Tenik Mesin	Pemanfaatan Limbah Serbuk Gergaji Kayu Menjadi Papan Partikel Di Wilayah Bekasi	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+63	Pengabdian Kepada Masyarakat Berbasis Prodi	Budi Prianto, ST	Teknik Mesin	Pelatihan Alat Berat untuk Masyarakat Desa Cipayung Depok	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+64	Pengabdian Kepada Masyarakat Berbasis Prodi	Cecep Selamet  Abadi	Teknik Mesin	Perbaikan  Jalan  di RT.02/02 KELURAHAN BEJI TIMUR  Kecamatan Beji Timur	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+65	Pengabdian Kepada Masyarakat Berbasis Prodi	Andi Ulfiana	Teknik Mesin	Perbaikan Instalasi Listrik dan Konstruksi Bangunan Musholla di RT.02/02 Kel.Beji Timur  Kecamatan Beji Kota Depok	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+66	Pengabdian Kepada Masyarakat Berbasis Prodi	Syafrizal Syarif, MT.	Teknik Elektro	Pelatihan Sistem Integrasi PLC Pada SMK N 4 DEPOK Jurusan Teknik Elektronika Industri	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+67	Pengabdian Kepada Masyarakat Berbasis Prodi	Sila Wardono, ST., MSi.	Teknik Elektro	Pelatihan Instalasi Listrik dan Perbaikan  Sarana Prasarana Belajar Mengajar  di Madrasah  IBTIDAIYAH MIFTAHUL ULUM Desa Leuwikaret . Kecamatan Klapanunggal Kabupaten BOGOR	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+68	Pengabdian Kepada Masyarakat Berbasis Prodi	Dr.Isdawimah	Teknik Elektro	Pemasangan dan Pelatihan Instalasi Listrik di PAUD AL FALAH Gedung BUNDER 1 Kecamatan PAMIJAHAN  Kabupaten BOGOR	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+69	Pengabdian Kepada Masyarakat Berbasis Prodi	A. Tossin Alamsyah, Dr.ST., MT.	MTTE	Mengangkat Potensi Minat Baca Siswa Melalui Pembenahan Perpustakaan di Sekolah dasar Dilingkungan Desa  Cilembeur/Ciasihan	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+70	Pengabdian Kepada Masyarakat Berbasis Prodi	Ir. Anik Tjandra Setiati, M.M.	Teknik Elektro	IbM Pelatihan Komputer dan Internet untuk GURU PAUD Kecamatan Pancoran Mas KOTA Depok	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+71	Pengabdian Kepada Masyarakat Berbasis Prodi	M. Fathurahman, ST, MT	Teknik Elektro	Pemasangan Jaringan Internet Broadband dan Pelatihan Penggunaan Media Sosial untuk Memulai ( STAR UP ) Bisnis ONLINE Sebagai Penunjang Kompetensi Siswa dan Guru  Jurusan  Pemasaran SMK Negeri 3  DEPOK	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+72	Pengabdian Kepada Masyarakat Berbasis Prodi	Ade Haryani, SE., MM.	Teknik Grafika dan Penerbitan	Penguatan Media Publikasi SMA dan SMK Pembuatan dan Pengelolaan Media Publikasi Sekolah Berbasis Web Kota Sukabumi  Jawa Barat	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+73	Pengabdian Kepada Masyarakat Berbasis Prodi	Ach. Bakhrul Muchtasib, SEI. MSi.	Akuntansi	Pendampingan Pendirian Koperasi Simpan Pinjam dan Pembiayaan Syariah pada Yayasan Bina Mujtama' Bojong Gede	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+74	Pengabdian Kepada Masyarakat Berbasis Prodi	Sabar Warsini, SE., MM.	Akuntansi	IbM Kelompok Wanita Usia Produktif Kel. Beji Timur KOTA DEPOK “INVESTASI SAHAM SEBAGAI SARANA PERENCANAAN KEUANGAN KELUARGA	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+75	Pengabdian Kepada Masyarakat Berbasis Prodi	Efriyanto, SE., M.M	Akuntansi	Melalui Program Community development Optimalisasi Peran Lembaga Keuangan Mikro ( LKM ) Sebagai Wadah Pengembangan Usaha Kecil di Kotamadya  DEPOK	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+76	Pengabdian Kepada Masyarakat Berbasis Prodi	M. Jamal AL Bakri, S.Psi. M.M	WNBK	IbM Pelatihan Manajemen Tantrum Bagi Orang Tua yang mempunyai Anak  Penyandang Disabilitas  Terutama Penyandang Autisme Yang Terkumpul\nDi PNJ dan Masyarakat di Luar PNJ	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+77	Pengabdian Kepada Masyarakat Berbasis Prodi	Novi Purnama Sari	Teknik Grafika dan Penerbitan	Pembuatan Alat Cutting Hand Press Pada Kemasan  Makanan Ringan Produk UKM di KOTA Serang	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+78	Pengabdian Kepada Masyarakat Berbasis Prodi	Sari Puspita Dewi, MPd.	Teknik Grafika dan Penerbitan	Pembuatan Environmental Graphic Design (EGD) di Pos Paud Mawar 15	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+79	Pengabdian Kepada Masyarakat Berbasis Prodi	Endang Yuniarti	Teknik Grafika dan Penerbitan	Perancangan dan Pembuatan Mesin Cetak Label Kemasan Dengan Tinta Dey untuk Tipe Kertas Coated pada UKM Makanan Ringan di Kota Serang-Banten	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+80	Pengabdian Kepada Masyarakat Berbasis Prodi	Endah Wartiningsih, SE., MM.	Administrasi Niaga	Penerapan Aspek Budaya Kewirausahaan Masyarakat dan Pembuatan WEB untuk Meningkatkan Kinerja  Organisasi di Pemerintahan Desa Kabupaten BOGOR 	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+81	Pengabdian Kepada Masyarakat Berbasis Prodi	Dra. Tuty Herawati	Administrasi Niaga	Peningkatan Pengetahuan dan Ketrampilan Pengelolaan  HOMESTAY Di Desa SENTUL  Kec. Babakan Madang  KABUPATEN BOGOR	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+82	Pengabdian Kepada Masyarakat Berbasis Prodi	Dr. Dra. Iis Mariam, MSi.	Administrasi Niaga	Penerapan Management Bisnis dan Pembuatan Badan Hukum Koperasi bagi Masyarakat Desa Cilember Kabupaten BOGOR	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+83	Pengabdian Kepada Masyarakat Berbasis Prodi	Lia Ekowati, S.Sos., MPA	Akuntansi	IbM Sosialisasi Aspek Perpajakan Bagi Usaha Mikro Kecil dan Menengah di Politeknik Negeri Jakarta	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+84	Pengabdian Kepada Masyarakat Berbasis Prodi	Hayati Fatimah	Akuntansi	Peningkatan Pengelolaan Keuangan Melalui Pengenalan Akuntansi Berbasis SAK EMKM Bagi Usaha Mikro di Lingkungan Kampus PNJ	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+85	Pengabdian Kepada Masyarakat Berbasis Prodi	Novitasari, S.Pd., M.AK	Akuntansi	Pelatihan Penyusunan Proposal Kredit yang BENKABEL DAN FEASIBLE  Bagi  Para Pelaku Usaha Kecil di KOTA MADYA DEPOK	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+86	Pengabdian Kepada Masyarakat Berbasis Prodi	Denny Yatmadi	Teknik Sipil	Pengecoran Jalan STA  95 – STA 190 Kampung Ceringin Poncol RT 01 RW. 11 Desa Raga Jaya . Kec. Bojong Gede Kabupaten BOGOR	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+87	Pengabdian Kepada Masyarakat Berbasis Prodi	Drs. Eko Wiyono, ST., M.E.ng.	Teknik Sipil	Pengecoran Jalan STA 0+00 - 0 + 95 Kampung Ceringin Poncol Desa Raga Jaya . Kec. Bojong Gede Kabupaten BOGOR	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+88	Pengabdian Kepada Masyarakat Berbasis Prodi	Kusumo Drajat, ST., MSi.	Teknik Sipil	Pembangunan Kamar Toilet Dan Atap Pos Ronda Kampung Ceringin Poncol Desa Raga Jaya . Kec. Bojong Gede Kabupaten BOGOR	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+89	Pengabdian Kepada Masyarakat Berbasis Prodi	Drs. Sarito, ST.,M.E.ng	Teknik Sipil	Pembangunan Pondasi Dan Dinding  Pos Ronda Kampung Ceringin Poncol Desa Raga Jaya . Kec. Bojong Gede Kabupaten BOGOR	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+90	Pengabdian Kepada Masyarakat Berbasis Prodi	Anis Rosyidah, ST, MT	P3M	Pemberdayaan Masyarakat melalui upaya Peningkatan Penghasilan bidang pengelolaan dan pengolahan sampah organic di Desa Pasir Angin, Kecamatan Megamendung, Kabupaten Bogor	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+91	Pengabdian Kepada Masyarakat Berbasis Prodi	Dr. Ida Nurhayati, SH, MH	P3M	Pembangunan struktur atap Bangunan Tempat Membatik di Kampung Urug, Kabupaten Bogor	\N	\N	2017	Internal	\N	\N	2021-04-25 12:49:26	2021-04-25 12:49:26
+92	Program Kemitraan Masyarakat	Ir SUTANTO M.T	Teknik Elektro	PEMBERDAYAAN BANK SAMPAH  DI WILAYAH  DESA DUREN MEKAR	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+93	Diseminasi Produk Teknologi ke Masyarakat	Dr IDA NURHAYATI M.H, S.H.	Akuntansi	DISEMINASI TEKNOLOGI PADA PENGEMBANGAN UKM PRODUK BERBASIS UNGGULAN DAERAH DALAM UPAYA PEMBERDAYAAN MASYARAKAT DI KELURAHAN CIBINONG KECAMATAN CIBINONG KABUPATEN BOGOR	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+94	Diseminasi Produk Teknologi ke Masyarakat	Dr. Dra. Dra IIS MARIAM	Administrasi Niaga	Pengolahan Sampah Terpadu dalam Upaya Meningkatkan Kualitas Lingkungan dan Partisipasi Masyarakat Desa Ciampea Kabupaten Bogor	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+95	Penerapan Produk Teknologi Tepat Guna kepada Masyarakat	Dr. Drs AHMAD TOSSIN ALAMSYAH	Teknik Elektro	Peningkatan Kemapuan Enterpreneurship Masyarakat Berbasis Teknologi Tepat Guna di Kelurahan Kemiri Muka Kecamatan Beji Depok	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+96	Penerapan Produk Teknologi Tepat Guna kepada Masyarakat	Dr NINING LATIANINGSIH M.Hum	Administrasi Niaga	Pemberdayaan Masyarakat melalui pemanfaatan teknologi Tepat guna ( TTG ) dalam pengelolaan dan pengolahan sampah terpadu 	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+97	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+98	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+99	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+100	\N	\N	\N	\N	\N	\N	2018	DIKTI	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+101	Pengabdian Kepada Masyarakat Berbasis Jurusan	Ach. Bakhrul Muchtasib, S.E.I, M.Si.	Akuntansi	Pemberdayaan Perempuan Desa Urug Kabupaten Bogor Dalam Meningkatkan Ekonomi Rumah Tangga	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+102	Pengabdian Kepada Masyarakat Berbasis Jurusan	Andikanoza Pradiptya S.T.,M.Eng.	Teknik Sipil	Pembangunan MCK Umum di Desa Urug Kecamatan Sukajaya - Kabupaten Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+103	Pengabdian Kepada Masyarakat Berbasis Jurusan	Dwi Agnes Natalia Bangun, S.Ds, M.Ds	Teknik Grafika dan Penerbitan	Pebuatan Buku Profil Sebagai Promosi Kampung Wisata Adat Urug Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+104	Pengabdian Kepada Masyarakat Berbasis Jurusan	Indri Neforawati, ST,MT	Teknik Informatika dan Komputer	Sosialisasi Internet Sehat dan Pembuatan Buku Pedoman Internet Sehat Untuk Kader Posyandu dan Puskesmas Kelurahan Kalimulya Kecamatan Cilodong Kota Depk	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+105	Pengabdian Kepada Masyarakat Berbasis Jurusan	Ir. Sri Danaryani, M.T.	Teknik Elektro	Renovasi Masjid Jami Al-Ikhlas Kampung Urug Lebak Desa Uruh, Kecamatan Sukajaya	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+106	Pengabdian Kepada Masyarakat Berbasis Jurusan	Riza Hadikusuma,M.Ag.	Administrasi Niaga	Penerapan manajemen dan teknologi berkelanjutan  sebagai wujud  pemberdayaan ekonomi produktif  bagi masyarakat  desa adat Kampung  Urug Kecamatan Sukajaya Kabupaten Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+107	Pengabdian Kepada Masyarakat Berbasis Jurusan	Drs. Suyitno Gatot, M.Kom	Teknik Mesin	Revitalisasi Sarana Asrama Pesantren Putri di Kampung Adat Urug, Desa Urug, Kecamatan Sukajaya, Kabupaten Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+108	Pengabdian Kepada Masyarakat Berbasis Program Studi	A. Tossin Alamsyah	Teknik ELektro	Revitalisasi Sarana MCK Masyarakat di Desa Adat Kampung Urug Leuwiliang Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+109	Pengabdian Kepada Masyarakat Berbasis Program Studi	Afifah Muharikah, S.S., M.Hum.	Teknik Informatika dan Komputer	IbM Pelatihan Pembelajaran Bahasa Inggris Untuk Keahlian Mendengar-Berbicara-Membaca- Menulis Memalalui Film Pendek dan Mesin Penerjemah Google  untuk Guru dan Siswa SMP dan SMK Muhamadiyah Beji	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+110	Pengabdian Kepada Masyarakat Berbasis Program Studi	Agus Supriyadi	Akuntansi	Pelatihan Penyusunan Laporan Keuangan dalam Menunjang Proposal Kredit yang Bankable dan Feasible untuk Para Pemula Usaha 	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+111	Pengabdian Kepada Masyarakat Berbasis Program Studi	Ali Masjono, SE. MBIT	Akuntansi	Iptek bagi Masyarakat: Peningkatan Pemahaman  Masyarakat Kota Depok Terhadap program Pemerintah  “YUK Nabung Saham”.	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+112	Pengabdian Kepada Masyarakat Berbasis Program Studi	Azhmy Fawzi My, M.I.Kom 	Teknik Grafika dan Penerbitan	Penguatan Media Publikasi di SMK 1 Sukabumi Pembuatan dan Pengelolaan Media Publikasi Sekolah Berbasis Web Kota Sukabumi, Jawa Barat 	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+113	Pengabdian Kepada Masyarakat Berbasis Program Studi	Darwin, S.T., M.Kom	Teknik Elektro	Pelatihan Pemograman PLC pada SMKN di Cileungsi	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+114	Pengabdian Kepada Masyarakat Berbasis Program Studi	Defiana Arnaldy, STp. Msi	Teknik Informatika dan Komputer	Pengadaan Server Basis Data Warga dan Peningkatan Keterampilan Sistem Informasi Bagi Kader Posyandu dan Poswindu 	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+115	Pengabdian Kepada Masyarakat Berbasis Program Studi	Dewi Winarni Susyanti S.E, M.Si	Administrasi Niaga	Peran Karang Taruna Desa Babakanmadang Dalam Peningkatan Potensi Pariwisata Sentul di Kabupaten Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+116	Pengabdian Kepada Masyarakat Berbasis Program Studi	Dr. Dra. Iis Mariam, M.Si	Administrasi Niaga	Implementasi  Management Bisnis  dan Pembuatan Laporan Keuangan Koperasi UMKM  di Desa Cilember Kabupaten Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+117	Pengabdian Kepada Masyarakat Berbasis Program Studi	DR. Sylvia Rozza	Akuntansi	Pendampingan Pendirian Koperasi Simpan Pinjam dan Pembiayaan Syariah di Pesantren Luhur Sabilussalam - Ciputat Timur - Tanggerang Selatan	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+118	Pengabdian Kepada Masyarakat Berbasis Program Studi	Dr.Isdawimah, ST.,MT	Teknik Elektro	Perbaikan Instalasi Listrik dan Sarana Belajar di Madrasah Ibtidaiyah Miftahul Ulum Desa Leuwikaret Kecamatan Klapanunggal Kabupaten Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+119	Pengabdian Kepada Masyarakat Berbasis Program Studi	Drs. Agus Setiawan, M.Kom 	Teknik Informatika dan Komputer	Pemanfaatan Lahan dan Pelestarian Budaya untuk Membangung Karakter Anak dan Remaja denan Pelatihan Manajemen Lingkungan	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+120	Pengabdian Kepada Masyarakat Berbasis Program Studi	Drs. Indra Z., SST., M.Kom	Teknik ELektro	PERBAIKAN SARANA PRASARANA BELAJAR MENGAJAR di MADRASAH IBTIDAIYAH MIFTAHUL ULUM  DESA LEUWIKARET, KECAMATAN KLAPANUNGGAL KABUPATEN BOGOR	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+121	Pengabdian Kepada Masyarakat Berbasis Program Studi	Drs. Mochammad Sholeh, ST. MT	Teknik Mesin	Peningkatan Komptensi Menggambar Teknik Menggunakan Bantuan Software Bagi Siswa SMK di Depok (Program Lanjutan)	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+122	Pengabdian Kepada Masyarakat Berbasis Program Studi	Drs. Sarito, ST. M.Eng	Teknik Sipil	Perbaikan Atap Toilet Plester Dinding Pasang Keramik dan Pintu Musholah Al-Hidayah, Kampung Pondok Manggis RT 3 RW 4 Desa Bojong Baru Kecamatan Bojong Gede Kabupaten Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+123	Pengabdian Kepada Masyarakat Berbasis Program Studi	Drs. Sidiq Ruswanto, S.T, M.Si	Teknik Mesin	Peningkatan Media Pembelajaran dan Evaluasi Nilai dengan Memanfaatkan Aplikasi Komputer Bagi Guru Sekolah Dasar di Beji Depok	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+124	Pengabdian Kepada Masyarakat Berbasis Program Studi	Drs. Syafrizal Syarief, S.T, M.T	Teknik ELektro	PELATIHAN SISTEM PENGATURAN SEKUENSIAL  DI SMK NEGERI 1 CILEUNGSI	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+125	Pengabdian Kepada Masyarakat Berbasis Program Studi	Eka Sasmita Mulya	Teknik SIpil	PERLUASAN RUANG DAN PERAPIHAN DINDING PENAHAN TANAH MUSHOLLA PONDOK MANGGIS RT 03/ RW 04,  BOJONG BARU   KECAMATAN BOJONG GEDE, BOGOR	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+126	Pengabdian Kepada Masyarakat Berbasis Program Studi	Emmidia Djonaidi, ST,MT,MBA	Teknik Grafika dan Penerbitan	Pengembangan Produksi Marchendising Desa Wisata Adat Kampung Urug Kabupaten Bogor - Jawa Barat	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+127	Pengabdian Kepada Masyarakat Berbasis Program Studi	Ernita Siambaton, SE, M.Hum	Administrasi Niaga	Peningkatan Kemampuan Kewirausahaan Masyarakat Desa,  Dengan Pelatihan Pemasaran Digital dan Keuangan Bagi Para Pelaku UMK  Desa Cilember Kabupaten Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+128	Pengabdian Kepada Masyarakat Berbasis Program Studi	Fauzri Fahimuddin, Ir, M.Sc, Dr.Eng	Teknik Sipil	Pembangunan Jembatan Penyebrangan Orang Rt 03 Rw 04 Kampung Pondok Manggis, Kelurahan Bojong Baru, Kecamtan Bojonggede Kabupatem Bogor 	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+129	Pengabdian Kepada Masyarakat Berbasis Program Studi	Hatta Maulana, S.Si, M.T.I	Teknik Informatika dan Komputer	Pembuatan System Bank Sampah Online pada Kelurahan Serua Kecamatan Bojong Sari Depok	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+130	Pengabdian Kepada Masyarakat Berbasis Program Studi	Ir. Agus Sukandi, MT.	Teknik Mesin	PERBAIKAN SANITASI AIR DAN TEMPAT WUDHU MASJID RIYADUS SOLIHIN DI KAMPUNG KEBON DUREN RT 03/04 KELURAHAN KALIMULYA KECAMATAN CILODONG KOTA DEPOK	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+131	Pengabdian Kepada Masyarakat Berbasis Program Studi	Ir. Anik Tjandra Setiati, MM	Teknik Elektro	Pelatihan Komputasi Menggunakan Spredsheet untuk Guru PAUD Kecamatan Pancoran Mas Kota Depok	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+132	Pengabdian Kepada Masyarakat Berbasis Program Studi	Ir. Emir Ridwan, MT	Teknik Mesin	PERBAIKAN ATAP DAN DINDING   MASJID RIYADUS SOLIHIN DI KAMPUNG KEBON DUREN RT 03/04 KELURAHAN KALIMULYA KECAMATAN CILODONG KOTA DEPOK	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+133	Pengabdian Kepada Masyarakat Berbasis Program Studi	Irpan Saripudin, M.Ds	Teknik Grafika dan Penerbitan	Pembuatan Sign System di Kawasan Wisata Kampung Urug, Bogor - Jawa Barat	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+134	Pengabdian Kepada Masyarakat Berbasis Program Studi	Iwan Sonjaya ST.MT	Teknik Informatika dan Komputer	IbM  Pembuatan Media Digital Interaktif Untuk Penyluhan Informasi Kesehatan Pada Posyandu di Keluarahan Kalimulya Kecamatan Cilodong Kota Depok	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+135	Pengabdian Kepada Masyarakat Berbasis Program Studi	M. Jamal Al-Bakri, S.Psi,M.M	MP-WNBK	Pendidikan dan Pelatihan Vokasional Bagi Individu Dengan Hambatan Intelektual	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+136	Pengabdian Kepada Masyarakat Berbasis Program Studi	Minto Rahayu, S.S. M.Si.	Teknik Mesin	PELATIHAN DASAR PREVENTIF MAINTENANCE  1 UNTUK  MASYARAKAT   CIPAYUNG -DEPOK, JAWA BARAT.	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+137	Pengabdian Kepada Masyarakat Berbasis Program Studi	Mohammad Fathurahman ST, MT.	Teknik Elektro	Pelatihan Rancang bangunan Jaringan Lokal Menggunakan Mikrotik Sebagai Penunjang Kompetensi Siswa Program Keahlian Teknik Komputer dan Jaringan SMK Negeri 3 Depok	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+138	Pengabdian Kepada Masyarakat Berbasis Program Studi	Muryeti, S.Si, M.Si	Teknik Grafika dan Penerbitan	Pembuatan Produk Kreatif Dengan Teknologi Digital Screen Printing Dalam Rangka Pemberdayaan Masyarakat Desa Urug Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+139	Pengabdian Kepada Masyarakat Berbasis Program Studi	Sujarwo, S.E,M.Si	Akuntansi	Pelatihan Anggota dan Pengembangan Bisnis Koperasi di Lingkungan Politeknik Negeri jakarta	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+140	Pengabdian Kepada Masyarakat Berbasis Program Studi	Suripto, ST, MSI	Teknik Sipil	Pengecoran Jalan Warga STA 1 - STA 150 Pondok Manggis RT 3 RW 4 Bojong Baru Kecamatan Bojong Gede Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+141	Pengabdian Kepada Masyarakat Berbasis Program Studi	Drs. Sarito, ST.,M.E.ng	Teknik Sipil	Pembangunan Pondasi Dan Dinding  Pos Ronda Kampung Ceringin Poncol Desa Raga Jaya . Kec. Bojong Gede Kabupaten BOGOR	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+142	Pengabdian Kepada Masyarakat Berbasis Program Studi	Anis Rosyidah, ST, MT	P3M	Pemberdayaan Masyarakat melalui upaya Peningkatan Penghasilan bidang pengelolaan dan pengolahan sampah organic di Desa Pasir Angin, Kecamatan Megamendung, Kabupaten Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+143	Pengabdian Kepada Masyarakat Berbasis Program Studi	Dr. Ida Nurhayati, SH, MH	P3M	Pembangunan struktur atap Bangunan Tempat Membatik di Kampung Urug, Kabupaten Bogor	\N	\N	2018	Internal	\N	\N	2021-04-25 13:15:46	2021-04-25 13:15:46
+\.
+
+
+--
+-- TOC entry 3143 (class 0 OID 33776)
+-- Dependencies: 208
+-- Data for Name: personal_access_tokens; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.personal_access_tokens (id, tokenable_type, tokenable_id, name, token, abilities, last_used_at, created_at, updated_at) FROM stdin;
+1	App\\Models\\User	1	token-auth	7ddbfa6d6ae06949ec2a4ffeab3d852dbb42df8dcea6dca50fa63e12512cd06c	["*"]	\N	2021-04-28 14:51:42	2021-04-28 14:51:42
+2	App\\Models\\User	2	token-auth	447e2fc2a94018ce267de84c1a1ac6476302f4bb383764cac8e56ab594cd4b01	["*"]	\N	2021-04-28 14:52:28	2021-04-28 14:52:28
+3	App\\Models\\User	1	token-auth	10bbb970102096d90e3ede3343d56a1171b323b829b172243cedb4ac955d299f	["*"]	2021-04-28 16:34:24	2021-04-28 16:13:41	2021-04-28 16:34:24
+\.
+
+
+--
+-- TOC entry 3149 (class 0 OID 33816)
+-- Dependencies: 214
+-- Data for Name: prodi; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.prodi (id, nama_prodi, id_jurusan, created_at, updated_at) FROM stdin;
+1	Adminsitrasi Bisnis	1	2021-04-06 03:21:02	\N
+2	MICE	1	2021-04-06 03:21:02	\N
+3	BISPRO	1	2021-04-06 03:21:02	\N
+4	Adminstrasi Bisnis Terapan	1	2021-04-06 03:21:02	\N
+5	Akuntansi	2	2021-04-06 03:21:02	\N
+6	Keuangan dan Perbankan	2	2021-04-06 03:21:02	\N
+7	Akuntansi Keuangan	2	2021-04-06 03:21:02	\N
+8	Keuangan dan Perbankan Syariah	2	2021-04-06 03:21:02	\N
+9	Keuangan dan Perbankan	2	2021-04-06 03:21:02	\N
+10	Manajemen Keuangan	2	2021-04-06 03:21:02	\N
+11	Teknik Elektronika Industri	3	2021-04-06 03:21:02	\N
+12	Teknik Listrik	3	2021-04-06 03:21:02	\N
+13	Telekomunikasi	3	2021-04-06 03:21:02	\N
+14	Instrumentasi dan Kontrol Industri	3	2021-04-06 03:21:02	\N
+15	Broadband Multimedia	3	2021-04-06 03:21:02	\N
+16	Teknik Otomatisasi Listrik Industri	3	2021-04-06 03:21:02	\N
+17	Teknik Grafika	4	2021-04-06 03:21:02	\N
+18	Penerbitan / Jurnalistik	4	2021-04-06 03:21:02	\N
+19	Teknologi Industri Cetak Kemasan	4	2021-04-06 03:21:02	\N
+20	Desain Grafis	4	2021-04-06 03:21:02	\N
+21	Teknik Informatika	5	2021-04-06 03:21:02	\N
+22	Teknik Multimedia dan Jaringan	5	2021-04-06 03:21:02	\N
+23	Teknik Multimedia Digital	5	2021-04-06 03:21:02	\N
+24	Teknik Komputer dan Jaringan	5	2021-04-06 03:21:02	\N
+25	Penerjemahan Bahasa Inggris	5	2021-04-06 03:21:02	\N
+26	Teknik Mesin	6	2021-04-06 03:21:02	\N
+27	Teknik Konversi Energi	6	2021-04-06 03:21:02	\N
+28	Teknik Manufaktur	6	2021-04-06 03:21:02	\N
+29	Pembangkit Tenaga Listrik	6	2021-04-06 03:21:02	\N
+30	Teknik Konstruksi Gedung	7	2021-04-06 03:21:02	\N
+31	Teknik Konstruksi Sipil	7	2021-04-06 03:21:02	\N
+32	Perancangan Jalan dan Jembatan	7	2021-04-06 03:21:02	\N
+33	PJJ Konsentrasi Jalan Tol	7	2021-04-06 03:21:02	\N
+34	Teknik Konstruksi Gedung	7	2021-04-06 03:21:02	\N
+\.
+
+
+--
+-- TOC entry 3158 (class 0 OID 33894)
+-- Dependencies: 223
+-- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.sessions (id, user_id, ip_address, user_agent, payload, last_activity) FROM stdin;
+fJhkNjMmrxRgiNGifSlybEUCBrPVK6b1lZRkUDcq	\N	127.0.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0	YTozOntzOjY6Il90b2tlbiI7czo0MDoiVGxpT2pBdm9sZFFDdU93SzQ0VG1PWmc0RThRaFVMdE1qeTIwN2dCcCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fX0=	1619621578
+SxHWd7IN6cfpNU4REF1NvIuHNq8A1Y54V9g8vXy4	1	127.0.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0	YTo3OntzOjY6Il90b2tlbiI7czo0MDoiZHRPeEJ2c2xCS3BhamtZdFV0MUFsSXRqY1NnU3dlNGpxUkNOWXIweCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMyOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvcGVuZWxpdGlhbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCR4cXZXVnRSZzUxNm1DWGx4TTNHNGl1a3g0Wlhub09tWjRSMjA2emRBTkFwcllxdlc2cXhvLiI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkeHF2V1Z0Umc1MTZtQ1hseE0zRzRpdWt4NFpYbm9PbVo0UjIwNnpkQU5BcHJZcXZXNnF4by4iO30=	1619356636
+wiN2dari8PAn5OdER9OdHFOiPU6bl30BlPQHXwQc	\N	127.0.0.1	PostmanRuntime/7.26.10	YTozOntzOjY6Il90b2tlbiI7czo0MDoiZEJZVnlEUWY4bm5DOURzVTBoYjlDNlZLcUtKNVU5eElXU0twS1dSRyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=	1619627195
+WTst1cgtkWfBCB0Dz2o6we8cFM1FJrxAhvCcs9z0	1	127.0.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0	YTo2OntzOjY6Il90b2tlbiI7czo0MDoiZ2RubXhsdkMzUmRIY0lacmFEeDZpRVc4T2ZaZHBOSnEyRGtxQmJ5bCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9wZW5nYWJkaWFuIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHhxdldWdFJnNTE2bUNYbHhNM0c0aXVreDRaWG5vT21aNFIyMDZ6ZEFOQXByWXF2VzZxeG8uIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCR4cXZXVnRSZzUxNm1DWGx4TTNHNGl1a3g0Wlhub09tWjRSMjA2emRBTkFwcllxdlc2cXhvLiI7fQ==	1619751260
+\.
+
+
+--
+-- TOC entry 3153 (class 0 OID 33852)
+-- Dependencies: 218
+-- Data for Name: skim; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.skim (id, nama_skim, id_jenis, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3138 (class 0 OID 33742)
+-- Dependencies: 203
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, nidn, nama, email, email_verified_at, password, "isAdmin", remember_token, current_team_id, profile_photo_path, created_at, updated_at, two_factor_secret, two_factor_recovery_codes) FROM stdin;
+2	1122334455	Ajay	ajay@mail.com	\N	$2y$10$a92FLK12YB.9eKHxil6hHu0I88GCx2VpKoxEyRX0sLV1d8x31t7jy	0	\N	\N	\N	2021-04-06 08:58:21	2021-04-06 08:58:21	\N	\N
+1	1234567890	Admin	admin@mail.com	\N	$2y$10$xqvWVtRg516mCXlxM3G4iukx4ZXnoOmZ4R206zdANAprYqvW6qxo.	1	\N	\N	\N	2021-04-06 03:21:02	2021-04-06 10:49:55	\N	\N
+\.
+
+
+--
+-- TOC entry 3181 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: author_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.author_id_seq', 3, true);
+
+
+--
+-- TOC entry 3182 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: failed_jobs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.failed_jobs_id_seq', 1, false);
+
+
+--
+-- TOC entry 3183 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: jenis_p2m_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.jenis_p2m_id_seq', 2, true);
+
+
+--
+-- TOC entry 3184 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: jurusan_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.jurusan_id_seq', 10, true);
+
+
+--
+-- TOC entry 3185 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: kategori_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.kategori_id_seq', 2, true);
+
+
+--
+-- TOC entry 3186 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.migrations_id_seq', 21, true);
+
+
+--
+-- TOC entry 3187 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: p2m_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.p2m_id_seq', 1, false);
+
+
+--
+-- TOC entry 3188 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: penelitian_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.penelitian_id_seq', 2166, true);
+
+
+--
+-- TOC entry 3189 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: pengabdian_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.pengabdian_id_seq', 143, true);
+
+
+--
+-- TOC entry 3190 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: personal_access_tokens_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.personal_access_tokens_id_seq', 3, true);
+
+
+--
+-- TOC entry 3191 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: prodi_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.prodi_id_seq', 34, true);
+
+
+--
+-- TOC entry 3192 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: skim_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.skim_id_seq', 1, false);
+
+
+--
+-- TOC entry 3193 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 2, true);
+
+
+--
+-- TOC entry 2975 (class 2606 OID 33808)
+-- Name: author author_nidn_unique; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.author
+    ADD CONSTRAINT author_nidn_unique UNIQUE (nidn);
+
+
+--
+-- TOC entry 2977 (class 2606 OID 33806)
+-- Name: author author_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.author
+    ADD CONSTRAINT author_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2964 (class 2606 OID 33771)
+-- Name: failed_jobs failed_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.failed_jobs
+    ADD CONSTRAINT failed_jobs_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2966 (class 2606 OID 33773)
+-- Name: failed_jobs failed_jobs_uuid_unique; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.failed_jobs
+    ADD CONSTRAINT failed_jobs_uuid_unique UNIQUE (uuid);
+
+
+--
+-- TOC entry 2987 (class 2606 OID 33883)
+-- Name: jenis_p2m jenis_p2m_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.jenis_p2m
+    ADD CONSTRAINT jenis_p2m_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2981 (class 2606 OID 33834)
+-- Name: jurusan jurusan_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.jurusan
+    ADD CONSTRAINT jurusan_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2985 (class 2606 OID 33870)
+-- Name: kategori kategori_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.kategori
+    ADD CONSTRAINT kategori_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2955 (class 2606 OID 33739)
+-- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.migrations
+    ADD CONSTRAINT migrations_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2973 (class 2606 OID 33798)
+-- Name: p2m p2m_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.p2m
+    ADD CONSTRAINT p2m_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2995 (class 2606 OID 33999)
+-- Name: penelitian penelitian_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.penelitian
+    ADD CONSTRAINT penelitian_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2993 (class 2606 OID 33974)
+-- Name: pengabdian pengabdian_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pengabdian
+    ADD CONSTRAINT pengabdian_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2968 (class 2606 OID 33784)
+-- Name: personal_access_tokens personal_access_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.personal_access_tokens
+    ADD CONSTRAINT personal_access_tokens_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2970 (class 2606 OID 33787)
+-- Name: personal_access_tokens personal_access_tokens_token_unique; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.personal_access_tokens
+    ADD CONSTRAINT personal_access_tokens_token_unique UNIQUE (token);
+
+
+--
+-- TOC entry 2979 (class 2606 OID 33821)
+-- Name: prodi prodi_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.prodi
+    ADD CONSTRAINT prodi_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2990 (class 2606 OID 33901)
+-- Name: sessions sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sessions
+    ADD CONSTRAINT sessions_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2983 (class 2606 OID 33857)
+-- Name: skim skim_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.skim
+    ADD CONSTRAINT skim_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2957 (class 2606 OID 33755)
+-- Name: users users_email_unique; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_email_unique UNIQUE (email);
+
+
+--
+-- TOC entry 2959 (class 2606 OID 33753)
+-- Name: users users_nidn_unique; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_nidn_unique UNIQUE (nidn);
+
+
+--
+-- TOC entry 2961 (class 2606 OID 33751)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2962 (class 1259 OID 33759)
+-- Name: password_resets_email_index; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX password_resets_email_index ON public.password_resets USING btree (email);
+
+
+--
+-- TOC entry 2971 (class 1259 OID 33785)
+-- Name: personal_access_tokens_tokenable_type_tokenable_id_index; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX personal_access_tokens_tokenable_type_tokenable_id_index ON public.personal_access_tokens USING btree (tokenable_type, tokenable_id);
+
+
+--
+-- TOC entry 2988 (class 1259 OID 33903)
+-- Name: sessions_last_activity_index; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX sessions_last_activity_index ON public.sessions USING btree (last_activity);
+
+
+--
+-- TOC entry 2991 (class 1259 OID 33902)
+-- Name: sessions_user_id_index; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX sessions_user_id_index ON public.sessions USING btree (user_id);
+
+
+--
+-- TOC entry 3002 (class 2606 OID 33840)
+-- Name: author author_id_jurusan_foreign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.author
+    ADD CONSTRAINT author_id_jurusan_foreign FOREIGN KEY (id_jurusan) REFERENCES public.jurusan(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 3001 (class 2606 OID 33822)
+-- Name: author author_id_prodi_foreign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.author
+    ADD CONSTRAINT author_id_prodi_foreign FOREIGN KEY (id_prodi) REFERENCES public.prodi(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2996 (class 2606 OID 33809)
+-- Name: p2m p2m_id_author_foreign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.p2m
+    ADD CONSTRAINT p2m_id_author_foreign FOREIGN KEY (id_author) REFERENCES public.author(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 3000 (class 2606 OID 33884)
+-- Name: p2m p2m_id_jenis_foreign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.p2m
+    ADD CONSTRAINT p2m_id_jenis_foreign FOREIGN KEY (id_jenis) REFERENCES public.jenis_p2m(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2997 (class 2606 OID 33835)
+-- Name: p2m p2m_id_jurusan_foreign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.p2m
+    ADD CONSTRAINT p2m_id_jurusan_foreign FOREIGN KEY (id_jurusan) REFERENCES public.jurusan(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2999 (class 2606 OID 33871)
+-- Name: p2m p2m_id_kategori_foreign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.p2m
+    ADD CONSTRAINT p2m_id_kategori_foreign FOREIGN KEY (id_kategori) REFERENCES public.kategori(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2998 (class 2606 OID 33858)
+-- Name: p2m p2m_id_skim_foreign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.p2m
+    ADD CONSTRAINT p2m_id_skim_foreign FOREIGN KEY (id_skim) REFERENCES public.skim(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 3003 (class 2606 OID 33845)
+-- Name: prodi prodi_id_jurusan_foreign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.prodi
+    ADD CONSTRAINT prodi_id_jurusan_foreign FOREIGN KEY (id_jurusan) REFERENCES public.jurusan(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 3004 (class 2606 OID 33889)
+-- Name: skim skim_id_jenis_foreign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.skim
+    ADD CONSTRAINT skim_id_jenis_foreign FOREIGN KEY (id_jenis) REFERENCES public.jenis_p2m(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+-- Completed on 2021-05-10 14:03:47
+
+--
+-- PostgreSQL database dump complete
+--
+
