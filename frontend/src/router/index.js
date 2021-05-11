@@ -32,7 +32,13 @@ const routes = [
         path: "/penelitian",
         name: "Penelitian",
         component: () =>
-            import(/* webpackChunkName: "about" */ "../views/Penelitian.vue")
+            import(/* webpackChunkName: "about" */ "../views/sources/Penelitian.vue")
+    },
+    {
+        path: "/login",
+        name: "Login",
+        component: () =>
+            import(/* webpackChunkName: "about" */ "../views/auth/Login.vue")
     }
 ];
 
