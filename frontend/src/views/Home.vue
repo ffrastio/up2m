@@ -34,7 +34,7 @@
         <!-- Start Data Statistik -->
         <div class="text-xl text-left font-bold py-4 px-4">Data Statistik</div>
         <div
-            class="bg-gray-200 px-4 py-4 grid grid-cols-1 gap-2 md:grid-cols-2 mb-4"
+            class="bg-gray-200 px-4 py-4 grid grid-cols-1 gap-2 md:grid-cols-2 mb-4 animate-popup"
         >
             <LineChart1 class="bg-white rounded" />
             <LineChart2 class="bg-white rounded" />

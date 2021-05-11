@@ -2,7 +2,7 @@
     <div class="about">
         <Navbar />
         <div class="container mx-auto">
-            <div class="block md:flex px-4">
+            <div class="block md:flex px-4 animate-popup">
                 <div class="md:block left-0 top-0 md:w-1/2 text-left mt-4 md:mt-24">
                     <p class="text-2xl font-bold">
                         Visi Penelitian
@@ -30,7 +30,7 @@
                     </p>
                 </div>
             </div>
-            <div class="block md:flex px-4">
+            <div class="block md:flex px-4 animate-popup">
                 <div class="md:block left-0 top-14 md:w-1/2 text-left mt-4 md:mt-24">
                     <p class="text-2xl font-bold">
                         Visi Pengabdian
