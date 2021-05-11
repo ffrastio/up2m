@@ -39,14 +39,14 @@
                     </li>
                     <li class="nav-item">
                         <router-link
-                            :to="{name: 'About'}"
+                            :to="{ name: 'About' }"
                             class="text-primary hover:bg-primary hover:text-white px-4 py-2 flex items-center rounded "
                             >About</router-link
                         >
                     </li>
                     <li class="nav-item">
                         <router-link
-                            :to="{name: 'Author'}"
+                            :to="{ name: 'Author' }"
                             class="text-primary hover:bg-primary hover:text-white px-4 py-2 flex items-center rounded "
                             >Authors</router-link
                         >
@@ -79,7 +79,7 @@
                             <li class="">
                                 <router-link
                                     class="rounded-t text-primary hover:bg-primary hover:text-white border-b  py-2 px-4 block whitespace-no-wrap"
-                                    :to="{name: 'Penelitian'}"
+                                    :to="{ name: 'Penelitian' }"
                                     >Penelitian</router-link
                                 >
                             </li>
@@ -92,7 +92,17 @@
                             </li>
                         </ul>
                     </div>
+                    <div
+                    class="border rounded-md border-primary items-center hover:bg-primary text-primary hover:text-white lg:hidden"
+                >
+                    <p class="px-4 py-2">Masuk</p>
+                </div>
                 </ul>
+                <div
+                    class="border rounded-md border-primary items-center hover:bg-primary text-primary hover:text-white"
+                >
+                    <p class="px-4 py-2">Masuk</p>
+                </div>
             </div>
         </div>
     </nav>
