@@ -17,7 +17,7 @@ class PengabdianTableSeeder extends Seeder
             [
                 'skim_pengabdian' => "Pengabdian Kepada Masyarakat Berbasis Jurusan",
                 'nama_ketua_pengabdian' => "John Noe, S.Tr.com",
-                'jurusan' => "Akuntansi",
+                'jurusan' => "akuntansi",
                 'judul' => "Pengabdian internal pertama",
                 'abstrak' => "",
                 'besar_dana' => 20000000,
@@ -31,7 +31,7 @@ class PengabdianTableSeeder extends Seeder
             [
                 'skim_pengabdian' => "Program Diseminasi",
                 'nama_ketua_pengabdian' => "John Noe, S.Tr.com",
-                'jurusan' => "Akuntansi",
+                'jurusan' => "akuntansi",
                 'judul' => "Pengabdian DIKTI pertama",
                 'abstrak' => "",
                 'besar_dana' => 20000000,

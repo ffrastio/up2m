@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
+use App\Models\Jurusan;
 use App\Models\Penelitian;
 use App\Models\Pengabdian;
 
@@ -17,7 +18,7 @@ class APIController extends Controller
 
     public function getAllPenelitian()
     {
-        $penelitian = Penelitian::all()->sortBy('tahun');
+        $penelitian = Penelitian::orderBy('tahun', 'asc')->paginate(20);
 
         return $this->sendResponse($penelitian, 'Penelitian retrieved succesfully.');
     }
@@ -34,7 +35,7 @@ class APIController extends Controller
 
     public function getAllPengabdian()
     {
-        $pengabdian = Pengabdian::all()->sortBy('tahun');
+        $pengabdian = Pengabdian::orderBy('tahun', 'asc')->paginate(20);
 
         return $this->sendResponse($pengabdian, 'Pengabdian retrieved successfully.');
     }
@@ -47,6 +48,13 @@ class APIController extends Controller
         }
 
         return $this->sendResponse($pengabdian, 'Pengabdian retrieved successfully.');
+    }
+
+    public function getAllJurusan()
+    {
+        $jurusan = Jurusan::all()->sortBy('nama_jurusan');
+
+        return $this->sendResponse($jurusan, 'Jurusan retrieved successfully.');
     }
 
     public function sendResponse($result, $message)
