@@ -36,7 +36,7 @@ class UserRequest extends FormRequest
             'email'      => 'required|email',
             'password'      => 'required|string|min:8|confirmed',
             'profile_photo_path' => 'sometimes|nullable|image|mimes:png,jpg,jpeg|
-                        max:500|dimensions:min_width=100,max_height:200',
+                        max:500|dimensions:min_width=100,min_height:200',
 
         ];
     }

@@ -26,6 +26,9 @@ Route::get('penelitian/{penelitian}', [APIController::class, 'getPenelitian']);
 Route::get('list-pengabdian', [APIController::class, 'getAllPengabdian']);
 Route::get('pengabdian/{pengabdian}', [APIController::class, 'getPengabdian']);
 
+//jurusan
+Route::get('list-jurusan', [APIController::class, 'getAllJurusan']);
+
 Route::group(['prefix' => 'auth', 'middleware' => 'auth:sanctum'], function () {
 
     // manggil controller sesuai bawaan laravel 8

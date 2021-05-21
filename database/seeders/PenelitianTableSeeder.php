@@ -17,7 +17,7 @@ class PenelitianTableSeeder extends Seeder
             [
                 'skim_penelitian' => "Penelitian Produk Terapan",
                 'nama_ketua_penelitian' => "John Doe, S.Tr.com",
-                'jurusan' => "Administrasi Niaga",
+                'jurusan' => "administrasi niaga",
                 'judul' => "Penelitian internal pertama",
                 'abstrak' => "",
                 'besar_dana' => 20000000,
@@ -31,7 +31,7 @@ class PenelitianTableSeeder extends Seeder
             [
                 'skim_penelitian' => "Penelitian Hibah Kompetensi",
                 'nama_ketua_penelitian' => "John Doe, S.Tr.com",
-                'jurusan' => "Administrasi Niaga",
+                'jurusan' => "administrasi niaga",
                 'judul' => "Penelitian DIKTI pertama",
                 'abstrak' => "",
                 'besar_dana' => 20000000,

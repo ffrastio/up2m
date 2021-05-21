@@ -27,4 +27,19 @@ class Pengabdian extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function setJurusanAttribute($jurusan)
+    {
+        $this->attributes['jurusan'] = strtolower($jurusan);
+    }
+
+    public function getJurusanAttribute($jurusan)
+    {
+        return strtoupper($jurusan);
+    }
+
+    // public function jurusan()
+    // {
+    //     return $this->belongsTo('App\Models\Jurusan', 'nama_jurusan');
+    // }
 }

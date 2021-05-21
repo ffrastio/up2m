@@ -15,65 +15,65 @@ class JurusanTableSeeder extends Seeder
     {
         $jurusan = [
             [
-                'nama_jurusan' => "Administrasi Niaga",
+                'nama_jurusan' => "administrasi niaga",
                 'logo' => null,
                 'created_at' => new \DateTime,
                 'updated_at' => null,
             ],
             [
-                'nama_jurusan' => "Akuntansi",
+                'nama_jurusan' => "akuntansi",
                 'logo' => null,
                 'created_at' => new \DateTime,
                 'updated_at' => null,
             ],
             [
-                'nama_jurusan' => "Teknik Elektro",
+                'nama_jurusan' => "teknik elektro",
                 'logo' => null,
                 'created_at' => new \DateTime,
                 'updated_at' => null,
             ],
             [
-                'nama_jurusan' => "Teknik Grafika dan Penerbitan",
+                'nama_jurusan' => "teknik grafika dan penerbitan",
                 'logo' => null,
                 'created_at' => new \DateTime,
                 'updated_at' => null,
             ],
             [
-                'nama_jurusan' => "Teknik Informatika dan Komputer",
+                'nama_jurusan' => "teknik informatika dan komputer",
                 'logo' => null,
                 'created_at' => new \DateTime,
                 'updated_at' => null,
             ],
             [
-                'nama_jurusan' => "Teknik Mesin",
+                'nama_jurusan' => "teknik mesin",
                 'logo' => null,
                 'created_at' => new \DateTime,
                 'updated_at' => null,
             ],
             [
-                'nama_jurusan' => "Teknik Sipil",
+                'nama_jurusan' => "teknik sipil",
                 'logo' => null,
                 'created_at' => new \DateTime,
                 'updated_at' => null,
             ],
             [
-                'nama_jurusan' => "MTTE",
+                'nama_jurusan' => "mtte",
                 'logo' => null,
                 'created_at' => new \DateTime,
                 'updated_at' => null,
             ],
             [
-                'nama_jurusan' => "P3M",
+                'nama_jurusan' => "p3m",
                 'logo' => null,
                 'created_at' => new \DateTime,
                 'updated_at' => null,
             ],
-            [
-                'nama_jurusan' => "Manajemen Pemasaran (WNBK)",
-                'logo' => null,
-                'created_at' => new \DateTime,
-                'updated_at' => null,
-            ],
+            // [
+            //     'nama_jurusan' => "Manajemen Pemasaran (WNBK)",
+            //     'logo' => null,
+            //     'created_at' => new \DateTime,
+            //     'updated_at' => null,
+            // ],
 
         ];
 

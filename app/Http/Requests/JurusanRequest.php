@@ -27,7 +27,7 @@ class JurusanRequest extends FormRequest
         return [
             'nama_jurusan' => 'required|string|max:50',
             'logo' => 'sometimes|nullable|image|mimes:png,jpg,jpeg|
-                        max:500|dimensions:min_width=100,max_height:200',
+                        max:500|dimensions:min_width=100,min_height:200',
         ];
     }
 
