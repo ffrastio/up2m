@@ -8,7 +8,7 @@
             <div
                 class="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start"
             >
-                <a href="#">
+                <a href="/">
                     <img
                         src="@/assets/img/logo.png"
                         alt="Logo UP2M"
@@ -28,7 +28,7 @@
                 class="lg:flex lg:flex-grow items-center"
             >
                 <ul
-                    class="flex flex-col lg:flex-row list-none justify-center w-full"
+                    class="flex flex-col lg:flex-row list-none justify-end items-center"
                 >
                     <li class="nav-item">
                         <router-link
@@ -51,13 +51,6 @@
                             >Authors</router-link
                         >
                     </li>
-                    <!-- <li class="nav-item">
-                        <a
-                            href="#"
-                            class="text-primary hover:bg-primary hover:text-white px-4 py-2 flex items-center rounded "
-                            >Sources</a
-                        >
-                    </li> -->
                     <div class="dropdown inline-block relative">
                         <button
                             class="text-primary hover:bg-primary hover:text-white py-2 px-4 rounded inline-flex items-center"
@@ -92,17 +85,12 @@
                             </li>
                         </ul>
                     </div>
-                    <div
-                    class="border rounded-md border-primary items-center hover:bg-primary text-primary hover:text-white lg:hidden"
-                >
-                    <p class="px-4 py-2">Masuk</p>
-                </div>
-                </ul>
                 <div
                     class="border rounded-md border-primary items-center hover:bg-primary text-primary hover:text-white"
                 >
                     <p class="px-4 py-2">Masuk</p>
                 </div>
+                </ul>
             </div>
         </div>
     </nav>
