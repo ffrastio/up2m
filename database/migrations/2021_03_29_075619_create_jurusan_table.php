@@ -20,15 +20,6 @@ class CreateJurusanTable extends Migration
             $table->timestamps();
         });
 
-        //set FK di kolom id_jurusan di tabel p2m
-        Schema::table('p2m', function (Blueprint $table) {
-            $table->foreign('id_jurusan')
-                ->references('id')
-                ->on('jurusan')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-        });
-
         //set FK di kolom id_jurusan di tabel author
         Schema::table('author', function (Blueprint $table) {
             $table->foreign('id_jurusan')

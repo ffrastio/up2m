@@ -61,7 +61,7 @@ class AuthorController extends Controller
         $foto = $request->file('avatar');
         $ext = $foto->getClientOriginalExtension();
         if ($request->file('avatar')->isValid()) {
-            $foto_name = date('YmdHis') . ".$ext";
+            $foto_name = "author-" . date('YmdHis') . ".$ext";
             $request->file('avatar')->move('fotoupload', $foto_name);
             return $foto_name;
         }
@@ -81,7 +81,7 @@ class AuthorController extends Controller
             $foto = $request->file('avatar');
             $ext = $foto->getClientOriginalExtension();
             if ($request->file('avatar')->isValid()) {
-                $foto_name = date('YmdHis') . ".$ext";
+                $foto_name = "author-" . date('YmdHis') . ".$ext";
                 $upload_path = 'fotoupload';
                 $request->file('avatar')->move($upload_path, $foto_name);
                 return $foto_name;

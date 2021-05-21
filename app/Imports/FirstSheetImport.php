@@ -6,6 +6,7 @@ use App\Models\Penelitian;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithMappedCells;
 use Maatwebsite\Excel\Imports\HeadingRowFormatter;
 
 HeadingRowFormatter::
@@ -29,7 +30,7 @@ class FirstSheetImport implements ToCollection, WithHeadingRow
                 Penelitian::create([
                     'skim_penelitian' => $row['Skim Penelitian'],
                     'nama_ketua_penelitian' => $row['Nama Ketua Peneliti'] ?? null,
-                    'jurusan' => $row['Jurusan'],
+                    'jurusan' => $row['Jurusan'] ?? null,
                     'judul' => $row['Judul'],
                     'tahun' => $this->tahun,
                     'kategori' => $kategori

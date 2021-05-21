@@ -23,14 +23,14 @@ class CreateAuthorTable extends Migration
             $table->timestamps();
         });
 
-        //set FK di kolom id_author di tabel p2m
-        Schema::table('p2m', function (Blueprint $table) {
-            $table->foreign('id_author')
-                ->references('id')
-                ->on('author')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-        });
+        // //set FK di kolom id_author di tabel p2m
+        // Schema::table('p2m', function (Blueprint $table) {
+        //     $table->foreign('id_author')
+        //         ->references('id')
+        //         ->on('author')
+        //         ->onDelete('cascade')
+        //         ->onUpdate('cascade');
+        // });
     }
 
     /**

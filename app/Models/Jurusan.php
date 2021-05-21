@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Jurusan extends Model
 {
@@ -20,6 +21,16 @@ class Jurusan extends Model
         'updated_at'
     ];
 
+    public function setNamaJurusanAttribute($nama_jurusan)
+    {
+        $this->attributes['nama_jurusan'] = strtolower($nama_jurusan);
+    }
+
+    public function getNamaJurusanAttribute($nama_jurusan)
+    {
+        return strtoupper($nama_jurusan);
+    }
+
     public function author()
     {
         return $this->hasMany('App\Models\Author', 'id_jurusan');
@@ -29,4 +40,14 @@ class Jurusan extends Model
     {
         return $this->hasMany('App\Models\Prodi', 'id_jurusan');
     }
+
+    // public function penelitian()
+    // {
+    //     return hasMany('App\Models\Penelitian', 'jurusan', 'nama_jurusan');
+    // }
+
+    // public function pengabdian()
+    // {
+    //     return hasMany('App\Models\Pengabdian', 'jurusan', 'nama_jurusan');
+    // }
 }
