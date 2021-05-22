@@ -1,0 +1,10 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/repoupmc/public_html/
+    - /bin/cp babel.config.js $DEPLOYPATH
+    - /bin/cp package-log.json $DEPLOYPATH
+    - /bin/cp postcss.config.js $DEPLOYPATH
+    - /bin/cp tailwind.config.js $DEPLOYPATH
+    - /bin/cp -R public $DEPLOYPATH
+    - /bin/cp -R src $DEPLOYPATH
