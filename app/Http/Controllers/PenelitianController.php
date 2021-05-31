@@ -12,7 +12,7 @@ class PenelitianController extends Controller
 {
     public function index()
     {
-        $items = Penelitian::all()->sortBy('tahun')->whereNotNull('judul');
+        $items = Penelitian::all()->sortBy('tahun');
         return view('pages.penelitian.index', [
             'items' => $items,
         ]);

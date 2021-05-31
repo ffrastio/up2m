@@ -39,14 +39,17 @@
                                 @endif
                             </td>
                             <td>
+                                <a href="{{ url('jurusan/' . $item->id) }}" class="btn btn-info">
+                                  <i class="fa fa-eye"></i> Detail
+                                </a>
                                 <a href="{{ url('jurusan/' . $item->id . '/edit') }}" class="btn btn-warning">
-                                    <i class="fa fa-pencil-alt"></i> Edit Jurusan
+                                    <i class="fa fa-pencil-alt"></i> Edit
                                 </a>
                                 <form action="{{ url('jurusan', $item->id) }}" method="post" class="d-inline">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger">
-                                        <i class="fa fa-trash"></i> Hapus Jurusan
+                                        <i class="fa fa-trash"></i> Hapus
                                     </button>
                                 </form>
                             </td>

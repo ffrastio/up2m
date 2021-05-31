@@ -19,8 +19,10 @@
                     <tr>
                         <th>NIDN</th>
                       <th>Nama</th>
-                        <th>Jurusan</th>
-                        <th>Prodi</th>
+                      <th>Gelar Depan</th>
+                      <th>Gelar Belakang</th>
+                        {{-- <th>Jurusan</th>
+                        <th>Prodi</th> --}}
                       <th>Avatar</th>
                       <th>Action</th>
                     </tr>
@@ -30,8 +32,10 @@
                         <tr>
                             <td>{{ $item->nidn}}</td>
                             <td>{{ $item->nama}}</td>
-                            <td>{{ $item->jurusan->nama_jurusan}}</td>
-                            <td>{{ $item->prodi->nama_prodi }}</td>
+                            <td>{{ $item->gelar_depan }}</td>
+                            <td>{{ $item->gelar_belakang }}</td>
+                            {{-- <td>{{ $item->jurusan->nama_jurusan}}</td>
+                            <td>{{ $item->prodi->nama_prodi }}</td> --}}
                             <td>
                               @if (isset($item))
                                     @if (isset($item->avatar))

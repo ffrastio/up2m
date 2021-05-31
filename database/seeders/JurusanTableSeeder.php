@@ -57,23 +57,11 @@ class JurusanTableSeeder extends Seeder
                 'updated_at' => null,
             ],
             [
-                'nama_jurusan' => "mtte",
-                'logo' => null,
-                'created_at' => new \DateTime,
-                'updated_at' => null,
-            ],
-            [
                 'nama_jurusan' => "p3m",
                 'logo' => null,
                 'created_at' => new \DateTime,
                 'updated_at' => null,
             ],
-            // [
-            //     'nama_jurusan' => "Manajemen Pemasaran (WNBK)",
-            //     'logo' => null,
-            //     'created_at' => new \DateTime,
-            //     'updated_at' => null,
-            // ],
 
         ];
 

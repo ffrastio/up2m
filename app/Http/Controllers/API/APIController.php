@@ -20,7 +20,7 @@ class APIController extends Controller
     {
         $penelitian = Penelitian::orderBy('tahun', 'asc')->paginate(20);
 
-        return $this->sendResponse($penelitian, 'Penelitian retrieved succesfully.');
+        return $this->sendResponse($penelitian, 'Penelitian retrieved successfully.');
     }
 
     public function getPenelitian($id)
@@ -30,7 +30,14 @@ class APIController extends Controller
             return $this->sendError('Penelitian not found.');
         }
 
-        return $this->sendResponse($penelitian, 'Penelitian retrieved succesfully.');
+        return $this->sendResponse($penelitian, 'Penelitian retrieved successfully.');
+    }
+
+    public function getPenelitianByTahun(Request $request)
+    {
+        $penelitian = Penelitian::where('tahun', $request->tahun)->get();
+
+        return $this->sendResponse($penelitian, 'Penelitian retrieved successfully.');
     }
 
     public function getAllPengabdian()
@@ -50,9 +57,16 @@ class APIController extends Controller
         return $this->sendResponse($pengabdian, 'Pengabdian retrieved successfully.');
     }
 
+    public function getPengabdianByTahun(Request $request)
+    {
+        $pengabdian = Pengabdian::where('tahun', $request->tahun)->get();
+
+        return $this->sendResponse($pengabdian, 'Pengabdian retrieved successfully.');
+    }
+
     public function getAllJurusan()
     {
-        $jurusan = Jurusan::all()->sortBy('nama_jurusan');
+        $jurusan = Jurusan::with('prodi')->withCount(['penelitian', 'pengabdian'])->get()->sortBy('nama_jurusan');
 
         return $this->sendResponse($jurusan, 'Jurusan retrieved successfully.');
     }
@@ -61,8 +75,8 @@ class APIController extends Controller
     {
         $response = [
             'success' => true,
-            'data'    => $result,
             'message' => $message,
+            'data'    => $result,
         ];
         return response()->json($response, 200);
     }

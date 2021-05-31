@@ -15,15 +15,15 @@ class CreateJurusanTable extends Migration
     {
         Schema::create('jurusan', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_jurusan', 50);
+            $table->string('nama_jurusan', 50)->unique();
             $table->string('logo', 191)->nullable();
             $table->timestamps();
         });
 
-        //set FK di kolom id_jurusan di tabel author
+        //set FK di kolom jurusan di tabel author
         Schema::table('author', function (Blueprint $table) {
-            $table->foreign('id_jurusan')
-                ->references('id')
+            $table->foreign('jurusan')
+                ->references('nama_jurusan')
                 ->on('jurusan')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');

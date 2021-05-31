@@ -20,11 +20,13 @@ Route::post('login', 'AuthController@login');
 
 //penelitian
 Route::get('list-penelitian', [APIController::class, 'getAllPenelitian']);
-Route::get('penelitian/{penelitian}', [APIController::class, 'getPenelitian']);
+Route::get('penelitian/{id}', [APIController::class, 'getPenelitian']);
+Route::get('penelitian', [APIController::class, 'getPenelitianByTahun']);
 
 //pengabdian
 Route::get('list-pengabdian', [APIController::class, 'getAllPengabdian']);
-Route::get('pengabdian/{pengabdian}', [APIController::class, 'getPengabdian']);
+Route::get('pengabdian/{id}', [APIController::class, 'getPengabdian']);
+Route::get('pengabdian', [APIController::class, 'getPengabdianByTahun']);
 
 //jurusan
 Route::get('list-jurusan', [APIController::class, 'getAllJurusan']);

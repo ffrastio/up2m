@@ -111,6 +111,12 @@ class ProdiTableSeeder extends Seeder
                 'updated_at' => null,
             ],
             [
+                'nama_prodi' => "MTTE",
+                'id_jurusan' => 3,
+                'created_at' => new \DateTime,
+                'updated_at' => null,
+            ],
+            [
                 'nama_prodi' => "Teknik Grafika",
                 'id_jurusan' => 4,
                 'created_at' => new \DateTime,

@@ -26,18 +26,16 @@ class CreatePenelitianTable extends Migration
             $table->integer('jumlah_anggota')->nullable();
             $table->string('nama_anggota', 191)->nullable();
             $table->timestamps();
-
-            // $table->foreign('jurusan')
-            //     ->references('nama_jurusan')
-            //     ->on('jurusan')
-            //     ->onDelete('cascade')
-            //     ->onUpdate('cascade');
         });
 
         //set FK di kolom jurusan di tabel penelitian
-        // Schema::table('penelitian', function (Blueprint $table) {
-
-        // });
+        Schema::table('penelitian', function (Blueprint $table) {
+            $table->foreign('jurusan')
+                ->references('nama_jurusan')
+                ->on('jurusan')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
     }
 
     /**

@@ -51,20 +51,20 @@
     </div>
 
 @if ($errors->any())
-    <div class="form-group {{ $errors->has('id_jurusan') ?
+    <div class="form-group {{ $errors->has('jurusan') ?
        'invalid-feedback' : 'valid-feedback' }}"></div>
 @else
     <div class="form-group">
 @endif
-    {!! Form::label('id_jurusan', 'Jurusan:', ['class' => 'control-label']) !!}
+    {!! Form::label('jurusan', 'Jurusan:', ['class' => 'control-label']) !!}
     @if (count($list_jurusan) > 0)
-    {!! Form::select('id_jurusan', $list_jurusan, null, ['class' => 'form-control',
-    'id' => 'id_jurusan','placeholder' => 'Pilih Jurusan']) !!}
+    {!! Form::select('jurusan', $list_jurusan, null, ['class' => 'form-control',
+    'nama_jurusan' => 'jurusan','placeholder' => 'Pilih Jurusan']) !!}
     @else
         <p>Tidak ada pilihan jurusan</p>
     @endif
-    @if ($errors->has('id_jurusan'))
-        <span class="alert-danger">{{ $errors->first('id_jurusan') }}</span>
+    @if ($errors->has('jurusan'))
+        <span class="alert-danger">{{ $errors->first('jurusan') }}</span>
     @endif
     </div>
 

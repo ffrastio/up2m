@@ -42,6 +42,13 @@ class JurusanController extends Controller
         return redirect('/jurusan');
     }
 
+    public function show($id)
+    {
+        $jurusan = Jurusan::with('prodi')->findOrFail($id);
+
+        return view('pages.jurusan.show', compact('jurusan'));
+    }
+
     public function store(JurusanRequest $request)
     {
         $input = $request->all();
