@@ -19,8 +19,13 @@ class APIController extends Controller
     public function getAllPenelitian()
     {
         $penelitian = Penelitian::orderBy('tahun', 'asc')->paginate(20);
+        $total = $penelitian->count();
 
-        return $this->sendResponse($penelitian, 'Penelitian retrieved successfully.');
+        return $this->sendResponse(
+            $penelitian,
+            'Penelitian retrieved successfully.',
+            $total
+        );
     }
 
     public function getPenelitian($id)
@@ -30,21 +35,27 @@ class APIController extends Controller
             return $this->sendError('Penelitian not found.');
         }
 
-        return $this->sendResponse($penelitian, 'Penelitian retrieved successfully.');
+        return $this->sendResponse($penelitian, 'Penelitian retrieved successfully.', '');
     }
 
     public function getPenelitianByTahun(Request $request)
     {
         $penelitian = Penelitian::where('tahun', $request->tahun)->get();
+        $total = $penelitian->count();
 
-        return $this->sendResponse($penelitian, 'Penelitian retrieved successfully.');
+        return $this->sendResponse(
+            $penelitian,
+            'Penelitian tahun ' . $request->tahun . ' retrieved successfully.',
+            $total
+        );
     }
 
     public function getAllPengabdian()
     {
         $pengabdian = Pengabdian::orderBy('tahun', 'asc')->paginate(20);
+        $total = $pengabdian->count();
 
-        return $this->sendResponse($pengabdian, 'Pengabdian retrieved successfully.');
+        return $this->sendResponse($pengabdian, 'Pengabdian retrieved successfully.', $total);
     }
 
     public function getPengabdian($id)
@@ -54,28 +65,36 @@ class APIController extends Controller
             return $this->sendError('Pengabdian not found.');
         }
 
-        return $this->sendResponse($pengabdian, 'Pengabdian retrieved successfully.');
+        return $this->sendResponse($pengabdian, 'Pengabdian retrieved successfully.', '');
     }
 
     public function getPengabdianByTahun(Request $request)
     {
         $pengabdian = Pengabdian::where('tahun', $request->tahun)->get();
+        $total = $pengabdian->count();
 
-        return $this->sendResponse($pengabdian, 'Pengabdian retrieved successfully.');
+        return $this->sendResponse(
+            $pengabdian,
+            'Pengabdian tahun ' . $request->tahun . ' retrieved successfully.',
+            $total
+        );
     }
 
     public function getAllJurusan()
     {
-        $jurusan = Jurusan::with('prodi')->withCount(['penelitian', 'pengabdian'])->get()->sortBy('nama_jurusan');
+        $jurusan = Jurusan::with('prodi')
+            ->withCount(['penelitian', 'pengabdian'])->get()->sortBy('nama_jurusan');
+        $total = $jurusan->count();
 
-        return $this->sendResponse($jurusan, 'Jurusan retrieved successfully.');
+        return $this->sendResponse($jurusan, 'Jurusan retrieved successfully.', $total);
     }
 
-    public function sendResponse($result, $message)
+    public function sendResponse($result, $message, $total)
     {
         $response = [
             'success' => true,
             'message' => $message,
+            'total_data' => $total,
             'data'    => $result,
         ];
         return response()->json($response, 200);
