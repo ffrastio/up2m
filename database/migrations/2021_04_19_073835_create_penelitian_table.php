@@ -16,28 +16,31 @@ class CreatePenelitianTable extends Migration
         Schema::create('penelitian', function (Blueprint $table) {
             $table->increments('id');
             $table->string('skim_penelitian', 191)->nullable();
-            $table->string('nama_ketua_penelitian', 50)->nullable();
-            $table->string('jurusan', 50)->nullable();
-            $table->string('judul', 255)->nullable();
+            $table->string('nama_ketua_penelitian', 191)->nullable();
+            $table->string('jurusan', 50);
+            $table->text('judul');
             $table->text('abstrak')->nullable();
             $table->double('besar_dana', 8, 2)->nullable();
-            $table->char('tahun', 4)->nullable();
-            $table->enum('kategori', ['Internal', 'DIKTI'])->nullable();
-            $table->integer('jumlah_anggota')->nullable();
+            $table->char('tahun', 4);
+            $table->enum('kategori', ['Internal', 'DIKTI']);
             $table->string('nama_anggota', 191)->nullable();
             $table->timestamps();
-
-            // $table->foreign('jurusan')
-            //     ->references('nama_jurusan')
-            //     ->on('jurusan')
-            //     ->onDelete('cascade')
-            //     ->onUpdate('cascade');
         });
 
-        //set FK di kolom jurusan di tabel penelitian
-        // Schema::table('penelitian', function (Blueprint $table) {
+        //set FK di kolom jurusan dan nama_ketua_penelitian di tabel penelitian
+        Schema::table('penelitian', function (Blueprint $table) {
+            $table->foreign('jurusan')
+                ->references('nama_jurusan')
+                ->on('jurusan')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
-        // });
+            $table->foreign('nama_ketua_penelitian')
+                ->references('nama')
+                ->on('author')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
     }
 
     /**

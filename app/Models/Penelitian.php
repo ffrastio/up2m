@@ -40,8 +40,13 @@ class Penelitian extends Model
         return strtoupper($jurusan);
     }
 
-    // public function jurusan()
-    // {
-    //     return $this->belongsTo('App\Models\Jurusan', 'nama_jurusan');
-    // }
+    public function jurusan()
+    {
+        return $this->belongsTo('App\Models\Jurusan', 'nama_jurusan');
+    }
+
+    public function author()
+    {
+        return $this->belongsTo('App\Models\Author', 'nama');
+    }
 }

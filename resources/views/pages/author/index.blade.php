@@ -18,20 +18,24 @@
                   <thead>
                     <tr>
                         <th>NIDN</th>
-                      <th>Nama</th>
+                        <th>Nama</th>
+                        <th>Gelar Depan</th>
+                        <th>Gelar Belakang</th>
                         <th>Jurusan</th>
-                        <th>Prodi</th>
-                      <th>Avatar</th>
-                      <th>Action</th>
+                        {{-- <th>Prodi</th> --}}
+                        <th>Avatar</th>
+                        <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     @forelse ($items as $item)
                         <tr>
-                            <td>{{ $item->nidn}}</td>
+                            <td>{{ !empty($item->nidn) ? $item->nidn : '-'}}</td>
                             <td>{{ $item->nama}}</td>
-                            <td>{{ $item->jurusan->nama_jurusan}}</td>
-                            <td>{{ $item->prodi->nama_prodi }}</td>
+                            <td>{{ !empty($item->gelar_depan) ? $item->gelar_depan : '-' }}</td>
+                            <td>{{ !empty($item->gelar_belakang) ? $item->gelar_belakang : '-' }}</td>
+                            <td>{{ $item->jurusan }}</td>
+                            {{-- <td>{{ $item->prodi->nama_prodi }}</td> --}}
                             <td>
                               @if (isset($item))
                                     @if (isset($item->avatar))

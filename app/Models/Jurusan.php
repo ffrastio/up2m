@@ -33,7 +33,7 @@ class Jurusan extends Model
 
     public function author()
     {
-        return $this->hasMany('App\Models\Author', 'id_jurusan');
+        return $this->hasMany('App\Models\Author', 'jurusan', 'nama_jurusan');
     }
 
     public function prodi()
@@ -41,13 +41,13 @@ class Jurusan extends Model
         return $this->hasMany('App\Models\Prodi', 'id_jurusan');
     }
 
-    // public function penelitian()
-    // {
-    //     return hasMany('App\Models\Penelitian', 'jurusan', 'nama_jurusan');
-    // }
+    public function penelitian()
+    {
+        return $this->hasMany('App\Models\Penelitian', 'jurusan', 'nama_jurusan');
+    }
 
-    // public function pengabdian()
-    // {
-    //     return hasMany('App\Models\Pengabdian', 'jurusan', 'nama_jurusan');
-    // }
+    public function pengabdian()
+    {
+        return $this->hasMany('App\Models\Pengabdian', 'jurusan', 'nama_jurusan');
+    }
 }

@@ -13,8 +13,10 @@ class Author extends Model
     protected $fillable = [
         'nidn',
         'nama',
+        'gelar_depan',
+        'gelar_belakang',
         'avatar',
-        'id_jurusan',
+        'jurusan',
         'id_prodi'
     ];
 
@@ -23,13 +25,33 @@ class Author extends Model
         'updated_at'
     ];
 
+    public function setJurusanAttribute($jurusan)
+    {
+        $this->attributes['jurusan'] = strtolower($jurusan);
+    }
+
+    public function getJurusanAttribute($jurusan)
+    {
+        return strtoupper($jurusan);
+    }
+
     public function jurusan()
     {
-        return $this->belongsTo('App\Models\Jurusan', 'id_jurusan');
+        return $this->belongsTo('App\Models\Jurusan', 'nama_jurusan');
     }
 
     public function prodi()
     {
         return $this->belongsTo('App\Models\Prodi', 'id_prodi');
+    }
+
+    public function penelitian()
+    {
+        return $this->hasMany('App\Models\Penelitian', 'nama_ketua_penelitian', 'nama');
+    }
+
+    public function pengabdian()
+    {
+        return $this->hasMany('App\Models\Pengabdian', 'nama_ketua_pengabdian', 'nama');
     }
 }

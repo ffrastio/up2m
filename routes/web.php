@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::get('/jurusan', [JurusanController::class, 'index'])->name('jurusan');
     Route::get('/jurusan/create', [JurusanController::class, 'create']);
+    Route::get('/jurusan/{jurusan}', [JurusanController::class, 'show']);
     Route::get('/jurusan/{jurusan}/edit', [JurusanController::class, 'edit']);
     Route::patch('/jurusan/{jurusan}', [JurusanController::class, 'update']);
     Route::delete('/jurusan/{jurusan}', [JurusanController::class, 'destroy']);

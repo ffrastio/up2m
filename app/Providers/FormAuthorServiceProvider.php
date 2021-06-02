@@ -26,7 +26,7 @@ class FormAuthorServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('pages.author.form', function ($view) {
-            $view->with('list_jurusan', Jurusan::pluck('nama_jurusan', 'id'));
+            $view->with('list_jurusan', Jurusan::pluck('nama_jurusan'));
             $view->with('list_prodi', Prodi::pluck('nama_prodi', 'id'));
         });
     }
