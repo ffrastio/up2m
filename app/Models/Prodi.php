@@ -12,6 +12,7 @@ class Prodi extends Model
     protected $table = 'prodi';
     protected $fillable = [
         'nama_prodi',
+        'jenjang',
         'id_jurusan'
     ];
 
@@ -23,5 +24,10 @@ class Prodi extends Model
     public function jurusan()
     {
         return $this->belongsTo('App\Models\Jurusan', 'id_jurusan');
+    }
+
+    public function author()
+    {
+        return $this->hasMany('App\Models\Author', 'id_prodi');
     }
 }

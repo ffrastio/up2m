@@ -21,9 +21,9 @@
     @else
         {!! Form::text('nama', null, ['placeholder'=>'Nama Lengkap Author','class' => 'form-control']) !!}
     @endif
-        @if ($errors->has('nama'))
-            <span class="text-danger">{{$errors->first('nama')}}</span>
-        @endif
+    @if ($errors->has('nama'))
+        <span class="text-danger">{{$errors->first('nama')}}</span>
+    @endif
 </div>
 
 @if ($errors->any())
@@ -50,23 +50,17 @@
     @endif
     </div>
 
-@if ($errors->any())
-    <div class="form-group {{ $errors->has('jurusan') ?
-       'invalid-feedback' : 'valid-feedback' }}"></div>
-@else
-    <div class="form-group">
-@endif
-    {!! Form::label('jurusan', 'Jurusan:', ['class' => 'control-label']) !!}
-    @if (count($list_jurusan) > 0)
-    {!! Form::select('jurusan', $list_jurusan, null, ['class' => 'form-control',
-    'nama_jurusan' => 'jurusan','placeholder' => 'Pilih Jurusan']) !!}
+<div class="form-group">
+    {!! Form::label('jurusan', 'Jurusan', ['class' => 'control-label']) !!}
+    @if ($errors->any())
+        {!! Form::text('jurusan', null, ($errors->has('jurusan') ? ['placeholder'=>'Jurusan','class'=>'form-control is-invalid'] : ['placeholder'=>'Jurusan','class'=>'form-control is-valid'] )) !!}
     @else
-        <p>Tidak ada pilihan jurusan</p>
+        {!! Form::text('jurusan', null, ['placeholder'=>'Jurusan','class' => 'form-control', 'disabled' => 'disabled']) !!}
     @endif
     @if ($errors->has('jurusan'))
-        <span class="alert-danger">{{ $errors->first('jurusan') }}</span>
-    @endif
-    </div>
+        <span class="text-danger">{{$errors->first('jurusan')}}</span>
+    @endif    
+</div>
 
 @if ($errors->any())
     <div class="form-group {{ $errors->has('id_prodi') ?

@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', 'AuthController@login');
 
+//author
+Route::get('author', [APIController::class, 'getAllAuthor']);
+Route::get('author/{id}', [APIController::class, 'getAuthor']);
+
 //penelitian
 Route::get('list-penelitian', [APIController::class, 'getAllPenelitian']);
 Route::get('penelitian/{id}', [APIController::class, 'getPenelitian']);

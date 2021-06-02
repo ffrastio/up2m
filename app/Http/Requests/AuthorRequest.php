@@ -27,7 +27,7 @@ class AuthorRequest extends FormRequest
         if ($this->method() == 'PATCH') {
             $nidn    = 'required|string|unique:author,nidn,' . $this->get('id');
         } else {
-            $nidn     = 'required|string|unique:author,nidn|max:10';
+            $nidn     = 'required|string|unique:author,nidn|max:20';
         }
 
         return [
@@ -35,7 +35,6 @@ class AuthorRequest extends FormRequest
             'nama'      => 'required|string|max:50',
             'avatar' => 'sometimes|nullable|image|mimes:png,jpg,jpeg|
                         max:500|dimensions:min_width=100,max_height:200',
-            'id_jurusan' => 'required',
             'id_prodi' => 'required'
         ];
     }
@@ -45,12 +44,11 @@ class AuthorRequest extends FormRequest
         return [
             'nidn.required'      => 'Nomor Induk Dosen wajib diisi.',
             'nidn.unique'       => 'NIDN sudah terpakai',
-            'nidn.max'           => 'NIDN maksimal diisi dengan 10 karakter.',
+            'nidn.max'           => 'NIDN maksimal diisi dengan 20 karakter.',
             'nama.required'      => 'Nama wajib diisi.',
             'nama.max'           => 'Nama maksimal diisi dengan 50 karakter.',
             'avatar.mimes'         => 'Hanya file dengan tipe .png .jpg dan .jpeg',
             'avatar.max'           => 'Ukuran file maksimal 500kb',
-            'id_jurusan.required'      => 'Jurusan wajib diisi.',
             'id_prodi.required'      => 'Prodi wajib diisi.',
         ];
     }

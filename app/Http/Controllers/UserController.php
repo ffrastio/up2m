@@ -73,7 +73,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'remember_token' => Str::random(60),
-            'profile_photo_path' => $request->profile_photo_path
+            'profile_photo_path' => $input
         ]);
 
         return redirect('/user');

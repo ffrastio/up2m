@@ -44,4 +44,14 @@ class Author extends Model
     {
         return $this->belongsTo('App\Models\Prodi', 'id_prodi');
     }
+
+    public function penelitian()
+    {
+        return $this->hasMany('App\Models\Penelitian', 'nama_ketua_penelitian', 'nama');
+    }
+
+    public function pengabdian()
+    {
+        return $this->hasMany('App\Models\Pengabdian', 'nama_ketua_pengabdian', 'nama');
+    }
 }

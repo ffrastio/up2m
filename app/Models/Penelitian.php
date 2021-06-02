@@ -44,4 +44,9 @@ class Penelitian extends Model
     {
         return $this->belongsTo('App\Models\Jurusan', 'nama_jurusan');
     }
+
+    public function author()
+    {
+        return $this->belongsTo('App\Models\Author', 'nama');
+    }
 }

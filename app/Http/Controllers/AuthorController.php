@@ -12,9 +12,7 @@ class AuthorController extends Controller
     public function index()
     {
         $items = Author::all();
-        return view('pages.author.index', [
-            'items' => $items,
-        ]);
+        return view('pages.author.index', compact('items'));
     }
 
     public function create()

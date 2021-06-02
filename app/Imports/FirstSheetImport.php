@@ -29,28 +29,29 @@ class FirstSheetImport implements ToCollection, WithHeadingRow
         $kategori = "DIKTI";
         foreach ($rows as $row) {
             if ($row->filter()->isNotEmpty()) {
+                if (!isset($row['Nama'])) {
+                    return null;
+                }
+                Author::updateOrCreate([
+                    'nama' => $row['Nama']
+                ], [
+                    'gelar_depan' => $row['Depan'],
+                    'gelar_belakang' => $row['Belakang'],
+                    'jurusan' => $row['Jurusan']
+                ]);
+
                 if (!isset($row['Skim Penelitian'])) {
                     return null;
                 }
                 Penelitian::create([
                     'skim_penelitian' => $row['Skim Penelitian'],
-                    'nama_ketua_penelitian' => $row['Nama Ketua Peneliti'] ?? null,
+                    'nama_ketua_penelitian' => $row['Nama'] ?? null,
                     'jurusan' => $row['Jurusan'] ?? null,
                     'judul' => $row['Judul'],
                     'tahun' => $this->tahun,
                     'kategori' => $kategori
                 ]);
             }
-
-            if (!isset($row['Nama'])) {
-                return null;
-            }
-            Author::updateOrCreate([
-                'nama' => $row['Nama'],
-                'gelar_depan' => $row['Depan'],
-                'gelar_belakang' => $row['Belakang'],
-                'jurusan' => $row['Jurusan']
-            ]);
         }
     }
 

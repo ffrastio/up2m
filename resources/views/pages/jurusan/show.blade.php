@@ -38,10 +38,12 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <th>Nama Prodi</th>
+                                    <th>Jenjang</th>
                                 </tr>
                                 @forelse ($jurusan->prodi as $item)
                                     <tr>
                                         <td>{{ $item->nama_prodi}}</td>
+                                        <td>{{ $item->jenjang }}</td>
                                     </tr>
                                 @empty
                                     <tr>

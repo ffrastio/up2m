@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
+use App\Models\Author;
 use App\Models\Jurusan;
 use App\Models\Penelitian;
 use App\Models\Pengabdian;
@@ -31,6 +32,7 @@ class APIController extends Controller
     public function getPenelitian($id)
     {
         $penelitian = Penelitian::find($id);
+
         if (is_null($penelitian)) {
             return $this->sendError('Penelitian not found.');
         }
@@ -61,6 +63,7 @@ class APIController extends Controller
     public function getPengabdian($id)
     {
         $pengabdian = Pengabdian::find($id);
+
         if (is_null($pengabdian)) {
             return $this->sendError('Pengabdian not found.');
         }
@@ -87,6 +90,25 @@ class APIController extends Controller
         $total = $jurusan->count();
 
         return $this->sendResponse($jurusan, 'Jurusan retrieved successfully.', $total);
+    }
+
+    public function getAllAuthor()
+    {
+        $author = Author::withCount(['penelitian', 'pengabdian'])->get();
+        $total = $author->count();
+
+        return $this->sendResponse($author, 'Author retrieved successfully.', $total);
+    }
+
+    public function getAuthor($id)
+    {
+        $author = Author::with(['penelitian', 'pengabdian'])->get()->find($id);
+
+        if (is_null($author)) {
+            return $this->sendError('Author not found.');
+        }
+
+        return $this->sendResponse($author, 'Author retrieved successfully.', '');
     }
 
     public function sendResponse($result, $message, $total)
