@@ -44,12 +44,43 @@ class APIController extends Controller
     {
         $penelitian = Penelitian::where('tahun', $request->tahun)->get();
         $total = $penelitian->count();
+        $dikti = Penelitian::where(['tahun' => $request->tahun, 'kategori' => 'DIKTI'])
+            ->get()->count();
+        $internal = Penelitian::where(['tahun' => $request->tahun, 'kategori' => 'Internal'])
+            ->get()->count();
+        $tm = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik mesin'])
+            ->get()->count();
+        $ts = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik sipil'])
+            ->get()->count();
+        $te = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik elektro'])
+            ->get()->count();
+        $tik = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik informatika dan komputer'])
+            ->get()->count();
+        $tgp = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik grafika dan penerbitan'])
+            ->get()->count();
+        $ak = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'akuntansi'])
+            ->get()->count();
+        $an = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'administrasi niaga'])
+            ->get()->count();
+        $p3m = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'p3m'])
+            ->get()->count();
 
-        return $this->sendResponse(
-            $penelitian,
-            'Penelitian tahun ' . $request->tahun . ' retrieved successfully.',
-            $total
-        );
+        return response()->json([
+            'success' => true,
+            'message' => 'Penelitian tahun ' . $request->tahun . ' retrieved successfully.',
+            'total_data' => $total,
+            'total_dikti' => $dikti,
+            'total_internal' => $internal,
+            'total_tm' => $tm,
+            'total_ts' => $ts,
+            'total_te' => $te,
+            'total_tik' => $tik,
+            'total_tgp' => $tgp,
+            'total_ak' => $ak,
+            'total_an' => $an,
+            'total_p3m' => $p3m,
+            // 'data'    => $penelitian,
+        ], 200);
     }
 
     public function getAllPengabdian()
@@ -75,12 +106,43 @@ class APIController extends Controller
     {
         $pengabdian = Pengabdian::where('tahun', $request->tahun)->get();
         $total = $pengabdian->count();
+        $dikti = Pengabdian::where(['tahun' => $request->tahun, 'kategori' => 'DIKTI'])
+            ->get()->count();
+        $internal = Pengabdian::where(['tahun' => $request->tahun, 'kategori' => 'Internal'])
+            ->get()->count();
+        $tm = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik mesin'])
+            ->get()->count();
+        $ts = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik sipil'])
+            ->get()->count();
+        $te = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik elektro'])
+            ->get()->count();
+        $tik = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik informatika dan komputer'])
+            ->get()->count();
+        $tgp = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik grafika dan penerbitan'])
+            ->get()->count();
+        $ak = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'akuntansi'])
+            ->get()->count();
+        $an = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'administrasi niaga'])
+            ->get()->count();
+        $p3m = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'p3m'])
+            ->get()->count();
 
-        return $this->sendResponse(
-            $pengabdian,
-            'Pengabdian tahun ' . $request->tahun . ' retrieved successfully.',
-            $total
-        );
+        return response()->json([
+            'success' => true,
+            'message' => 'Pengabdian tahun ' . $request->tahun . ' retrieved successfully.',
+            'total_data' => $total,
+            'total_dikti' => $dikti,
+            'total_internal' => $internal,
+            'total_tm' => $tm,
+            'total_ts' => $ts,
+            'total_te' => $te,
+            'total_tik' => $tik,
+            'total_tgp' => $tgp,
+            'total_ak' => $ak,
+            'total_an' => $an,
+            'total_p3m' => $p3m,
+            // 'data'    => $pengabdian,
+        ], 200);
     }
 
     public function getAllJurusan()
