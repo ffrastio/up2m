@@ -34,7 +34,7 @@ class UserRequest extends FormRequest
             'nidn'       => $nidn,
             'nama'      => 'required|string|max:50',
             'email'      => 'required|email',
-            'password'      => 'string|min:8|confirmed',
+            'password'      => 'required|string|min:8|confirmed',
             'profile_photo_path' => 'sometimes|nullable|image|mimes:png,jpg,jpeg|
                         max:500|dimensions:min_width=100,min_height:200',
 
@@ -47,6 +47,7 @@ class UserRequest extends FormRequest
             'nama.required'      => 'Nama wajib diisi.',
             'nama.max'           => 'Nama maksimal diisi dengan 50 karakter.',
             'email.required'      => 'Email wajib diisi.',
+            'password.required'      => 'Password wajib diisi.',
             'password.min' => 'Password minimal 8 karakter',
             'password.confirmed' => 'Password tidak sesuai',
             'profile_photo_path.mimes'         => 'Hanya file dengan tipe .png .jpg dan .jpeg',

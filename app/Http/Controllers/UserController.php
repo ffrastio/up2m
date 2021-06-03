@@ -62,18 +62,12 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        //Upload Foto
-        if ($request->hasFile('profile_photo_path')) {
-            $input['profile_photo_path'] = $this->uploadFoto($request);
-        }
-
         User::create([
             'nidn' => $request->nidn,
             'nama' => $request->nama,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'remember_token' => Str::random(60),
-            'profile_photo_path' => $input
+            'remember_token' => Str::random(60)
         ]);
 
         return redirect('/user');

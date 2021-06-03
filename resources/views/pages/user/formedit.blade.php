@@ -38,6 +38,26 @@
         @endif
 </div>
 
+<div class="form-group">
+    {!! Form::label('password', 'Password', ['class' => 'control-label']) !!}
+
+    @if ($errors->any())
+        {!! Form::password('password',  ($errors->has('password') ? array(null, 'placeholder'=>'Password', 'class'=>'form-control is-invalid') : array(null,'placeholder'=>'Password', 'class'=>'form-control is-valid'))) !!}
+    @else
+        {!! Form::password('password', array(null, 'placeholder'=>'Password', 'class'=>'form-control',  )) !!}
+    @endif
+        @if ($errors->has('password'))
+            <span class="text-danger">{{$errors->first('password')}}</span>
+        @endif
+</div>
+
+<div class="form-group">
+<label for="password-confirm" class=" col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" placeholder="Confirm password">
+
+</div>
+
 @if ($errors->any())
     <div class="form-group {{ $errors->has('profile_photo_path') ?
        'invalid-feedback' : 'valid-feedback' }}"></div>

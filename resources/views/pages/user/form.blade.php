@@ -54,30 +54,6 @@
 
 </div>
 
-@if ($errors->any())
-    <div class="form-group {{ $errors->has('profile_photo_path') ?
-       'invalid-feedback' : 'valid-feedback' }}"></div>
-@else
-    <div class="form-group">
-@endif
-    {!! Form::label('profile_photo_path', 'Foto:') !!}
-    <br>
-    {!! Form::file('profile_photo_path') !!}
-    @if ($errors->has('profile_photo_path'))
-        <br>
-        <span class="alert-danger">{{ $errors->first('profile_photo_path') }}</span>
-    @endif
-
-    {{-- Menampilkan FOTO --}}
-    @if (isset($user))
-        @if (isset($user->profile_photo_path))
-            <img src="{{ asset('fotoupload/'.$user->profile_photo_path) }}" width="30%">
-        @else
-            <img src="{{ asset('fotoupload/no-image.jpg') }}" width="30%">
-        @endif
-    @endif
-    </div>
-
 <div class="form-group">
     {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
 </div>
