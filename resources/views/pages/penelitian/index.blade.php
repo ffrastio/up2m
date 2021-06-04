@@ -43,7 +43,6 @@
                       <th>Judul</th>
                       <th>Kategori</th>
                       <th>Tahun</th>
-                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -57,18 +56,6 @@
                             <td>{{ $item->judul }}</td>
                             <td>{{ $item->kategori }}</td>
                             <td>{{ $item->tahun }}</td>
-                            <td>
-                                {{-- <a href="{{ url('jurusan/' . $item->id . '/edit') }}" class="btn btn-warning">
-                                    <i class="fa fa-pencil-alt"></i> Edit Jurusan
-                                </a> --}}
-                                {{-- <form action="{{ url('jurusan', $item->id) }}" method="post" class="d-inline">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-danger">
-                                        <i class="fa fa-trash"></i> Hapus Jurusan
-                                    </button>
-                                </form> --}}
-                            </td>
                         </tr>
                     @empty
                         <tr>

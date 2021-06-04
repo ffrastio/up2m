@@ -4,10 +4,10 @@ namespace App\Imports;
 
 use App\Models\Author;
 use App\Models\Penelitian;
+use App\Models\Skim;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Imports\HeadingRowFormatter;
 
 HeadingRowFormatter::
@@ -25,6 +25,7 @@ class ThirdSheetImport implements ToCollection, WithHeadingRow
     public function collection(Collection $rows)
     {
         $kategori = "Internal";
+        $jenis = "Penelitian";
         foreach ($rows as $row) {
             if ($row->filter()->isNotEmpty()) {
                 if (!isset($row['Nama'])) {
@@ -41,13 +42,19 @@ class ThirdSheetImport implements ToCollection, WithHeadingRow
                 if (!isset($row['Skim Penelitian'])) {
                     return null;
                 }
+                Skim::updateOrCreate([
+                    'skim' => $row['Skim Penelitian']
+                ], [
+                    'jenis' => $jenis
+                ]);
                 Penelitian::create([
                     'skim_penelitian' => $row['Skim Penelitian'],
-                    'nama_ketua_penelitian' => $row['Nama'] ?? null,
+                    'nama_ketua_penelitian' => $row['Nama Ketua Penelitian'] ?? null,
                     'jurusan' => $row['Jurusan'] ?? null,
                     'judul' => $row['Judul'],
                     'tahun' => $this->tahun,
-                    'kategori' => $kategori
+                    'kategori' => $kategori,
+                    'nama_author' => $row['Nama']
                 ]);
             }
         }

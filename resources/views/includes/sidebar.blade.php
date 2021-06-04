@@ -34,6 +34,12 @@
             <span>Manajemen Jurusan</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('skim') }}">
+            <i class="fas fa-fw fa-mask"></i>
+            <span>Data Skim</span></a>
+    </li>
+
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">

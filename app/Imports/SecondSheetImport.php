@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\Author;
 use App\Models\Pengabdian;
+use App\Models\Skim;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -25,6 +26,7 @@ class SecondSheetImport implements ToCollection, WithHeadingRow
     public function collection(Collection $rows)
     {
         $kategori = "DIKTI";
+        $jenis = "Pengabdian";
         foreach ($rows as $row) {
             if ($row->filter()->isNotEmpty()) {
                 if (!isset($row['Nama'])) {
@@ -41,13 +43,19 @@ class SecondSheetImport implements ToCollection, WithHeadingRow
                 if (!isset($row['Skim Pengabdian'])) {
                     return null;
                 }
+                Skim::updateOrCreate([
+                    'skim' => $row['Skim Pengabdian']
+                ], [
+                    'jenis' => $jenis
+                ]);
                 Pengabdian::create([
                     'skim_pengabdian' => $row['Skim Pengabdian'] ?? null,
-                    'nama_ketua_pengabdian' => $row['Nama'] ?? null,
+                    'nama_ketua_pengabdian' => $row['Nama Ketua Pengabdian'] ?? null,
                     'jurusan' => $row['Jurusan'],
                     'judul' => $row['Judul'],
                     'tahun' => $this->tahun,
-                    'kategori' => $kategori
+                    'kategori' => $kategori,
+                    'nama_author' => $row['Nama']
                 ]);
             }
         }

@@ -24,6 +24,7 @@ class CreatePengabdianTable extends Migration
             $table->char('tahun', 4);
             $table->enum('kategori', ['Internal', 'DIKTI']);
             $table->string('nama_anggota', 191)->nullable();
+            $table->string('nama_author', 191)->nullable();
             $table->timestamps();
         });
 
@@ -35,9 +36,15 @@ class CreatePengabdianTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('nama_ketua_pengabdian')
+            $table->foreign('nama_author')
                 ->references('nama')
                 ->on('author')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('skim_pengabdian')
+                ->references('skim')
+                ->on('skim')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

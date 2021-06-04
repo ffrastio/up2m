@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\PenelitianController;
 use App\Http\Controllers\PengabdianController;
+use App\Http\Controllers\SkimController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::patch('/jurusan/{jurusan}', [JurusanController::class, 'update']);
     Route::delete('/jurusan/{jurusan}', [JurusanController::class, 'destroy']);
     Route::post('/jurusan', [JurusanController::class, 'store']);
+
+    Route::get('/skim', [SkimController::class, 'index'])->name('skim');
 
     Route::get('/author', [AuthorController::class, 'index'])->name('author');
     Route::get('/author/create', [AuthorController::class, 'create']);
