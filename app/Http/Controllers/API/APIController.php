@@ -8,6 +8,7 @@ use App\Models\Author;
 use App\Models\Jurusan;
 use App\Models\Penelitian;
 use App\Models\Pengabdian;
+use Illuminate\Support\Facades\DB;
 
 class APIController extends Controller
 {
@@ -42,45 +43,14 @@ class APIController extends Controller
 
     public function getPenelitianByTahun(Request $request)
     {
-        $penelitian = Penelitian::where('tahun', $request->tahun)->get();
+        $penelitian = DB::table('penelitian')
+            ->select(DB::raw('jurusan, count(jurusan) as penelitian_count'))
+            ->where('tahun', $request->tahun)
+            ->groupBy('jurusan')
+            ->get();
         $total = $penelitian->count();
-        $dikti = Penelitian::where(['tahun' => $request->tahun, 'kategori' => 'DIKTI'])
-            ->get()->count();
-        $internal = Penelitian::where(['tahun' => $request->tahun, 'kategori' => 'Internal'])
-            ->get()->count();
-        $tm = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik mesin'])
-            ->get()->count();
-        $ts = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik sipil'])
-            ->get()->count();
-        $te = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik elektro'])
-            ->get()->count();
-        $tik = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik informatika dan komputer'])
-            ->get()->count();
-        $tgp = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik grafika dan penerbitan'])
-            ->get()->count();
-        $ak = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'akuntansi'])
-            ->get()->count();
-        $an = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'administrasi niaga'])
-            ->get()->count();
-        $p3m = Penelitian::where(['tahun' => $request->tahun, 'jurusan' => 'p3m'])
-            ->get()->count();
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Penelitian tahun ' . $request->tahun . ' retrieved successfully.',
-            'total_data' => $total,
-            'total_dikti' => $dikti,
-            'total_internal' => $internal,
-            'total_tm' => $tm,
-            'total_ts' => $ts,
-            'total_te' => $te,
-            'total_tik' => $tik,
-            'total_tgp' => $tgp,
-            'total_ak' => $ak,
-            'total_an' => $an,
-            'total_p3m' => $p3m,
-            // 'data'    => $penelitian,
-        ], 200);
+        return $this->sendResponse($penelitian, 'Penelitian retrieved successfully.', $total);
     }
 
     public function getAllPengabdian()
@@ -104,45 +74,40 @@ class APIController extends Controller
 
     public function getPengabdianByTahun(Request $request)
     {
-        $pengabdian = Pengabdian::where('tahun', $request->tahun)->get();
+        $pengabdian = DB::table('pengabdian')
+            ->select(DB::raw('jurusan, count(jurusan) as pengabdian_count'))
+            ->where('tahun', $request->tahun)
+            ->groupBy('jurusan')
+            ->get();
         $total = $pengabdian->count();
-        $dikti = Pengabdian::where(['tahun' => $request->tahun, 'kategori' => 'DIKTI'])
-            ->get()->count();
-        $internal = Pengabdian::where(['tahun' => $request->tahun, 'kategori' => 'Internal'])
-            ->get()->count();
-        $tm = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik mesin'])
-            ->get()->count();
-        $ts = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik sipil'])
-            ->get()->count();
-        $te = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik elektro'])
-            ->get()->count();
-        $tik = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik informatika dan komputer'])
-            ->get()->count();
-        $tgp = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'teknik grafika dan penerbitan'])
-            ->get()->count();
-        $ak = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'akuntansi'])
-            ->get()->count();
-        $an = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'administrasi niaga'])
-            ->get()->count();
-        $p3m = Pengabdian::where(['tahun' => $request->tahun, 'jurusan' => 'p3m'])
-            ->get()->count();
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Pengabdian tahun ' . $request->tahun . ' retrieved successfully.',
-            'total_data' => $total,
-            'total_dikti' => $dikti,
-            'total_internal' => $internal,
-            'total_tm' => $tm,
-            'total_ts' => $ts,
-            'total_te' => $te,
-            'total_tik' => $tik,
-            'total_tgp' => $tgp,
-            'total_ak' => $ak,
-            'total_an' => $an,
-            'total_p3m' => $p3m,
-            // 'data'    => $pengabdian,
-        ], 200);
+        return $this->sendResponse($pengabdian, 'Pengabdian retrieved successfully.', $total);
+    }
+
+    public function getSkimPenelitianByTahun(Request $request)
+    {
+        $skim = DB::table('penelitian')
+            ->select(DB::raw('count(skim_penelitian) as skim_count, skim_penelitian'))
+            ->where('tahun', $request->tahun)
+            ->groupBy('skim_penelitian')
+            ->get();
+
+        $total = $skim->count();
+
+        return $this->sendResponse($skim, 'Skim retrieved successfully.', $total);
+    }
+
+    public function getSkimPengabdianByTahun(Request $request)
+    {
+        $skim = DB::table('pengabdian')
+            ->select(DB::raw('count(skim_pengabdian) as skim_count, skim_pengabdian'))
+            ->where('tahun', $request->tahun)
+            ->groupBy('skim_pengabdian')
+            ->get();
+
+        $total = $skim->count();
+
+        return $this->sendResponse($skim, 'Skim retrieved successfully.', $total);
     }
 
     public function getAllJurusan()

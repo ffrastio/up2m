@@ -22,6 +22,10 @@ Route::post('login', 'AuthController@login');
 Route::get('author', [APIController::class, 'getAllAuthor']);
 Route::get('author/{id}', [APIController::class, 'getAuthor']);
 
+//skim
+Route::get('skim-penelitian', [APIController::class, 'getSkimPenelitianByTahun']);
+Route::get('skim-pengabdian', [APIController::class, 'getSkimPengabdianByTahun']);
+
 //penelitian
 Route::get('list-penelitian', [APIController::class, 'getAllPenelitian']);
 Route::get('penelitian/{id}', [APIController::class, 'getPenelitian']);
