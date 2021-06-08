@@ -53,6 +53,7 @@ class FirstSheetImport implements ToCollection, WithHeadingRow
                     'nama_ketua_penelitian' => $row['Nama Ketua Peneliti'] ?? null,
                     'jurusan' => $row['Jurusan'] ?? null,
                     'judul' => $row['Judul'],
+                    'besar_dana' => $row['Nominal Dana'] ?? null,
                     'tahun' => $this->tahun,
                     'kategori' => $kategori,
                     'nama_author' => $row['Nama']

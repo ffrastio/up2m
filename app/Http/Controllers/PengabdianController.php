@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ImportRequest;
+use App\Http\Requests\PengabdianRequest;
 use App\Imports\PengabdianImport;
 use App\Models\Pengabdian;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -18,14 +19,33 @@ class PengabdianController extends Controller
         ]);
     }
 
-    public function import(Request $request)
+    public function show($id)
     {
-        // validasi
-        $this->validate($request, [
-            'file' => 'required|mimes:csv,xls,xlsx',
-            'tahun' => 'required|max:4|string'
-        ]);
+        $pengabdian = Pengabdian::findOrFail($id);
 
+        return view('pages.pengabdian.show', compact('pengabdian'));
+    }
+
+    public function edit($id)
+    {
+        $pengabdian = Pengabdian::findOrFail($id);
+
+        return view('pages.pengabdian.edit', compact('pengabdian'));
+    }
+
+    public function update(Pengabdian $pengabdian, PengabdianRequest $request)
+    {
+        $data = $request->all();
+
+        //update data pengabdian
+        $pengabdian->update($data);
+        Session::flash('sukses', 'Berhasil update data pengabdian');
+
+        return redirect('/pengabdian');
+    }
+
+    public function import(ImportRequest $request)
+    {
         // menangkap file excel
         $file = $request->file('file');
         $tahun = $request->tahun;
@@ -41,7 +61,7 @@ class PengabdianController extends Controller
         $import->onlySheets(1, 3);
         Excel::import($import, public_path('/file_pengabdian/' . $nama_file));
         // notifikasi dengan session
-        Session::flash('sukses', 'Data Pengabdian Berhasil Diimport!');
+        Session::flash('sukses', 'Data Pengabdian Tahun ' . $tahun . ' Berhasil Diimport!');
 
         // alihkan halaman kembali
         return redirect('/pengabdian');

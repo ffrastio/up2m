@@ -10,66 +10,74 @@
             </a>
         </div>
 
+        {{-- notifikasi sukses --}}
+        @if ($sukses = Session::get('sukses'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $sukses }}</strong>
+            </div>
+        @endif
+
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                        <th>NIDN</th>
-                        <th>Nama</th>
-                        <th>Gelar Depan</th>
-                        <th>Gelar Belakang</th>
-                        <th>Jurusan</th>
-                        {{-- <th>Prodi</th> --}}
-                        <th>Avatar</th>
-                        <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @forelse ($items as $item)
-                        <tr>
-                            <td>{{ !empty($item->nidn) ? $item->nidn : '-'}}</td>
-                            <td>{{ $item->nama}}</td>
-                            <td>{{ !empty($item->gelar_depan) ? $item->gelar_depan : '-' }}</td>
-                            <td>{{ !empty($item->gelar_belakang) ? $item->gelar_belakang : '-' }}</td>
-                            <td>{{ $item->jurusan }}</td>
-                            {{-- <td>{{ $item->prodi->nama_prodi }}</td> --}}
-                            <td>
-                              @if (isset($item))
-                                    @if (isset($item->avatar))
-                                        <img src="{{ asset('fotoupload/'.$item->avatar) }}" width="80px">
-                                    @else
-                                        <img src="{{ asset('fotoupload/no-image.jpg') }}" width="80px">
-                                    @endif
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ url('author/' . $item->id . '/edit') }}" class="btn btn-warning">
-                                    <i class="fa fa-pencil-alt"></i> Edit
-                                </a>
-                                <form action="{{ url('author', $item->id) }}" method="post" class="d-inline">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-danger">
-                                        <i class="fa fa-trash"></i> Hapus
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="7" class="text-center">
-                                Data tidak ada
-                            </td>
-                        </tr>
-                    @endforelse
-                  </tbody>
-                </table>
-              </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>NIDN</th>
+                                <th>Nama</th>
+                                <th>Gelar Depan</th>
+                                <th>Gelar Belakang</th>
+                                <th>Jurusan</th>
+                                {{-- <th>Prodi</th> --}}
+                                <th>Avatar</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($items as $item)
+                                <tr>
+                                    <td>{{ !empty($item->nidn) ? $item->nidn : '-' }}</td>
+                                    <td>{{ $item->nama }}</td>
+                                    <td>{{ !empty($item->gelar_depan) ? $item->gelar_depan : '-' }}</td>
+                                    <td>{{ !empty($item->gelar_belakang) ? $item->gelar_belakang : '-' }}</td>
+                                    <td>{{ $item->jurusan }}</td>
+                                    {{-- <td>{{ $item->prodi->nama_prodi }}</td> --}}
+                                    <td>
+                                        @if (isset($item))
+                                            @if (isset($item->avatar))
+                                                <img src="{{ asset('fotoupload/' . $item->avatar) }}" width="80px">
+                                            @else
+                                                <img src="{{ asset('fotoupload/no-image.jpg') }}" width="80px">
+                                            @endif
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('author/' . $item->id . '/edit') }}" class="btn btn-warning">
+                                            <i class="fa fa-pencil-alt"></i> Edit
+                                        </a>
+                                        <form action="{{ url('author', $item->id) }}" method="post" class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-danger">
+                                                <i class="fa fa-trash"></i> Hapus
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="7" class="text-center">
+                                        Data tidak ada
+                                    </td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
-          </div>
-           <!-- DataTales Example End -->
+        </div>
+        <!-- DataTales Example End -->
     </div>
 @endsection

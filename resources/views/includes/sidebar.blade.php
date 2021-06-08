@@ -24,10 +24,10 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-    Menu
+        Menu
     </div>
 
-    <!-- Nav Item - Peminjaman -->
+    <!-- Nav Item - Jurusan -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('jurusan') }}">
             <i class="fas fa-fw fa-door-open"></i>
@@ -42,7 +42,8 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+            aria-controls="collapsePages">
             <i class="fas fa-fw fa-box-open"></i>
             <span>Manajemen P2M</span>
         </a>
@@ -54,34 +55,20 @@
         </div>
     </li>
 
-    <!-- Nav Item - Peminjaman -->
-    {{-- <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-book-open"></i>
-            <span>Peminjaman</span></a>
-    </li> --}}
-
-    <!-- Nav Item - Laporan -->
-    {{-- <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-database"></i>
-            <span>Laporan Kerusakan</span></a>
-    </li> --}}
-
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Nav Item - Pengguna -->
+    <!-- Nav Item - Pengguna -->
     <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePengguna" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link" href="{{ route('user') }}">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Pimpinan</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('author') }}">
             <i class="fas fa-fw fa-user-friends"></i>
-            <span>Pengguna</span></a>
-            <div id="collapsePengguna" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ route('user') }}">Pimpinan</a>
-                    <a class="collapse-item" href="{{ route('author') }}">Author</a>
-                </div>
-            </div>
+            <span>Author</span></a>
     </li>
 
 

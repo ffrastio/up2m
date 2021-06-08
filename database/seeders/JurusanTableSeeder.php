@@ -57,7 +57,13 @@ class JurusanTableSeeder extends Seeder
                 'updated_at' => null,
             ],
             [
-                'nama_jurusan' => "p3m",
+                'nama_jurusan' => "pasca sarjana",
+                'logo' => null,
+                'created_at' => new \DateTime,
+                'updated_at' => null,
+            ],
+            [
+                'nama_jurusan' => "direktorat",
                 'logo' => null,
                 'created_at' => new \DateTime,
                 'updated_at' => null,

@@ -6,12 +6,13 @@ use App\Http\Requests\AuthorRequest;
 use App\Models\Author;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AuthorController extends Controller
 {
     public function index()
     {
-        $items = Author::all();
+        $items = Author::all()->sortBy('nama');
         return view('pages.author.index', compact('items'));
     }
 
@@ -37,6 +38,8 @@ class AuthorController extends Controller
 
         //update data author
         $author->update($input);
+        Session::flash('sukses', 'Berhasil update data author');
+
         return redirect('/author');
     }
 
@@ -93,6 +96,8 @@ class AuthorController extends Controller
         $this->hapusFoto($author);
 
         $author->delete();
+        Session::flash('sukses', 'Berhasil hapus data author');
+
         return redirect('/author');
     }
 

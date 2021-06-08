@@ -52,6 +52,7 @@ class FourthSheetImport implements ToCollection, WithHeadingRow
                     'nama_ketua_pengabdian' => $row['Nama Ketua Pengabdian'] ?? null,
                     'jurusan' => $row['Jurusan'],
                     'judul' => $row['Judul'],
+                    'besar_dana' => $row['Nominal Dana'] ?? null,
                     'tahun' => $this->tahun,
                     'kategori' => $kategori,
                     'nama_author' => $row['Nama']

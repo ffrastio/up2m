@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -31,19 +30,6 @@ class UserController extends Controller
         return view('pages.user.edit', compact('user'));
     }
 
-    // public function editpass()
-    // {
-    //     return view('pages.user.password.edit');
-    // }
-
-    // public function updatepass(UpdatePasswordRequest $request)
-    // {
-    //     $request->user()->update([
-    //         'password' => Hash::make($request->get('password'))
-    //     ]);
-    //     return redirect()->route('password.edit');
-    // }
-
     public function update(User $user, UserRequest $request)
     {
 
@@ -56,6 +42,7 @@ class UserController extends Controller
         }
 
         $user->update($input);
+        Session::flash('sukses', 'Berhasil update data pimpinan');
 
         return redirect('/user');
     }
@@ -121,6 +108,8 @@ class UserController extends Controller
         $this->hapusFoto($user);
 
         $user->delete();
+        Session::flash('sukses', 'Berhasil hapus data pimpinan');
+
         return redirect('/user');
     }
 }

@@ -19,7 +19,6 @@ class Pengabdian extends Model
         'besar_dana',
         'tahun',
         'kategori',
-        'jumlah_anggota',
         'nama_anggota',
         'nama_author',
     ];

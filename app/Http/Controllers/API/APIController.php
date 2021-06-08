@@ -8,6 +8,7 @@ use App\Models\Author;
 use App\Models\Jurusan;
 use App\Models\Penelitian;
 use App\Models\Pengabdian;
+use App\Models\Skim;
 use Illuminate\Support\Facades\DB;
 
 class APIController extends Controller

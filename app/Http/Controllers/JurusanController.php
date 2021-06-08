@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\JurusanRequest;
 use App\Models\Jurusan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class JurusanController extends Controller
@@ -39,6 +40,8 @@ class JurusanController extends Controller
 
         //update data jurusan
         $jurusan->update($input);
+        Session::flash('sukses', 'Berhasil update data jurusan');
+
         return redirect('/jurusan');
     }
 
@@ -103,6 +106,8 @@ class JurusanController extends Controller
         $this->hapusFoto($jurusan);
 
         $jurusan->delete();
+        Session::flash('sukses', 'Berhasil hapus data jurusan');
+
         return redirect('/jurusan');
     }
 
