@@ -106,9 +106,9 @@
                         <div class="form-group">
                             {!! Form::label('tahun', 'Tahun:', ['class' => 'control-label']) !!}
                             @if ($errors->any())
-                                {!! Form::text('tahun', null, $errors->has('tahun') ? ['placeholder' => 'Tahun Penelitian', 'class' => 'form-control is-invalid'] : ['placeholder' => 'Tahun Penelitian', 'class' => 'form-control is-valid']) !!}
+                                {!! Form::text('tahun', null, $errors->has('tahun') ? ['placeholder' => 'Tahun Pengabdian', 'class' => 'form-control is-invalid'] : ['placeholder' => 'Tahun Pengabdian', 'class' => 'form-control is-valid']) !!}
                             @else
-                                {!! Form::text('tahun', null, ['placeholder' => 'Tahun Penelitian', 'class' => 'form-control']) !!}
+                                {!! Form::text('tahun', null, ['placeholder' => 'Tahun Pengabdian', 'class' => 'form-control']) !!}
                             @endif
                             @if ($errors->has('tahun'))
                                 <span class="text-danger">{{ $errors->first('tahun') }}</span>

@@ -22,19 +22,17 @@ Route::post('login', 'AuthController@login');
 Route::get('author', [APIController::class, 'getAllAuthor']);
 Route::get('author/{id}', [APIController::class, 'getAuthor']);
 
-//skim
-Route::get('skim-penelitian', [APIController::class, 'getSkimPenelitianByTahun']);
-Route::get('skim-pengabdian', [APIController::class, 'getSkimPengabdianByTahun']);
-
 //penelitian
 Route::get('list-penelitian', [APIController::class, 'getAllPenelitian']);
 Route::get('penelitian/{id}', [APIController::class, 'getPenelitian']);
-Route::get('penelitian', [APIController::class, 'getPenelitianByTahun']); //ganti nama route menjadi jurusan
+Route::get('jurusan-penelitian', [APIController::class, 'getPenelitianByTahun']);
+Route::get('skim-penelitian', [APIController::class, 'getSkimPenelitianByTahun']);
 
 //pengabdian
 Route::get('list-pengabdian', [APIController::class, 'getAllPengabdian']);
 Route::get('pengabdian/{id}', [APIController::class, 'getPengabdian']);
-Route::get('pengabdian', [APIController::class, 'getPengabdianByTahun']); //ganti nama route menjadi jurusan
+Route::get('jurusan-pengabdian', [APIController::class, 'getPengabdianByTahun']);
+Route::get('skim-pengabdian', [APIController::class, 'getSkimPengabdianByTahun']);
 
 //jurusan
 Route::get('list-jurusan', [APIController::class, 'getAllJurusan']);

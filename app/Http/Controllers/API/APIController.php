@@ -88,7 +88,7 @@ class APIController extends Controller
     public function getSkimPenelitianByTahun(Request $request)
     {
         $skim = DB::table('penelitian')
-            ->select(DB::raw('count(skim_penelitian) as skim_count, skim_penelitian'))
+            ->select(DB::raw('skim_penelitian, count(skim_penelitian) as penelitian_count'))
             ->where('tahun', $request->tahun)
             ->groupBy('skim_penelitian')
             ->get();
@@ -101,7 +101,7 @@ class APIController extends Controller
     public function getSkimPengabdianByTahun(Request $request)
     {
         $skim = DB::table('pengabdian')
-            ->select(DB::raw('count(skim_pengabdian) as skim_count, skim_pengabdian'))
+            ->select(DB::raw('skim_pengabdian, count(skim_pengabdian) as pengabdian_count '))
             ->where('tahun', $request->tahun)
             ->groupBy('skim_pengabdian')
             ->get();
@@ -122,7 +122,7 @@ class APIController extends Controller
 
     public function getAllAuthor()
     {
-        $author = Author::withCount(['penelitian', 'pengabdian'])->get();
+        $author = Author::withCount(['penelitian', 'pengabdian'])->get()->sortBy('nama');
         $total = $author->count();
 
         return $this->sendResponse($author, 'Author retrieved successfully.', $total);
