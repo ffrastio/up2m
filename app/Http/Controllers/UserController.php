@@ -79,7 +79,7 @@ class UserController extends Controller
             //Hapus foto lama jika ada foto baru
             $exist = Storage::disk('foto')->exists($user->profile_photo_path);
             if (isset($user->logo) && $exist) {
-                $delete = Storage::disk('foto')->delete($user->profile_photo_path);
+                Storage::disk('foto')->delete($user->profile_photo_path);
             }
             //Upload foto baru
             $foto = $request->file('profile_photo_path');

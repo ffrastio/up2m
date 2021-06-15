@@ -38,7 +38,7 @@
     {{-- Menampilkan FOTO --}}
     @if (isset($author))
         @if (isset($author->avatar))
-            <img src="{{ asset('fotoupload/' . $author->avatar) }}" width="30%">
+            <img src="{{ Storage::url($author->avatar) }}" width="30%">
         @else
             <img src="{{ asset('fotoupload/no-image.jpg') }}" width="30%">
         @endif

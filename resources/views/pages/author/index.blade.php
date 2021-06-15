@@ -47,7 +47,7 @@
                                     <td>
                                         @if (isset($item))
                                             @if (isset($item->avatar))
-                                                <img src="{{ asset('fotoupload/' . $item->avatar) }}" width="80px">
+                                                <img src="{{ Storage::url($item->avatar) }}" width="80px">
                                             @else
                                                 <img src="{{ asset('fotoupload/no-image.jpg') }}" width="80px">
                                             @endif

@@ -73,8 +73,9 @@ class JurusanController extends Controller
         $ext = $foto->getClientOriginalExtension();
         if ($request->file('logo')->isValid()) {
             $foto_name = "jurusan-" . date('YmdHis') . ".$ext";
-            $request->file('logo')->move('fotoupload', $foto_name);
-            return $foto_name;
+            $upload_path = $request->file('logo')->storeAs('public/fotoupload', $foto_name);
+
+            return $upload_path;
         }
         return false;
     }
@@ -86,16 +87,16 @@ class JurusanController extends Controller
             //Hapus foto lama jika ada foto baru
             $exist = Storage::disk('foto')->exists($jurusan->logo);
             if (isset($jurusan->logo) && $exist) {
-                $delete = Storage::disk('foto')->delete($jurusan->logo);
+                Storage::disk('foto')->delete($jurusan->logo);
             }
             //Upload foto baru
             $foto = $request->file('logo');
             $ext = $foto->getClientOriginalExtension();
             if ($request->file('logo')->isValid()) {
                 $foto_name = "jurusan-" . date('YmdHis') . ".$ext";
-                $upload_path = 'fotoupload';
-                $request->file('logo')->move($upload_path, $foto_name);
-                return $foto_name;
+                $upload_path = $request->file('logo')->storeAs('public/fotoupload', $foto_name);
+
+                return $upload_path;
             }
         }
     }

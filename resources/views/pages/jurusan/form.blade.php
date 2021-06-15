@@ -26,7 +26,7 @@
     {{-- Menampilkan FOTO --}}
     @if (isset($jurusan))
         @if (isset($jurusan->logo))
-            <img src="{{ asset('fotoupload/' . $jurusan->logo) }}" width="30%">
+            <img src="{{ Storage::url($jurusan->logo) }}" width="30%">
         @else
             <img src="{{ asset('fotoupload/no-image.jpg') }}" width="30%">
         @endif

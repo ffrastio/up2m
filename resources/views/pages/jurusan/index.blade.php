@@ -40,7 +40,7 @@
                                     <td>
                                         @if (isset($item))
                                             @if (isset($item->logo))
-                                                <img src="{{ asset('fotoupload/' . $item->logo) }}" width="80px">
+                                                <img src="{{ Storage::url($item->logo) }}" width="80px">
                                             @else
                                                 <img src="{{ asset('fotoupload/no-image.jpg') }}" width="80px">
                                             @endif
