@@ -14,7 +14,7 @@ class CreatePenelitianTable extends Migration
     public function up()
     {
         Schema::create('penelitian', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('skim_penelitian', 191)->nullable();
             $table->string('nama_ketua_penelitian', 191)->nullable();
             $table->string('jurusan', 50);

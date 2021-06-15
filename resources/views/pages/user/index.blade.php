@@ -28,6 +28,7 @@
                                 <th>NIDN</th>
                                 <th>Nama Pimpinan</th>
                                 <th>Email</th>
+                                <th>Foto</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -37,6 +38,15 @@
                                     <td>{{ $item->nidn }}</td>
                                     <td>{{ $item->nama }}</td>
                                     <td>{{ $item->email }}</td>
+                                    <td>
+                                        @if (isset($item))
+                                            @if (isset($item->profile_photo_path))
+                                                <img src="{{ Storage::url($item->profile_photo_path) }}" width="80px">
+                                            @else
+                                                <img src="{{ asset('fotoupload/no-image-available.jpg') }}" width="80px">
+                                            @endif
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ url('user/' . $item->id . '/edit') }}" class="btn btn-warning">
                                             <i class="fa fa-pencil-alt"></i> Edit

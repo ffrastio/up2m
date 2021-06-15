@@ -53,13 +53,13 @@ class PenelitianController extends Controller
         // membuat nama file unik
         $nama_file = rand() . $file->getClientOriginalName();
 
-        // upload ke folder file_penelitian di dalam folder public
-        $file->move('file_penelitian', $nama_file);
+        // upload ke folder file_penelitian di dalam folder storage/public
+        $file->storeAs('public/file_penelitian', $nama_file);
 
         // import data
         $import = new PenelitianImport($tahun);
         $import->onlySheets(0, 2);
-        Excel::import($import, public_path('/file_penelitian/' . $nama_file));
+        Excel::import($import, storage_path('app/public/file_penelitian/' . $nama_file));
         // notifikasi dengan session
         Session::flash('sukses', 'Data Penelitian Tahun ' . $tahun . ' Berhasil Diimport!');
 

@@ -14,7 +14,7 @@ class CreatePengabdianTable extends Migration
     public function up()
     {
         Schema::create('pengabdian', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('skim_pengabdian', 191)->nullable();
             $table->string('nama_ketua_pengabdian', 191)->nullable();
             $table->string('jurusan', 50);

@@ -86,9 +86,9 @@ class UserController extends Controller
             $ext = $foto->getClientOriginalExtension();
             if ($request->file('profile_photo_path')->isValid()) {
                 $foto_name = "user-" . date('YmdHis') . ".$ext";
-                $upload_path = 'fotoupload';
-                $request->file('profile_photo_path')->move($upload_path, $foto_name);
-                return $foto_name;
+                $upload_path = $request->file('profile_photo_path')->storeAs('public/fotoupload', $foto_name);
+
+                return $upload_path;
             }
         }
     }

@@ -54,12 +54,12 @@ class PengabdianController extends Controller
         $nama_file = rand() . $file->getClientOriginalName();
 
         // upload ke folder file_pengabdian di dalam folder public
-        $file->move('file_pengabdian', $nama_file);
+        $file->storeAs('public/file_pengabdian', $nama_file);
 
         // import data
         $import = new PengabdianImport($tahun);
         $import->onlySheets(1, 3);
-        Excel::import($import, public_path('/file_pengabdian/' . $nama_file));
+        Excel::import($import, storage_path('app/public/file_pengabdian/' . $nama_file));
         // notifikasi dengan session
         Session::flash('sukses', 'Data Pengabdian Tahun ' . $tahun . ' Berhasil Diimport!');
 

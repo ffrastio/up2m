@@ -14,7 +14,7 @@ class CreateSkimTable extends Migration
     public function up()
     {
         Schema::create('skim', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('skim', 191)->unique();
             $table->string('jenis', 50);
             $table->timestamps();
