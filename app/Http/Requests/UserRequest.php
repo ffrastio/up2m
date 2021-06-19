@@ -25,9 +25,9 @@ class UserRequest extends FormRequest
     {
         // Cek apakah CREATE atau UPDATE
         if ($this->method() == 'PATCH') {
-            $nidn    = 'required|string|unique:users,nidn,' . $this->get('id');
+            $nidn    = 'required|string|max:20|unique:users,nidn,' . $this->get('id');
         } else {
-            $nidn     = 'required|string|unique:users,nidn';
+            $nidn     = 'required|string|max:20|unique:users,nidn';
         }
 
         return [
@@ -44,6 +44,9 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
+            'nidn.required'      => 'Nomor Induk Dosen wajib diisi.',
+            'nidn.unique'       => 'NIDN sudah terpakai',
+            'nidn.max'           => 'NIDN maksimal diisi dengan 20 karakter.',
             'nama.required'      => 'Nama wajib diisi.',
             'nama.max'           => 'Nama maksimal diisi dengan 50 karakter.',
             'email.required'      => 'Email wajib diisi.',

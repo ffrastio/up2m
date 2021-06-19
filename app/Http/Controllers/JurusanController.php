@@ -63,6 +63,7 @@ class JurusanController extends Controller
 
         //Simpan data jurusan
         Jurusan::create($input);
+        Session::flash('sukses', 'Berhasil tambah data jurusan');
 
         return redirect('/jurusan');
     }

@@ -122,7 +122,18 @@ class APIController extends Controller
 
     public function getAllAuthor()
     {
-        $author = Author::withCount(['penelitian', 'pengabdian'])->get()->sortBy('nama');
+        // $author = Author::withCount(['penelitian', 'pengabdian'])->get()->sortBy('nama');
+        $author = DB::table('author')
+            ->join('penelitian', 'author.nama', '=', 'penelitian.nama_author')
+            ->join('pengabdian', 'penelitian.nama_author', '=', 'pengabdian.nama_author')
+            ->select(
+                DB::raw(
+                    'author.*, 
+                    count(penelitian.nama_author) as penelitian_count,
+                    count(pengabdian.nama_author) as pengabdian_count'
+                )
+            )->groupBy('author.id')
+            ->get();
         $total = $author->count();
 
         return $this->sendResponse($author, 'Author retrieved successfully.', $total);

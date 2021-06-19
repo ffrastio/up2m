@@ -24,7 +24,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+Route::group(['middleware' => ['auth:sanctum', 'admin']], function () {
     //Route::view('/dashboard', "dashboard")->name('dashboard');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
