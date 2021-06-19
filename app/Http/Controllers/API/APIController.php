@@ -125,7 +125,7 @@ class APIController extends Controller
         // $author = Author::withCount(['penelitian', 'pengabdian'])->get()->sortBy('nama');
         $author = DB::table('author')
             ->join('penelitian', 'author.nama', '=', 'penelitian.nama_author')
-            ->join('pengabdian', 'penelitian.nama_author', '=', 'pengabdian.nama_author')
+            ->join('pengabdian', 'author.nama', '=', 'pengabdian.nama_author')
             ->select(
                 DB::raw(
                     'author.*, 
