@@ -19,18 +19,18 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', 'AuthController@login');
 
 //author
-Route::get('author', [APIController::class, 'getAllAuthor']);
-Route::get('author/{id}', [APIController::class, 'getAuthor']);
+Route::get('list-author', [APIController::class, 'getAllAuthor']);
+Route::get('author', [APIController::class, 'getAuthor']);
 
 //penelitian
 Route::get('list-penelitian', [APIController::class, 'getAllPenelitian']);
-Route::get('penelitian/{id}', [APIController::class, 'getPenelitian']);
+Route::get('penelitian', [APIController::class, 'getPenelitian']);
 Route::get('jurusan-penelitian', [APIController::class, 'getPenelitianByTahun']);
 Route::get('skim-penelitian', [APIController::class, 'getSkimPenelitianByTahun']);
 
 //pengabdian
 Route::get('list-pengabdian', [APIController::class, 'getAllPengabdian']);
-Route::get('pengabdian/{id}', [APIController::class, 'getPengabdian']);
+Route::get('pengabdian', [APIController::class, 'getPengabdian']);
 Route::get('jurusan-pengabdian', [APIController::class, 'getPengabdianByTahun']);
 Route::get('skim-pengabdian', [APIController::class, 'getSkimPengabdianByTahun']);
 

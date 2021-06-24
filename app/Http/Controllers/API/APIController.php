@@ -19,9 +19,10 @@ class APIController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function getAllPenelitian()
+    public function getAllPenelitian(Request $request)
     {
-        $penelitian = Penelitian::orderBy('tahun', 'asc')->paginate(20);
+        $limit = $request->input('limit', 20);
+        $penelitian = Penelitian::orderBy('tahun', 'asc')->paginate($limit);
         $total = $penelitian->count();
 
         return $this->sendResponse(
@@ -31,9 +32,9 @@ class APIController extends Controller
         );
     }
 
-    public function getPenelitian($id)
+    public function getPenelitian(Request $request)
     {
-        $penelitian = Penelitian::find($id);
+        $penelitian = Penelitian::where('id', $request->id)->get();;
 
         if (is_null($penelitian)) {
             return $this->sendError('Penelitian not found.');
@@ -54,17 +55,18 @@ class APIController extends Controller
         return $this->sendResponse($penelitian, 'Penelitian retrieved successfully.', $total);
     }
 
-    public function getAllPengabdian()
+    public function getAllPengabdian(Request $request)
     {
-        $pengabdian = Pengabdian::orderBy('tahun', 'asc')->paginate(20);
+        $limit = $request->input('limit', 20);
+        $pengabdian = Pengabdian::orderBy('tahun', 'asc')->paginate($limit);
         $total = $pengabdian->count();
 
         return $this->sendResponse($pengabdian, 'Pengabdian retrieved successfully.', $total);
     }
 
-    public function getPengabdian($id)
+    public function getPengabdian(Request $request)
     {
-        $pengabdian = Pengabdian::find($id);
+        $pengabdian = Pengabdian::where('id', $request->id)->get();
 
         if (is_null($pengabdian)) {
             return $this->sendError('Pengabdian not found.');
@@ -113,8 +115,9 @@ class APIController extends Controller
 
     public function getAllJurusan()
     {
-        $jurusan = Jurusan::with('prodi')
-            ->withCount(['penelitian', 'pengabdian'])->get()->sortBy('nama_jurusan');
+        $jurusan = Jurusan::orderBy('nama_jurusan')->with('prodi')
+            ->withCount(['penelitian', 'pengabdian'])->get();
+        $jurusan->values()->all();
         $total = $jurusan->count();
 
         return $this->sendResponse($jurusan, 'Jurusan retrieved successfully.', $total);
@@ -122,26 +125,17 @@ class APIController extends Controller
 
     public function getAllAuthor()
     {
-        $author = Author::withCount(['penelitian', 'pengabdian'])->get()->sortBy('nama');
-        // $author = DB::table('author')
-        //     ->join('penelitian', 'author.nama', '=', 'penelitian.nama_author')
-        //     ->join('pengabdian', 'author.nama', '=', 'pengabdian.nama_author')
-        //     ->select(
-        //         DB::raw(
-        //             'author.*, 
-        //             count(penelitian.nama_author) as penelitian_count,
-        //             count(pengabdian.nama_author) as pengabdian_count'
-        //         )
-        //     )->groupBy('author.id')
-        //     ->get();
+        $author = Author::orderBy('nama')->withCount(['penelitian', 'pengabdian'])->get();
+        $author->values()->all();
         $total = $author->count();
 
         return $this->sendResponse($author, 'Author retrieved successfully.', $total);
     }
 
-    public function getAuthor($id)
+    public function getAuthor(Request $request)
     {
-        $author = Author::with(['penelitian', 'pengabdian'])->get()->find($id);
+        $author = Author::with(['penelitian', 'pengabdian'])
+            ->where('id', $request->id)->get();
 
         if (is_null($author)) {
             return $this->sendError('Author not found.');
