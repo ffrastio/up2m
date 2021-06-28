@@ -15,11 +15,20 @@ class IsAdmin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $admin)
     {
-        if (Auth::user() && Auth::user()->isAdmin != 1) {
-            return redirect()->back()->withErrors('Hanya admin yang dapat masuk!');
+        // if (Auth::user() && Auth::user()->isAdmin != 1) {
+        //     return redirect('/')->withErrors('Hanya admin yang dapat masuk!');
+        // }
+        // return $next($request);
+        if (!Auth::check()) {
+            return redirect('/');
         }
-        return $next($request);
+        $user = Auth::user();
+
+        if ($user->isAdmin == $admin)
+            return $next($request);
+
+        return redirect('/')->withErrors('Hanya admin yang dapat masuk!');
     }
 }

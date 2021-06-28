@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthentikasiController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JurusanController;
@@ -20,11 +21,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 
-Route::group(['middleware' => ['auth:sanctum', 'admin']], function () {
+Route::get('/', [AuthentikasiController::class, 'index'])->name('loginview');
+Route::post('login', [AuthentikasiController::class, 'proses_login'])->name('login');
+Route::post('logout', [AuthentikasiController::class, 'logout'])->name('logout');
+
+Route::group(['middleware' => ['auth:sanctum', 'admin:1']], function () {
     //Route::view('/dashboard', "dashboard")->name('dashboard');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
