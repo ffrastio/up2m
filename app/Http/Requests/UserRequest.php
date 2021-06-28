@@ -25,16 +25,16 @@ class UserRequest extends FormRequest
     {
         // Cek apakah CREATE atau UPDATE
         if ($this->method() == 'PATCH') {
-            $nidn    = 'required|string|unique:users,nidn,' . $this->get('id');
+            $nidn    = 'required|string|max:20|unique:users,nidn,' . $this->get('id');
         } else {
-            $nidn     = 'required|string|unique:users,nidn';
+            $nidn     = 'required|string|max:20|unique:users,nidn';
         }
 
         return [
             'nidn'       => $nidn,
             'nama'      => 'required|string|max:50',
             'email'      => 'required|email',
-            'password'      => 'string|min:8|confirmed',
+            'password'      => 'required|string|min:8|confirmed',
             'profile_photo_path' => 'sometimes|nullable|image|mimes:png,jpg,jpeg|
                         max:500|dimensions:min_width=100,min_height:200',
 
@@ -44,9 +44,13 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
+            'nidn.required'      => 'Nomor Induk Dosen wajib diisi.',
+            'nidn.unique'       => 'NIDN sudah terpakai',
+            'nidn.max'           => 'NIDN maksimal diisi dengan 20 karakter.',
             'nama.required'      => 'Nama wajib diisi.',
             'nama.max'           => 'Nama maksimal diisi dengan 50 karakter.',
             'email.required'      => 'Email wajib diisi.',
+            'password.required'      => 'Password wajib diisi.',
             'password.min' => 'Password minimal 8 karakter',
             'password.confirmed' => 'Password tidak sesuai',
             'profile_photo_path.mimes'         => 'Hanya file dengan tipe .png .jpg dan .jpeg',

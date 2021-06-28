@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AuthentikasiController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\PenelitianController;
 use App\Http\Controllers\PengabdianController;
+use App\Http\Controllers\SkimController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,11 +21,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 
-Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+Route::get('/', [AuthentikasiController::class, 'index'])->name('loginview');
+Route::post('login', [AuthentikasiController::class, 'proses_login'])->name('login');
+Route::post('logout', [AuthentikasiController::class, 'logout'])->name('logout');
+
+Route::group(['middleware' => ['auth:sanctum', 'admin:1']], function () {
     //Route::view('/dashboard', "dashboard")->name('dashboard');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -46,6 +52,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::delete('/jurusan/{jurusan}', [JurusanController::class, 'destroy']);
     Route::post('/jurusan', [JurusanController::class, 'store']);
 
+    Route::get('/skim', [SkimController::class, 'index'])->name('skim');
+
     Route::get('/author', [AuthorController::class, 'index'])->name('author');
     Route::get('/author/create', [AuthorController::class, 'create']);
     Route::get('/author/{author}/edit', [AuthorController::class, 'edit']);
@@ -54,8 +62,14 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::post('/author', [AuthorController::class, 'store']);
 
     Route::get('/penelitian', [PenelitianController::class, 'index'])->name('penelitian');
+    Route::get('/penelitian/{penelitian}', [PenelitianController::class, 'show']);
+    Route::get('/penelitian/{penelitian}/edit', [PenelitianController::class, 'edit']);
+    Route::patch('/penelitian/{penelitian}', [PenelitianController::class, 'update']);
     Route::post('/penelitian/import', [PenelitianController::class, 'import']);
 
     Route::get('/pengabdian', [PengabdianController::class, 'index'])->name('pengabdian');
+    Route::get('/pengabdian/{pengabdian}', [PengabdianController::class, 'show']);
+    Route::get('/pengabdian/{pengabdian}/edit', [PengabdianController::class, 'edit']);
+    Route::patch('/pengabdian/{pengabdian}', [PengabdianController::class, 'update']);
     Route::post('/pengabdian/import', [PengabdianController::class, 'import']);
 });

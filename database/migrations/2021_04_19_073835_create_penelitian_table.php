@@ -14,7 +14,7 @@ class CreatePenelitianTable extends Migration
     public function up()
     {
         Schema::create('penelitian', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('skim_penelitian', 191)->nullable();
             $table->string('nama_ketua_penelitian', 191)->nullable();
             $table->string('jurusan', 50);
@@ -24,6 +24,7 @@ class CreatePenelitianTable extends Migration
             $table->char('tahun', 4);
             $table->enum('kategori', ['Internal', 'DIKTI']);
             $table->string('nama_anggota', 191)->nullable();
+            $table->string('nama_author', 191)->nullable();
             $table->timestamps();
         });
 
@@ -35,9 +36,15 @@ class CreatePenelitianTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('nama_ketua_penelitian')
+            $table->foreign('nama_author')
                 ->references('nama')
                 ->on('author')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('skim_penelitian')
+                ->references('skim')
+                ->on('skim')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

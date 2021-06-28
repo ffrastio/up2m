@@ -21,8 +21,8 @@ class Penelitian extends Model
         'besar_dana',
         'tahun',
         'kategori',
-        'jumlah_anggota',
         'nama_anggota',
+        'nama_author',
     ];
 
     protected $hidden = [
@@ -48,5 +48,10 @@ class Penelitian extends Model
     public function author()
     {
         return $this->belongsTo('App\Models\Author', 'nama');
+    }
+
+    public function skim()
+    {
+        return $this->belongsTo('App\Models\Skim', 'skim');
     }
 }

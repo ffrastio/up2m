@@ -136,7 +136,7 @@ class ProdiTableSeeder extends Seeder
             [
                 'nama_prodi' => "Magister Teknik Elektro",
                 'jenjang' =>  "S2",
-                'id_jurusan' => 3,
+                'id_jurusan' => 8,
                 'created_at' => new \DateTime,
                 'updated_at' => null,
             ],
@@ -241,7 +241,7 @@ class ProdiTableSeeder extends Seeder
             [
                 'nama_prodi' => "Magister Rekayasa Teknologi Manufaktur",
                 'jenjang' =>  "S2",
-                'id_jurusan' => 6,
+                'id_jurusan' => 8,
                 'created_at' => new \DateTime,
                 'updated_at' => null,
             ],

@@ -25,7 +25,7 @@ class AuthorRequest extends FormRequest
     {
         // Cek apakah CREATE atau UPDATE
         if ($this->method() == 'PATCH') {
-            $nidn    = 'required|string|unique:author,nidn,' . $this->get('id');
+            $nidn    = 'required|string|max:20|unique:author,nidn,' . $this->get('id');
         } else {
             $nidn     = 'required|string|unique:author,nidn|max:20';
         }

@@ -5,11 +5,9 @@ namespace App\Imports;
 use App\Models\Pengabdian;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
-use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithConditionalSheets;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
-use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Imports\HeadingRowFormatter;
 
 HeadingRowFormatter::
@@ -36,6 +34,7 @@ class PengabdianImport implements ToCollection, WithHeadingRow, WithMultipleShee
                     'nama_ketua_pengabdian' => $row['Nama Ketua Pengabdian'] ?? null,
                     'jurusan' => $row['Jurusan'],
                     'judul' => $row['Judul'],
+                    'besar_dana' => $row['Nominal Dana'] ?? null,
                     'tahun' => $this->tahun
                 ]);
             }
@@ -46,11 +45,6 @@ class PengabdianImport implements ToCollection, WithHeadingRow, WithMultipleShee
     {
         return 4;
     }
-
-    // public function uniqueBy()
-    // {
-    //     return 'judul';
-    // }
 
     use WithConditionalSheets;
     public function conditionalSheets(): array

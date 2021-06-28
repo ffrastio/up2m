@@ -6,12 +6,13 @@ use App\Http\Requests\AuthorRequest;
 use App\Models\Author;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AuthorController extends Controller
 {
     public function index()
     {
-        $items = Author::all();
+        $items = Author::all()->sortBy('nama');
         return view('pages.author.index', compact('items'));
     }
 
@@ -37,6 +38,8 @@ class AuthorController extends Controller
 
         //update data author
         $author->update($input);
+        Session::flash('sukses', 'Berhasil update data author');
+
         return redirect('/author');
     }
 
@@ -60,8 +63,9 @@ class AuthorController extends Controller
         $ext = $foto->getClientOriginalExtension();
         if ($request->file('avatar')->isValid()) {
             $foto_name = "author-" . date('YmdHis') . ".$ext";
-            $request->file('avatar')->move('fotoupload', $foto_name);
-            return $foto_name;
+            $upload_path = $request->file('avatar')->storeAs('public/fotoupload', $foto_name);
+
+            return $upload_path;
         }
         return false;
     }
@@ -73,16 +77,16 @@ class AuthorController extends Controller
             //Hapus foto lama jika ada foto baru
             $exist = Storage::disk('foto')->exists($author->avatar);
             if (isset($author->avatar) && $exist) {
-                $delete = Storage::disk('foto')->delete($author->avatar);
+                Storage::disk('foto')->delete($author->avatar);
             }
             //Upload foto baru
             $foto = $request->file('avatar');
             $ext = $foto->getClientOriginalExtension();
             if ($request->file('avatar')->isValid()) {
                 $foto_name = "author-" . date('YmdHis') . ".$ext";
-                $upload_path = 'fotoupload';
-                $request->file('avatar')->move($upload_path, $foto_name);
-                return $foto_name;
+                $upload_path = $request->file('avatar')->storeAs('public/fotoupload', $foto_name);
+
+                return $upload_path;
             }
         }
     }
@@ -93,6 +97,8 @@ class AuthorController extends Controller
         $this->hapusFoto($author);
 
         $author->delete();
+        Session::flash('sukses', 'Berhasil hapus data author');
+
         return redirect('/author');
     }
 

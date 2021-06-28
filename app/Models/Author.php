@@ -47,11 +47,11 @@ class Author extends Model
 
     public function penelitian()
     {
-        return $this->hasMany('App\Models\Penelitian', 'nama_ketua_penelitian', 'nama');
+        return $this->hasMany('App\Models\Penelitian', 'nama_author', 'nama');
     }
 
     public function pengabdian()
     {
-        return $this->hasMany('App\Models\Pengabdian', 'nama_ketua_pengabdian', 'nama');
+        return $this->hasMany('App\Models\Pengabdian', 'nama_author', 'nama');
     }
 }

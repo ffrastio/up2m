@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\JurusanRequest;
 use App\Models\Jurusan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class JurusanController extends Controller
@@ -39,6 +40,8 @@ class JurusanController extends Controller
 
         //update data jurusan
         $jurusan->update($input);
+        Session::flash('sukses', 'Berhasil update data jurusan');
+
         return redirect('/jurusan');
     }
 
@@ -60,6 +63,7 @@ class JurusanController extends Controller
 
         //Simpan data jurusan
         Jurusan::create($input);
+        Session::flash('sukses', 'Berhasil tambah data jurusan');
 
         return redirect('/jurusan');
     }
@@ -70,8 +74,9 @@ class JurusanController extends Controller
         $ext = $foto->getClientOriginalExtension();
         if ($request->file('logo')->isValid()) {
             $foto_name = "jurusan-" . date('YmdHis') . ".$ext";
-            $request->file('logo')->move('fotoupload', $foto_name);
-            return $foto_name;
+            $upload_path = $request->file('logo')->storeAs('public/fotoupload', $foto_name);
+
+            return $upload_path;
         }
         return false;
     }
@@ -83,16 +88,16 @@ class JurusanController extends Controller
             //Hapus foto lama jika ada foto baru
             $exist = Storage::disk('foto')->exists($jurusan->logo);
             if (isset($jurusan->logo) && $exist) {
-                $delete = Storage::disk('foto')->delete($jurusan->logo);
+                Storage::disk('foto')->delete($jurusan->logo);
             }
             //Upload foto baru
             $foto = $request->file('logo');
             $ext = $foto->getClientOriginalExtension();
             if ($request->file('logo')->isValid()) {
                 $foto_name = "jurusan-" . date('YmdHis') . ".$ext";
-                $upload_path = 'fotoupload';
-                $request->file('logo')->move($upload_path, $foto_name);
-                return $foto_name;
+                $upload_path = $request->file('logo')->storeAs('public/fotoupload', $foto_name);
+
+                return $upload_path;
             }
         }
     }
@@ -103,6 +108,8 @@ class JurusanController extends Controller
         $this->hapusFoto($jurusan);
 
         $jurusan->delete();
+        Session::flash('sukses', 'Berhasil hapus data jurusan');
+
         return redirect('/jurusan');
     }
 
