@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', 'AuthController@login');
 
 //author
-Route::get('list-author', [APIController::class, 'getAllAuthor']);
-Route::get('author', [APIController::class, 'getAuthor']);
+Route::get('author', [APIController::class, 'getAllAuthor']);
+Route::get('author/{id}', [APIController::class, 'getAuthor']);
 
 //penelitian
 Route::get('list-penelitian', [APIController::class, 'getAllPenelitian']);

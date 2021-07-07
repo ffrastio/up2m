@@ -132,10 +132,9 @@ class APIController extends Controller
         return $this->sendResponse($author, 'Author retrieved successfully.', $total);
     }
 
-    public function getAuthor(Request $request)
+    public function getAuthor($id)
     {
-        $author = Author::with(['penelitian', 'pengabdian'])
-            ->where('id', $request->id)->get();
+        $author = Author::with(['penelitian', 'pengabdian'])->get()->find($id);
 
         if (is_null($author)) {
             return $this->sendError('Author not found.');
