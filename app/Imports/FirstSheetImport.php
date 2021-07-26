@@ -6,6 +6,8 @@ use App\Models\Author;
 use App\Models\Penelitian;
 use App\Models\Skim;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Imports\HeadingRowFormatter;
@@ -27,6 +29,19 @@ class FirstSheetImport implements ToCollection, WithHeadingRow
     {
         $kategori = "DIKTI";
         $jenis = "Penelitian";
+        $jurusan = [
+            'Administrasi Niaga', 'Akuntansi', 'Teknik Elektro',
+            'Teknik Mesin', 'Teknik Grafika dan Penerbitan', 'Teknik Informatika dan Komputer', 'Teknik Sipil',
+            'Direktorat', 'Pasca Sarjana'
+        ];
+        Validator::make($rows->toArray(), [
+            '*.Jurusan' => ['nullable', 'sometimes', Rule::in($jurusan)],
+            '*.Nominal Dana' => ['nullable', 'sometimes', 'numeric']
+        ], [
+            'in' => 'Baris :attribute berisi value yang salah',
+            'numeric' => 'Baris :attribute harus berisi angka'
+        ])->validate();
+
         foreach ($rows as $row) {
             if ($row->filter()->isNotEmpty()) {
                 if (!isset($row['Nama'])) {
@@ -48,11 +63,13 @@ class FirstSheetImport implements ToCollection, WithHeadingRow
                 ], [
                     'jenis' => $jenis
                 ]);
-                Penelitian::create([
+                Penelitian::updateOrCreate([
                     'skim_penelitian' => $row['Skim Penelitian'],
+                    'judul' => $row['Judul']
+
+                ], [
                     'nama_ketua_penelitian' => $row['Nama Ketua Peneliti'] ?? null,
                     'jurusan' => $row['Jurusan'] ?? null,
-                    'judul' => $row['Judul'],
                     'besar_dana' => $row['Nominal Dana'] ?? null,
                     'tahun' => $this->tahun,
                     'kategori' => $kategori,

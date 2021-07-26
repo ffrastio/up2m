@@ -29,6 +29,25 @@
             </div>
         @endif
 
+        @if ($gagal = Session::get('gagal'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $gagal }}</strong>
+            </div>
+        @endif
+
+        @if (isset($errors) && $errors->any())
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Import Data Penelitian Gagal!</strong>
+                <ul>
+                    @foreach ($errors->all() as $e)
+                        <li>{{ $e }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">

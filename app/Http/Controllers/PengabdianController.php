@@ -46,24 +46,36 @@ class PengabdianController extends Controller
 
     public function import(ImportRequest $request)
     {
-        // menangkap file excel
-        $file = $request->file('file');
-        $tahun = $request->tahun;
+        try {
+            // menangkap file excel
+            $file = $request->file('file');
+            $tahun = $request->tahun;
 
-        // membuat nama file unik
-        $nama_file = rand() . $file->getClientOriginalName();
+            // membuat nama file
+            $nama_file = $file->getClientOriginalName();
 
-        // upload ke folder file_pengabdian di dalam folder public
-        $file->storeAs('public/file_pengabdian', $nama_file);
+            // upload ke folder file_pengabdian di dalam folder public
+            $file->storeAs('public/file_pengabdian', $nama_file);
 
-        // import data
-        $import = new PengabdianImport($tahun);
-        $import->onlySheets(1, 3);
-        Excel::import($import, storage_path('app/public/file_pengabdian/' . $nama_file));
-        // notifikasi dengan session
-        Session::flash('sukses', 'Data Pengabdian Tahun ' . $tahun . ' Berhasil Diimport!');
+            // import data
+            $import = new PengabdianImport($tahun);
+            $import->onlySheets(1, 3);
+            Excel::import($import, storage_path('app/public/file_pengabdian/' . $nama_file));
+            // notifikasi dengan session
+            Session::flash('sukses', 'Data Pengabdian Tahun ' . $tahun . ' Berhasil Diimport!');
 
-        // alihkan halaman kembali
-        return redirect('/pengabdian');
+            // alihkan halaman kembali
+            return redirect('/pengabdian');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $e->errors();
+            // foreach ($failures->failures() as $failure) {
+            //     $failure->row(); // row that went wrong
+            //     $failure->attribute(); // either heading key (if using heading row concern) or column index
+            //     $failure->errors(); // Actual error messages from Laravel validator
+            //     $failure->values(); // The values of the row that has failed.
+            // }
+            Session::flash('gagal', 'Data Pengabdian Tahun ' . $tahun . ' Gagal import!');
+            return redirect('/pengabdian');
+        }
     }
 }

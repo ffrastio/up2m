@@ -6,6 +6,8 @@ use App\Models\Author;
 use App\Models\Pengabdian;
 use App\Models\Skim;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Imports\HeadingRowFormatter;
@@ -26,6 +28,19 @@ class FourthSheetImport implements ToCollection, WithHeadingRow
     {
         $kategori = "Internal";
         $jenis = "Pengabdian";
+        $jurusan = [
+            'Administrasi Niaga', 'Akuntansi', 'Teknik Elektro',
+            'Teknik Mesin', 'Teknik Grafika dan Penerbitan', 'Teknik Informatika dan Komputer', 'Teknik Sipil',
+            'Direktorat', 'Pasca Sarjana'
+        ];
+        Validator::make($rows->toArray(), [
+            '*.Jurusan' => ['nullable', 'sometimes', Rule::in($jurusan)],
+            '*.Nominal Dana' => ['nullable', 'sometimes', 'numeric']
+        ], [
+            'in' => 'Baris :attribute berisi value yang salah',
+            'numeric' => 'Baris :attribute harus berisi angka'
+        ])->validate();
+
         foreach ($rows as $row) {
             if ($row->filter()->isNotEmpty()) {
                 if (!isset($row['Nama'])) {
@@ -47,11 +62,12 @@ class FourthSheetImport implements ToCollection, WithHeadingRow
                 ], [
                     'jenis' => $jenis
                 ]);
-                Pengabdian::create([
+                Pengabdian::updateOrCreate([
                     'skim_pengabdian' => $row['Skim Pengabdian'] ?? null,
+                    'judul' => $row['Judul']
+                ], [
                     'nama_ketua_pengabdian' => $row['Nama Ketua Pengabdian'] ?? null,
                     'jurusan' => $row['Jurusan'],
-                    'judul' => $row['Judul'],
                     'besar_dana' => $row['Nominal Dana'] ?? null,
                     'tahun' => $this->tahun,
                     'kategori' => $kategori,
