@@ -62,14 +62,20 @@ Route::group(['middleware' => ['auth:sanctum', 'admin:1']], function () {
     Route::post('/author', [AuthorController::class, 'store']);
 
     Route::get('/penelitian', [PenelitianController::class, 'index'])->name('penelitian');
+    Route::get('/penelitian/create', [PenelitianController::class, 'create']);
     Route::get('/penelitian/{penelitian}', [PenelitianController::class, 'show']);
     Route::get('/penelitian/{penelitian}/edit', [PenelitianController::class, 'edit']);
     Route::patch('/penelitian/{penelitian}', [PenelitianController::class, 'update']);
+    Route::post('/penelitian/fetch', [PenelitianController::class, 'fetch'])->name('fetch');
+    Route::post('/penelitian', [PenelitianController::class, 'store']);
     Route::post('/penelitian/import', [PenelitianController::class, 'import']);
 
     Route::get('/pengabdian', [PengabdianController::class, 'index'])->name('pengabdian');
+    Route::get('/pengabdian/create', [PengabdianController::class, 'create']);
     Route::get('/pengabdian/{pengabdian}', [PengabdianController::class, 'show']);
     Route::get('/pengabdian/{pengabdian}/edit', [PengabdianController::class, 'edit']);
     Route::patch('/pengabdian/{pengabdian}', [PengabdianController::class, 'update']);
+    Route::post('/pengabdian/fetch', [PengabdianController::class, 'fetch'])->name('fetch');
+    Route::post('/pengabdian', [PengabdianController::class, 'store']);
     Route::post('/pengabdian/import', [PengabdianController::class, 'import']);
 });

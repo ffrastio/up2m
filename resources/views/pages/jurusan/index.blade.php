@@ -7,7 +7,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Daftar Jurusan</h1>
+            <h1 class="h3 mb-0 text-gray-800">Daftar Jurusan Politeknik Negeri Jakarta</h1>
             <a href="{{ url('/jurusan/create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Jurusan
             </a>
@@ -53,7 +53,8 @@
                                         <a href="{{ url('jurusan/' . $item->id . '/edit') }}" class="btn btn-warning">
                                             <i class="fa fa-pencil-alt"></i> Edit
                                         </a>
-                                        <form action="{{ url('jurusan', $item->id) }}" method="post" class="d-inline">
+                                        <form action="{{ url('jurusan', $item->id) }}" method="post"
+                                            class="d-inline">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger">

@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Daftar Author</h1>
+            <h1 class="h3 mb-0 text-gray-800">Daftar Author P2M Politeknik Negeri Jakarta</h1>
             {{-- <a href="{{ url('/author/create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Author
             </a> --}}
@@ -57,7 +57,8 @@
                                         <a href="{{ url('author/' . $item->id . '/edit') }}" class="btn btn-warning">
                                             <i class="fa fa-pencil-alt"></i> Edit
                                         </a>
-                                        <form action="{{ url('author', $item->id) }}" method="post" class="d-inline">
+                                        <form action="{{ url('author', $item->id) }}" method="post"
+                                            class="d-inline">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger">

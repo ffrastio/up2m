@@ -6,6 +6,8 @@ use App\Http\Requests\ImportRequest;
 use App\Http\Requests\PengabdianRequest;
 use App\Imports\PengabdianImport;
 use App\Models\Pengabdian;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -19,11 +21,69 @@ class PengabdianController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        $skim = DB::table('skim')->where('jenis', '=', 'Pengabdian')
+            ->orderBy('skim', 'asc')
+            ->select(DB::raw('skim, id'));
+        $jurusan = DB::table('jurusan')->orderBy('nama_jurusan', 'asc')
+            ->select(DB::raw('nama_jurusan, id'));
+        $list_skim = $skim->pluck('skim', 'skim')->toArray();
+        $list_jurusan = $jurusan->pluck('nama_jurusan', 'nama_jurusan')->toArray();
+
+        return view('pages.pengabdian.create', compact('list_skim', 'list_jurusan'));
+    }
+
+    function fetch(Request $request)
+    {
+        if ($request->get('query')) {
+            $query = $request->get('query');
+            $data = DB::table('author')
+                ->where('nama', 'LIKE', "%{$query}%")
+                ->get();
+            $output = '<ul class="list-group" style="display:block; position:relative">';
+            foreach ($data as $row) {
+                $output .= '
+       <li class="list-group-item"><a href="#">' . $row->nama . '</a></li>
+       ';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
+
     public function show($id)
     {
         $pengabdian = Pengabdian::findOrFail($id);
 
         return view('pages.pengabdian.show', compact('pengabdian'));
+    }
+
+    public function store(PengabdianRequest $request)
+    {
+        //$input = $request->all();
+
+        //Upload File
+        // if ($request->hasFile('logo')) {
+        //     $input['logo'] = $this->uploadFoto($request);
+        // }
+
+        //Simpan data jurusan
+        Pengabdian::create([
+            'skim_pengabdian' => $request->skim_pengabdian,
+            'nama_ketua_pengabdian' => $request->nama_ketua_pengabdian,
+            'jurusan' => $request->jurusan,
+            'judul' => $request->judul,
+            'abstrak' => $request->abstrak,
+            'besar_dana' => $request->besar_dana,
+            'tahun' => $request->tahun,
+            'kategori' => $request->kategori,
+            'nama_anggota' => $request->nama_anggota,
+            'nama_author' => $request->nama_ketua_pengabdian,
+        ]);
+        Session::flash('sukses', 'Berhasil tambah data pengabdian');
+
+        return redirect('/pengabdian');
     }
 
     public function edit($id)
