@@ -31,7 +31,10 @@ class FourthSheetImport implements ToCollection, WithHeadingRow
         $jurusan = [
             'Administrasi Niaga', 'Akuntansi', 'Teknik Elektro',
             'Teknik Mesin', 'Teknik Grafika dan Penerbitan', 'Teknik Informatika dan Komputer', 'Teknik Sipil',
-            'Direktorat', 'Pasca Sarjana'
+            'Direktorat', 'Pasca Sarjana', 'Teknik Grafika Dan Penerbitan', 'Teknik Informatika Dan Komputer',
+            'ADMINISTRASI NIAGA', 'AKUNTANSI', 'TEKNIK ELEKTRO', 'TEKNIK MESIN',
+            'TEKNIK GRAFIKA DAN PENERBITAN', 'TEKNIK INFORMATIKA DAN KOMPUTER', 'TEKNIK SIPIL',
+            'DIREKTORAT', 'PASCA SARJANA'
         ];
         Validator::make($rows->toArray(), [
             '*.Jurusan' => ['nullable', 'sometimes', Rule::in($jurusan)],
@@ -64,12 +67,12 @@ class FourthSheetImport implements ToCollection, WithHeadingRow
                 ]);
                 Pengabdian::updateOrCreate([
                     'skim_pengabdian' => $row['Skim Pengabdian'] ?? null,
-                    'judul' => $row['Judul']
+                    'judul' => $row['Judul'],
+                    'tahun' => $this->tahun
                 ], [
                     'nama_ketua_pengabdian' => $row['Nama Ketua Pengabdian'] ?? null,
                     'jurusan' => $row['Jurusan'],
                     'besar_dana' => $row['Nominal Dana'] ?? null,
-                    'tahun' => $this->tahun,
                     'kategori' => $kategori,
                     'nama_author' => $row['Nama']
                 ]);

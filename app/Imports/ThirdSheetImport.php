@@ -31,7 +31,10 @@ class ThirdSheetImport implements ToCollection, WithHeadingRow
         $jurusan = [
             'Administrasi Niaga', 'Akuntansi', 'Teknik Elektro',
             'Teknik Mesin', 'Teknik Grafika dan Penerbitan', 'Teknik Informatika dan Komputer', 'Teknik Sipil',
-            'Direktorat', 'Pasca Sarjana'
+            'Direktorat', 'Pasca Sarjana', 'Teknik Grafika Dan Penerbitan', 'Teknik Informatika Dan Komputer',
+            'ADMINISTRASI NIAGA', 'AKUNTANSI', 'TEKNIK ELEKTRO', 'TEKNIK MESIN',
+            'TEKNIK GRAFIKA DAN PENERBITAN', 'TEKNIK INFORMATIKA DAN KOMPUTER', 'TEKNIK SIPIL',
+            'DIREKTORAT', 'PASCA SARJANA'
         ];
         Validator::make($rows->toArray(), [
             '*.Jurusan' => ['nullable', 'sometimes', Rule::in($jurusan)],
@@ -64,13 +67,13 @@ class ThirdSheetImport implements ToCollection, WithHeadingRow
                 ]);
                 Penelitian::updateOrCreate([
                     'skim_penelitian' => $row['Skim Penelitian'],
-                    'judul' => $row['Judul']
+                    'judul' => $row['Judul'],
+                    'tahun' => $this->tahun
 
                 ], [
                     'nama_ketua_penelitian' => $row['Nama Ketua Penelitian'] ?? null,
                     'jurusan' => $row['Jurusan'] ?? null,
                     'besar_dana' => $row['Nominal Dana'] ?? null,
-                    'tahun' => $this->tahun,
                     'kategori' => $kategori,
                     'nama_author' => $row['Nama']
                 ]);
